@@ -1,0 +1,726 @@
+
+===ZUSI:;===
+
+LOADING PROGRAM VERSION 27.61-0
+
+EXECUTION STARTED
+
+
+Flexi NS  HZMME72BNK                2019-07-14  23:32:26
+
+WORKING STATE OF UNITS
+ UNIT       PHYS STATE LOCATION              INFO
+ OMU-0      0000 WO-EX                        -                            
+ OMU-1      0001 SP-EX                        -                            
+ GBU-0      00A0 SP-EX                       IDLE                          
+ GBU-1      00A1 WO-EX                        -                            
+ GBU-2      00A2 WO-EX                        -                            
+ GBU-3      00A3 WO-EX                        -                            
+ MMDU-0     001A WO-EX                        -                            
+ MMDU-1     001B WO-EX                        -                            
+ MMDU-2     001C WO-EX                        -                            
+ MMDU-3     001D WO-EX                        -                            
+ MMDU-4     001E WO-EX                        -                            
+ MMDU-5     001F WO-EX                        -                            
+ MMDU-6     00E2 WO-EX                        -                            
+ MMDU-7     00E3 WO-EX                        -                            
+ MMDU-8     00E4 WO-EX                        -                            
+ MMDU-9     00E5 WO-EX                        -                            
+ MMDU-10    00F4 WO-EX                        -                            
+ MMDU-11    00F5 WO-EX                        -                            
+ CPPU-0     0042 WO-EX                        -                            
+ CPPU-1     0043 WO-EX                        -                            
+ CPPU-2     0044 WO-EX                        -                            
+ CPPU-3     0045 WO-EX                        -                            
+ CPPU-4     0046 WO-EX                        -                            
+ CPPU-5     0047 WO-EX                        -                            
+ CPPU-6     0048 WO-EX                        -                            
+ CPPU-7     0049 WO-EX                        -                            
+ CPPU-8     0050 WO-EX                        -                            
+ CPPU-9     0051 WO-EX                        -                            
+ CPPU-10    0052 WO-EX                        -                            
+ CPPU-11    0053 WO-EX                        -                            
+ CPPU-12    0054 WO-EX                        -                            
+ MCHU-0     0004 WO-EX                        -                            
+ MCHU-1     0005 SP-EX                        -                            
+ PAPU-0     0020 SP-EX VMU-0                 IDLE                          
+ PAPU-1     0021 SP-EX VMU-0                 IDLE                          
+ PAPU-2     0022 SP-EX VMU-0                 IDLE                          
+ PAPU-3     0023 SP-EX VMU-0                 IDLE                          
+ PAPU-4     0024 SP-EX VMU-1                 IDLE                          
+ PAPU-5     0025 SP-EX VMU-1                 IDLE                          
+ PAPU-6     0026 SP-EX VMU-1                 IDLE                          
+ PAPU-7     0027 WO-EX VMU-1                  -                            
+ PAPU-8     0028 WO-EX VMU-2                  -                            
+ PAPU-9     0029 WO-EX VMU-2                  -                            
+ PAPU-10    002A SP-EX VMU-2                 IDLE                          
+ PAPU-11    002B SP-EX VMU-2                 IDLE                          
+ SMMU-0     0006 SP-EX VMU-0                 IDLE                          
+ SMMU-1     0007 WO-EX VMU-1                  -                            
+ SMMU-2     0008 WO-EX VMU-2                  -                            
+ IPPU-0     0080 WO-EX                       GRNP                          
+ IPPU-1     0081 WO-EX                       GRNP                          
+ VMU-0      0060 WO-EX                        -                            
+ VMU-1      0061 WO-EX                        -                            
+ VMU-2      0062 WO-EX                        -                            
+ IPDU-0     0040 WO-EX                        -                            
+ IPDU-1     0041 SP-EX                       IDLE                          
+ IPDU-2     00E0 WO-EX                       GRP2                          
+ IPDU-3     00E1 SP-EX                       IDLE GRP2                     
+ SWU-0           WO-EX  1A001-00-8  CNW-0     -                            
+ SWU-1           WO-EX  1A001-00-9  CNW-1     -                            
+ SWU-2           WO-EX  1A002-00-8  CNW-0     -                            
+ SWU-3           WO-EX  1A002-00-9  CNW-1     -                            
+ SWU-4           WO-EX  1A003-00-8  CNW-0     -                            
+ SWU-5           WO-EX  1A003-00-9  CNW-1     -                            
+ SWU-60          WO-EX  1A001-00-8  EMB-0     -                            
+ SWU-61          WO-EX  1A001-00-9  EMB-1     -                            
+ SWU-62          WO-EX  1A002-00-8  EMB-0     -                            
+ SWU-63          WO-EX  1A002-00-9  EMB-1     -                            
+ SWU-64          WO-EX  1A003-00-8  EMB-0     -                            
+ SWU-65          WO-EX  1A003-00-9  EMB-1     -                            
+ EMB-0           WO-EX                        -                            
+ EMB-1           SP-EX                        -                            
+ CNW-0           WO-EX                        -                            
+ CNW-1           WO-EX                        -                            
+ SHMU-0          WO-EX                        -                            
+ SHMU-1          SP-EX                        -                            
+ SHMU-2          WO-EX                        -                            
+ SHMU-3          SP-EX                        -                            
+ SHMU-4          WO-EX                        -                            
+ SHMU-5          SP-EX                        -                            
+
+TOTAL OF 79    UNITS
+ GROUP OF N+ COMPLEMENTARY   2                                                 
+ GROUP 2 OF N+1 REPLACEABLE  2                                                 
+
+COMMAND EXECUTED
+
+
+WORKING STATE AND RESTART HANDLING COMMAND <US_>
+<  
+===ZDOI:;===
+LOADING PROGRAM VERSION 3.47-0
+PROCESSOR TIME USAGE
+
+UNIT:                      OMU-0     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           2000
+PROCESSOR TIME USAGE
+
+UNIT:                      OMU-1     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     1
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      MCHU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      GBU-0     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      IPPU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      IPPU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      GBU-2     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       3
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      GBU-1     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       5
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      GBU-3     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       3
+CALLS FOR CRRQ:                     0
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      SMMU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       3
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MCHU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     1
+CLOCK FREQUENCY (MHZ):           1600
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-4    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-6    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-2    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      SMMU-2    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       3
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-3    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-11   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-10   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-9    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       1
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-7    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       2
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-5    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      PAPU-8    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:               YES
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       1
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      SMMU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      IPDU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       1
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-9    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       8
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-11   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      IPDU-3    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       1
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-7    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      19
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      VMU-0     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       0
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-8    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      VMU-2     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       2
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-6    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       8
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-11   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-2    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-12   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      VMU-1     
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       1
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-6    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-5    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-2    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      19
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       8
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-8    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-4    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      19
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-5    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       8
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-9    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-10   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       8
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      IPDU-2    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      13
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-4    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-3    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      IPDU-0    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      12
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      CPPU-7    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                       9
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-3    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      17
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-1    
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+PROCESSOR TIME USAGE
+
+UNIT:                      MMDU-10   
+
+SUPERVISION OF CPU
+TIME USAGE ALLOWED:                NO
+SUPERVISION OF CPU
+LOAD ALLOWED:                     YES
+LOAD PERCENT:                      18
+CALLS FOR CRRQ:                     0
+
+COMMAND EXECUTED
+
+
+OPERATING SYSTEM SUPERVISION AND STATISTICS HANDLING COMMAND <DO_>
+<  
+===ZBIV:INT:;===
+LOADING PROGRAM VERSION 8.6-0
+
+    VLRs IN MME
+
+    VLR ID    VLR NAME     LINK STATUS   MODE         OFFLOADING STATUS
+    -------   ----------   -----------   ------------ --------------------
+    3         TZHGS12      DOWN          WORKING      -            
+    15        TZHGS21      UP            WORKING      -            
+    16        TZHGS22      UP            WORKING      -            
+    17        TZHGS23      UP            WORKING      -            
+    18        TZHGS24      UP            WORKING      -            
+    19        TZHGS25      UP            WORKING      -            
+    20        TZHGS26      UP            WORKING      -            
+    21        HZGSBP3      UP            WORKING      -            
+
+COMMAND EXECUTED
+
+
+INTERFACE CONFIGURATION HANDLING COMMAND <BI_>
+<  
+===ZB6I::RT=SUM:;===
+LOADING PROGRAM VERSION 7.12-0
+
+COMMAND EXECUTION STARTED
+
+ENB:
+
+TOTAL NUMBER OF ENBS: 18974
+TOTAL NUMBER OF S1 CONNECTIONS: 00128236
+TOTAL NUMBER OF DISCONNECTED ENBS: 00021
+
+COMMAND EXECUTED
+
+
+E-UTRAN CONFIGURATION HANDLING COMMAND <B6_>
+<  

@@ -1,0 +1,26 @@
+#TextFSM template for parsing the output of command: `USI`
+# Example:
+#
+#PROCESSOR TIME USAGE
+#
+#UNIT:                      OMU-0     
+#
+#SUPERVISION OF CPU
+#TIME USAGE ALLOWED:               YES
+#SUPERVISION OF CPU
+#LOAD ALLOWED:                     YES
+#LOAD PERCENT:                       0
+#CALLS FOR CRRQ:                     0
+#CLOCK FREQUENCY (MHZ):           2000
+#PROCESSOR TIME USAGE
+#
+Value Filldown host (\w+)
+Value unit (\w+-\d+)
+Value cpuload (\d+)
+
+Start
+  ^PROCESSOR TIME USAGE
+  ^UNIT:\s+${unit}
+  ^LOAD PERCENT:\s+${cpuload} -> Record
+  
+#End of template

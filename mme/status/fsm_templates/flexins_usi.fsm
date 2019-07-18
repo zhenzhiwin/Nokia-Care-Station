@@ -1,0 +1,42 @@
+#TextFSM template for parsing the output of command: `USI`
+# Example:
+# MAIN LEVEL COMMAND <___>
+# < ZUSI;
+#
+# LOADING PROGRAM VERSION 27.61-0
+#
+# EXECUTION STARTED
+#
+# Flexi NS  HZMME108BNK               2019-07-05  13:06:38
+#
+# WORKING STATE OF UNITS
+#  UNIT       PHYS STATE LOCATION              INFO
+#  OMU-0      0000 WO-EX                        -                            
+#  OMU-1      0001 SP-EX                        -                            
+#  GBU-0      00A0 SP-EX VMU-0                 IDLE                          
+#  GBU-1      00A1 WO-EX VMU-0                  -                            
+#  GBU-2      00A2 WO-EX VMU-0                  -                            
+#  GBU-3      00A3 WO-EX VMU-1                  -                            
+#  GBU-4      00A4 WO-EX VMU-1                  - 
+#  IPDU-0     0040 WO-EX                        -                            
+#  IPDU-1     0041 SP-EX                       IDLE                          
+#  IPDU-2     00E0 WO-EX                       GRP2                          
+#  IPDU-3     00E1 SP-EX                       IDLE GRP2                     
+#  SWU-0           WO-EX  1A001-00-8  CNW-0     -                            
+#  SWU-1           WO-EX  1A001-00-9  CNW-1     -                            
+#  SWU-2           WO-EX  1A002-00-8  CNW-0     -    
+#
+Value Filldown host (\w+)
+Value unit (\w+-\d+)
+Value status (\w+-\w+)
+#Value info ([\s\w]+)
+
+Start
+  ^Flexi NS  ${host}
+  ^WORKING STATE OF UNITS -> UnitStatus
+  
+UnitStatus  
+  ^\s+${unit}\s+\w+\s+${status} -> Record
+ 
+  
+#End of template
