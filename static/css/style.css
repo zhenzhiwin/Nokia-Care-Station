@@ -239,6 +239,8 @@ html.fullscreen-bg #wrapper {
   margin: 0;
   border: none;
   background-color: #fff;
+
+
 }
 
 .navbar-default .navbar-toggle,
@@ -253,13 +255,15 @@ html.fullscreen-bg #wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0f182e;
-    height: 70px;
-    background-color: #0f182e;
+    height: 71px;
+    width:200px;
+    background-color: #121f3e;
     box-shadow: 2px 0 4.7px 0.3px rgba(117, 117, 117, 0.1);
+    background:url(../images/navi.jpg);
+    background-size: 100% 100% ;
 }
 .navbar-default .brand a{
-  color:#55a8fd;
+  color:#0000AA;
   font-size: 24px;
   font-family: "CircularStd", sans-serif;
   font-weight: 600;
