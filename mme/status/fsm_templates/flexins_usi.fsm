@@ -36,7 +36,7 @@ Start
   ^WORKING STATE OF UNITS -> UnitStatus
   
 UnitStatus  
-  ^\s+${unit}\s+\w+\s+${status} -> Record
+  ^\s+${unit}\s+\w*\s+${status} -> Record
  
   
 #End of template

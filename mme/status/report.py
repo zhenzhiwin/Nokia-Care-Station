@@ -25,8 +25,7 @@ def make_report(env, template_name, **kwargs):
 
 def reformat_data(data):
     for r in data:
-
-        if r.status.lower() == "passed":
+        if r.status.lower() == "ok":
             r.panel_status = "panel-success"
             r.status_icon = "fa-check-circle"
             r.status_color = 'green'
@@ -48,7 +47,8 @@ def report_api():
         task = run_task(hostname=host)
         task.results = reformat_data(task.results)
         task_list.append(task)
-        html = make_report(env, 'mme_report.html', task=task,hostlist=mme_list) 
+        u_con_list=range(0,11)
+        html = make_report(env, 'mme_report.html', task=task,hostlist=mme_list,u_con_list=u_con_list)
         if len(html)>0:
             saved_filename=save_report(task.hostname, html)
             #print("report was saved to %s" % saved_filename)

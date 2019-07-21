@@ -6,7 +6,6 @@ from mme.status.configer import mme_list
 def index(request):
     unit_statics = []
     col = []
-    status=[]
     ab_count = 0
     i = 0
     task_list = mme.status.report.report_api()
@@ -17,12 +16,26 @@ def index(request):
                 unit_statics.append(r.stats['WO-EX'])
                 unit_statics.append(r.stats['SP-EX'])
                 unit_statics.append(r.stats['Other'])
-                status.append(r.status)
+                if r.status == 'OK':
+                    unit_statics.append(True)
+                else:
+                    unit_statics.append(False)
+                ab_count = r.stats['Other'] + ab_count
+                i = i + 1
+            else:
+                if r.status == 'OK':
+                    unit_statics[4] = unit_statics[4] and True
+                else:
+                    unit_statics[4] = unit_statics[4] and False
+                unit_statics.append(len(r.stats))
+                unit_statics[4], unit_statics[5] = unit_statics[5], unit_statics[4]
                 col.append(unit_statics)
                 unit_statics = []
-                ab_count = r.stats['Other'] + ab_count
-                i=i + 1
-    return render(request, 'index.html', {'col': col, 'abc': ab_count,'status':status})
+                ab_count = ab_count + len(r.stats)
 
-def cpu_statics(request):
-    render(request,'mme_report_HZMME48BNK.html')
+    return render(request, 'index.html', {'col': col, 'abc': ab_count})
+
+
+# def unit_statics(request):
+#     task_list = mme.status.report.report_api()
+#     render(request, 'unitstat.html',{'task_list':task_list})

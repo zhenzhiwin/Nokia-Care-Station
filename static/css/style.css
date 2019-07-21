@@ -775,7 +775,8 @@ ul.notifications > li > .more:hover, ul.notifications > li > .more:focus {
   background: rgba(49,233,153,.1);
   padding: 6px 14px;
 }
-.cancel {background: rgba(255,90,144,.1);}
+.cancel {background: rgba(255,90,144,.1);
+	color: RED;}
 /*.item*/
 
 

@@ -39,18 +39,18 @@ def extract_textblock(logfile, start_mark, end_mark=None):
                 buf.append(line)
     return buf    
 
-def exec_task():
-    results = []
-    task.datetime = time.ctime()
-    logfile = task.logfile
-    for itemclass in task.checkitems:
-        item = itemclass()
-        #print(item, logfile)
-        results.append(exec_checkitem(item, logfile))
-
-    task.results = results
-    
-    return task
+# def exec_task():
+#     results = []
+#     task.datetime = time.ctime()
+#     logfile = task.logfile
+#     for itemclass in task.checkitems:
+#         item = itemclass()
+#         #print(item, logfile)
+#         results.append(exec_checkitem(item, logfile))
+#
+#     task.results = results
+#
+#     return task
 
 def exec_checkitem(item, logfile):
     hostname = os.path.basename(logfile).split('.')[0]

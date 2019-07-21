@@ -20,5 +20,5 @@ from django.urls import path
 urlpatterns = [
     path('',views.index),
     path('admin/', admin.site.urls),
-    path('mme_report_HZMME48BNK.html',views.cpu_statics)
+    #path('unitstat.html',views.unit_statics)
 ]

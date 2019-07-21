@@ -25,8 +25,8 @@ WORKING STATE OF UNITS
  MMDU-6     00E2 WO-EX                        -                            
  MMDU-7     00E3 WO-EX                        -                            
  MMDU-8     00E4 WO-EX                        -                            
- MMDU-9     00E5 WO-EX                        -                            
- MMDU-10    00F4 WO-EX                        -                            
+ MMDU-9     00E5 WA-EX                        -                            
+ MMDU-10    00F4 TE-EX                        -                            
  MMDU-11    00F5 WO-EX                        -                            
  CPPU-0     0042 WO-EX                        -                            
  CPPU-1     0043 WO-EX                        -                            
@@ -359,7 +359,7 @@ SUPERVISION OF CPU
 TIME USAGE ALLOWED:               YES
 SUPERVISION OF CPU
 LOAD ALLOWED:                     YES
-LOAD PERCENT:                       0
+LOAD PERCENT:                       88
 CALLS FOR CRRQ:                     0
 PROCESSOR TIME USAGE
 

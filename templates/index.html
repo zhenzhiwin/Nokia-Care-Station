@@ -50,7 +50,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
             <a href="index.html">
-                Smart<span>Care</span>
+                Nokia<span>Care</span>
             </a>
         </div><!--/.brand -->
         <div class="container-fluid">
@@ -73,7 +73,8 @@
                             <span class="badge badge-bg-1">2</span>
                         </a>
                         <ul class="dropdown-menu notifications">
-                            <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>出现单元重启</a></li>
+                            <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>出现单元重启</a>
+                            </li>
                             <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>出现接口断连</a></li>
                             <li><a href="#" class="notification-item"><span class="dot bg-success"></span>活动告警</a></li>
                             <li><a href="#" class="more">See all notifications</a></li>
@@ -101,7 +102,6 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-
                     <li class="active">
                         <a href="index.html">
                             <i data-feather="home"></i> <span>总览</span>
@@ -109,7 +109,7 @@
                     </li>
 
                     <li>
-                    <a href="#" target="_blank">
+                        <a href="unitstat.html" target="_blank">
                             <i data-feather="package"></i> <span>单元系统状态</span>
                         </a>
                     </li>
@@ -122,13 +122,13 @@
 
                     <li>
                         <a href="#">
-                            <i data-feather="file-text"></i> <span>具体场景预警</span>
+                            <i data-feather="file-text"></i> <span>接口状态</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            <i data-feather="grid"></i> <span>并发一键执行</span>
+                            <i data-feather="grid"></i> <span>具体场景预警</span>
                         </a>
                     </li>
 
@@ -212,6 +212,52 @@
                 </div><!--/.profile-content-->
 
                 <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="box">
+                            <div class="box-head">
+                                <h2>MME单元状态</h2>
+                            </div><!--/.box-head-->
+                            <div class="item">
+                                <div class="item-responsive ">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>网元名称</th>
+                                            <th>WO-EX状态</th>
+                                            <th>SP-EX状态</th>
+                                            <th>异常状态</th>
+                                            <th>负荷较高单元数量</th>
+                                            <th>当前检查</th>
+                                        </tr>
+                                        </thead><!--/thead-->
+                                        {% for row in col %}
+                                            <tbody>
+                                            <tr>
+                                                {% for data in row %}
+                                                    {% if forloop.last %}
+                                                        {% if row.5 %}
+                                                            <td>
+                                                                <span class="item-status delivered">OK</span>
+                                                            </td>
+                                                        {% else %}
+                                                            <td><span class="item-status cancel">NOK</span></td>
+                                                        {% endif %}
+                                                        {{ "<!--" }}
+                                                    {% endif %}
+                                                    <td>{{ data }}</td>
+                                                {% endfor %}
+                                                {{ "-->" }}
+                                            </tr>
+                                            </tbody><!--/tbody-->
+                                        {% endfor %}
+                                    </table><!--/.table-->
+                                </div><!--/.table-responsive-->
+                            </div><!--/.item-->
+                        </div><!--/.box-->
+                    </div><!--/.col-->
+                </div><!--/.row-->
+
+                <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="box">
                             <div class="box-head">
@@ -228,44 +274,6 @@
                             </div><!--/.item-->
                         </div><!--/.box-->
                     </div><!--/.col-->
-                    <div class="col-md-6 col-sm-6">
-                        <div class="box">
-                            <div class="box-head">
-                                <h2>MME单元状态</h2>
-                            </div><!--/.box-head-->
-                            <div class="item">
-                                <div class="item-responsive ">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>网元名称</th>
-                                            <th>WO-EX状态</th>
-                                            <th>SP-EX状态</th>
-                                            <th>异常状态</th>
-                                            <th>当前检查</th>
-                                        </tr>
-                                        </thead><!--/thead-->
-                                        {% for row in col %}
-                                            <tbody>
-                                            <tr>
-                                                {% for data in row %}
-                                                    <td>{{ data }}</td>
-                                                {% endfor %}
-                                                <td>
-                                                    <span class="item-status delivered">OK</span>
-                                                </td>
-                                            </tr>
-                                            </tbody><!--/tbody-->
-                                        {% endfor %}
-                                    </table><!--/.table-->
-                                </div><!--/.table-responsive-->
-                            </div><!--/.item-->
-                        </div><!--/.box-->
-                    </div><!--/.col-->
-                </div><!--/.row-->
-
-                <div class="row">
-
                     <div class="col-sm-4">
                         <div class="box">
                             <div class="box-head">
@@ -325,7 +333,7 @@
 
     <footer>
         <div class="container-fluid">
-            <p>NOKIA ZJMCC SMARTCARE.</p>
+            <p>NOKIA ZJMCC CARE.</p>
         </div>
 
     </footer>

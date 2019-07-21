@@ -4,11 +4,12 @@
 
 {% block navbar %}
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top"  role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -36,7 +37,7 @@
         </div>
         <!-- /.container -->
     </nav>
-{% endblock navbar %}    
+{% endblock navbar %}
 
 
 {% block container %}
@@ -46,8 +47,8 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">MME {{task.hostname}} 状态检查报告
-                    <small>{{task.datetime}}</small>
+                <h1 class="page-header">MME {{ task.hostname }} 状态检查报告
+                    <small>{{ task.datetime }}</small>
                 </h1>
             </div>
         </div>
@@ -58,43 +59,130 @@
             <div class="col-md-3">
                 <h4> MME List </h4>
                 <div class="list-group">
-                    {%- for host in hostlist %}
-                    <a href="mme_report_{{host}}.html" class="list-group-item">{{host}}</a>
-                    {% endfor -%}
+                    {% for host in hostlist %}
+                        <a href="mme_report_{{ host }}.html" class="list-group-item">{{ host }}</a>
+                    {% endfor %}
                 </div>
-            </div>        
-        
-       <div class="col-md-9">
-           <h3>1. 系统状态</h3>         
-           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-               {% for result in task.results %}
-               <div class="panel {{result.panel_status}}">
-                <div class="panel-heading" role="tab">
-                  <h4 class="panel-title pull-left">
-                  {{result.name}}
-                  <i class="fa {{result.status_icon}}" style="font-size:22px;color:{{result.status_color}};"></i>
-                  </h4>
-                  
-                  <a class="collapsed pull-right" data-toggle="collapse" data-parent="#accordion" href="#checkitem{{loop.index}}">
-                  <i class="fa fa-angle-double-down" style="font-size:20px;"></i>
-                  </a>
-                  <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-9">
+                <h3>系统状态</h3>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {#                    {% for result in task.results %}#}
+                    <div class="panel {{ task.results.0.panel_status }}">
+                        <div class="panel-heading" role="tab">
+                            <h4 class="panel-title pull-left">
+                                {{ task.results.0.name }}，当前有{{ task.results.0.stats.Other }}个状态异常单元，点击查看详情
+                                <i class="fa {{ task.results.0.status_icon }}"
+                                   style="font-size:22px;color:{{ task.results.0.status_color }};"></i>
+                            </h4>
+                            <a class="collapsed pull-right" data-toggle="collapse" data-parent="#accordion"
+                               href="#checkitem1">
+                                <i class="fa fa-angle-double-down" style="font-size:20px;"></i>
+                            </a>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="checkitem1" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="heading">
+                            <div class="panel-body">
+                                <!-- <p>{{task.results.0.description}},详情如下</p>-->
+                                <table class="table">
+                                    <thead>
+                                    {% for i in u_con_list %}
+                                        <tr>
+                                            {% for u in task.results.0.data %}
+                                                {% if loop.index  < (i * 10+11) and loop.index > (i * 10) %}
+                                                    {% if u in task.results.0.info %}
+                                                        <th><span class="item-status cancel">{{ u.unit }}</span></th>
+                                                    {% else %}
+                                                        <th><span class="item-status delivered">{{ u.unit }}</span></th>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </tr>
+                                        </thead><!--/thead-->
+                                        <tbody>
+                                        <tr>{% for u in task.results.0.data %}
+                                            {% if loop.index < (i * 10+11) and loop.index > (i * 10) %}
+                                                {% if u in task.results.0.info %}
+                                                    <td><span class="item-status cancel">{{ u.status }}</span></td>
+                                                {% else %}
+                                                    <td>
+                                                        <span class="item-status delivered">{{ u.status }}</span>
+                                                    </td>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        </tr>
+                                        </tbody><!--/tbody-->
+                                    {% endfor %}
+                                </table><!--/.table-->
+
+                            </div>
+                        </div>
+                    </div>
+                    {#                        {% endfor %}#}
+                </div> <!-- pannel-group -->
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {#                    {% for result in task.results %}#}
+                    <div class="panel {{ task.results.1.panel_status }}">
+                        <div class="panel-heading" role="tab">
+                            <h4 class="panel-title pull-left">
+                                {{ task.results.1.name }}，当前有{{ task.results.1.stats|length }}个状态异常单元，点击查看详情
+                                <i class="fa {{ task.results.1.status_icon }}"
+                                   style="font-size:22px;color:{{ task.results.1.status_color }};"></i>
+                            </h4>
+                            <a class="collapsed pull-right" data-toggle="collapse" data-parent="#accordion"
+                               href="#checkitem2">
+                                <i class="fa fa-angle-double-down" style="font-size:20px;"></i>
+                            </a>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="checkitem2" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="heading">
+                            <div class="panel-body">
+                                <!-- <p>{{task.results.1.description}},详情如下</p>-->
+                                <table class="table">
+                                    <thead>
+                                    {% for i in u_con_list %}
+                                        <tr>
+                                            {% for u in task.results.1.data %}
+                                                {% if loop.index < (i * 10+11) and loop.index > (i * 10) %}
+                                                    {% if u in task.results.1.stats %}
+                                                        <th><span class="item-status cancel">{{ u.unit }}</span></th>
+                                                    {% else %}
+                                                        <th><span class="item-status delivered">{{ u.unit }}</span></th>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </tr>
+
+                                        </thead><!--/thead-->
+                                        <tbody>
+                                        <tr>{% for u in task.results.1.data %}
+                                            {% if loop.index < (i * 10+11) and loop.index > (i * 10) %}
+                                                {% if u in task.results.1.stats %}
+                                                    <td><span class="item-status cancel">{{ u.cpuload }}</span></td>
+                                                {% else %}
+                                                    <td><span class="item-status delivered">{{ u.cpuload }}</span></td>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        </tr>
+                                        </tbody><!--/tbody-->
+                                    {% endfor %}
+                                </table><!--/.table-->
+
+                            </div>
+                        </div>
+                    </div>
+                    {#                        {% endfor %}#}
                 </div>
-                
-                <div id="checkitem{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading">
-                  <div class="panel-body">
-                    <p>{{result.description}}</p>
-                    {{ result.stats }}
-                  </div>
-                </div>
-              </div>           
-              {% endfor %} 
-           </div> <!-- pannel-group -->
-           <h3>2. 接口状态 </h3>
-           
-        </div><!-- page column -->
-        
-        
+                {#                <h3>2. 接口状态 </h3>#}
+
+            </div><!-- page column -->
+
+
         </div> <!-- sidebar row -->
     </div> <!-- Page Content -->
 {% endblock %}
