@@ -98,7 +98,7 @@ class BaseCheckItem(object):
     """
     check_cmd = ''
     base_path = ''
-    fsm_template_name = "flexins_doi.fsm"
+    fsm_template_name = ''
     
     log_delimit_mark = "==={}"
     
@@ -134,7 +134,6 @@ class BaseCheckItem(object):
         
         if not template_dir:
             template_dir = self.base_path
-        
         self.fsm_file = os.path.join(template_dir,'fsm_templates',fsm_file)
         #print('fsm_file:%s' % self.fsm_file)
         self.fsm_parser = FsmParser(self.fsm_file)

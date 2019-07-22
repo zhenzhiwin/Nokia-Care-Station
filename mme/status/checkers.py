@@ -54,7 +54,6 @@ class FlexinsCpuloadStatus(BaseCheckItem):
 
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
-
         hostname = self.status_data[0]['host']
         results = ResultInfo(**self.info)
         overload_units = []
@@ -69,6 +68,30 @@ class FlexinsCpuloadStatus(BaseCheckItem):
         #print(results.stats)
         return results
 
+
+class FlexinsAlarmStatus(BaseCheckItem):
+    """MME告警检查
+    检查mme所有告警情况，输出单元告警信息。如果有告警级别较高的告警，则输出警示。
+    """
+    check_cmd = "ZAHO"
+    base_path = os.path.split(os.path.abspath(__file__))[0]
+    fsm_template_name = "flexins_aho.fsm"
+
+    def check_status(self, logbuf):
+        self.status_data = self.fsm_parser.parse(logbuf=logbuf)
+        alarmlevel_high=[]
+        results = ResultInfo(**self.info)
+        if self.status_data:
+            for s in self.status_data:
+                if int(len(s['level'])) > len(checking_rules['alarmlevel'][1]):
+                    alarmlevel_high.append(s)
+
+            results.status = (len(alarmlevel_high) == 0) and "alarm_ok" or "alarm_nok"
+            results.stats = alarmlevel_high
+            results.data = self.status_data
+        else:
+            results.stats=[]
+        return results
 
 class CheckTask(object):
     def __init__(self, hostname=None, name=None, checkitems=None, logfile=None):
@@ -109,7 +132,7 @@ def print_task_result(result, detail=False):
 
 def run_task(hostname=None, logfile=None):
     task = CheckTask(hostname=hostname)
-    checkitems = [FlexinsUnitStatus, FlexinsCpuloadStatus]
+    checkitems = [FlexinsUnitStatus, FlexinsCpuloadStatus,FlexinsAlarmStatus]
     task.execute(checkitems)
     return task
 

@@ -736,4 +736,974 @@ COMMAND EXECUTED
 
 
 E-UTRAN CONFIGURATION HANDLING COMMAND <B6_>
-<  
+<
+
+MAIN LEVEL COMMAND <___>
+===ZAHO:;===
+
+
+LOADING PROGRAM VERSION 6.16-0
+
+Flexi NS  HZMME45BNK                2019-07-22  18:21:19
+
+ALARMS CURRENTLY ON
+
+
+           HZMME45BNK             CPPU-3      TRANSM    2019-07-12  18:19:24.00
+*** ALARM  CPPU-3      1A002-00-5            0924H                            
+    (6328) 14024 ATTACH OR PDN CONNECTIVITY USING MSISDN RANGE FAILED           
+    0001 86 14 75 80 64 83 4F 00 00 00 00 00 00
+    00 00 00 00 00 221.177.63.49 221.177.63.51  
+
+           HZMME45BNK             MCHU-0      SWITCH    2019-05-29  00:55:06.22
+**  ALARM  ........                          O7AMAN                           
+    (0009) 2185 ROUTING OF OSI OUTGOING CALL FAILED                            
+    OMC000000BP??? 0003 
+
+           HZMME45BNK             MCHU-0      SWITCH    2019-05-29  00:57:15.96
+**  ALARM  ........                          O7AMAN                           
+    (0016) 2185 ROUTING OF OSI OUTGOING CALL FAILED                            
+    OMC000000D1??? 0003 
+
+           HZMME45BNK             IPDU-3      TRANSM    2019-06-21  04:49:13.93
+**  ALARM  CPPU-2      1A001-00-7            0A9FH                            
+    (2762) 2101 MME UNIT FAILURE                                               
+    00000A9F 01 0123 0002 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  08:31:43.88
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8346) 3450 GGSN UNAVAILABLE                                               
+    00 53 E0 20 82 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-05-29  01:03:16.91
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (0018) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 10 7A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  00:21:48.31
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4899) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2B 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             MCHU-0      SWITCH    2019-07-10  11:15:08.72
+*   ALARM  MCHU-0      1A001-00-2            GPU_GM                           
+    (4965) 3150 LOCATION AREA IS MISSING                                       
+    0001 
+
+           HZMME45BNK             MCHU-0      SWITCH    2019-07-10  11:16:13.16
+*   ALARM  MCHU-0      1A001-00-2            GPU_GM                           
+    (4966) 3150 LOCATION AREA IS MISSING                                       
+    0A22 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-01  02:18:24.31
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (0352) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 9A 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-05-29  01:03:20.10
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (0020) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 10 7A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-05-29  01:03:25.16
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (0021) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 10 7A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-05-29  01:06:47.18
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (0022) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 10 FA FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-06  18:07:08.46
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (0978) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 B2 05 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-06  18:07:51.17
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (0979) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 B2 05 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-06  18:08:24.24
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (0981) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 B2 04 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-06  18:08:18.63
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (0980) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 B2 05 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-06  18:08:29.58
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (0982) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 B2 04 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-06  18:08:37.85
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (0983) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 B2 04 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  00:21:48.94
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4900) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2B 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-07  05:03:16.74
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (1032) 3450 GGSN UNAVAILABLE                                               
+    00 C1 98 60 F1 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-07  17:01:14.54
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (1083) 3450 GGSN UNAVAILABLE                                               
+    00 6E 31 B4 36 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-08  12:49:15.59
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (1170) 3450 GGSN UNAVAILABLE                                               
+    00 D8 9B A0 88 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-08  12:50:09.05
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (1171) 3450 GGSN UNAVAILABLE                                               
+    00 D8 9B A0 88 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-08  12:50:16.73
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (1172) 3450 GGSN UNAVAILABLE                                               
+    00 D8 9B A0 88 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-01  02:18:49.90
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (0353) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 9A 42 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-08  15:47:10.72
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (1187) 3450 GGSN UNAVAILABLE                                               
+    00 6E 31 B4 19 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-08  19:02:23.56
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (1202) 3450 GGSN UNAVAILABLE                                               
+    00 6F 47 EE 44 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  00:34:48.06
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4903) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 48 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  00:34:00.21
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4902) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 48 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  00:35:26.47
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4904) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 E2 22 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  00:35:32.15
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4905) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 E2 C3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  03:03:23.28
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4917) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 EB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-06-11  00:02:45.18
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (1443) 3717 SGW UNAVAILABLE                                                
+    221.177.41.102 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-10  03:03:37.01
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4918) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E6 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  11:56:54.85
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4970) 3450 GGSN UNAVAILABLE                                               
+    00 DF E0 A7 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  03:03:44.90
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4919) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E9 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-10  03:03:47.14
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4920) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 D6 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-10  03:03:52.22
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4921) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 D2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  06:03:29.68
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4934) 3450 GGSN UNAVAILABLE                                               
+    00 55 73 F5 49 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-10  06:04:16.78
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4935) 3450 GGSN UNAVAILABLE                                               
+    00 50 FB C1 F2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  06:11:58.23
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4936) 3450 GGSN UNAVAILABLE                                               
+    00 DF E0 A7 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-10  06:17:09.46
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4938) 3450 GGSN UNAVAILABLE                                               
+    00 DF E0 A7 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  18:21:55.86
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5004) 3450 GGSN UNAVAILABLE                                               
+    00 D9 94 90 50 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-10  07:48:54.28
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4945) 3450 GGSN UNAVAILABLE                                               
+    00 C7 FF 04 06 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  18:21:59.78
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5005) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 CE FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-10  19:09:55.49
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5010) 3450 GGSN UNAVAILABLE                                               
+    00 70 D7 4A 31 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-10  22:54:37.58
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5026) 3450 GGSN UNAVAILABLE                                               
+    00 CB 58 04 15 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-11  01:37:51.34
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5042) 3450 GGSN UNAVAILABLE                                               
+    00 67 F2 60 98 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  00:00:15.63
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5032) 3450 GGSN UNAVAILABLE                                               
+    00 D5 57 4F 10 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-11  00:00:24.16
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5033) 3450 GGSN UNAVAILABLE                                               
+    00 83 A6 82 64 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-11  00:00:37.94
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5034) 3450 GGSN UNAVAILABLE                                               
+    00 83 A6 82 67 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  00:00:50.00
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5035) 3450 GGSN UNAVAILABLE                                               
+    00 83 A6 82 64 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-11  02:39:25.04
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5048) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E9 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  01:58:29.22
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5044) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 E4 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-07-05  00:11:21.24
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (4312) 3717 SGW UNAVAILABLE                                                
+    221.177.46.30 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  02:39:25.66
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5049) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E7 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  02:39:39.83
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5050) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-11  02:39:55.90
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5051) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-11  02:40:04.46
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5052) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E7 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  11:01:39.30
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5093) 3450 GGSN UNAVAILABLE                                               
+    00 D4 98 5C 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-11  17:49:56.18
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5124) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 D5 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-11  19:20:29.01
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5133) 3450 GGSN UNAVAILABLE                                               
+    00 67 34 0C 0A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-11  19:20:29.12
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5134) 3450 GGSN UNAVAILABLE                                               
+    00 67 34 0C 0B FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  00:08:27.80
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5155) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 CD 71 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  05:14:14.36
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6257) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E 49 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-05  13:39:16.90
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4383) 3450 GGSN UNAVAILABLE                                               
+    00 D4 B7 90 12 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-05  13:39:20.43
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4384) 3450 GGSN UNAVAILABLE                                               
+    00 53 E0 21 F2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-05  13:39:32.55
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4385) 3450 GGSN UNAVAILABLE                                               
+    00 D4 B7 90 22 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-05  15:03:01.93
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4392) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 5D E5 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-05  19:48:43.15
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4416) 3450 GGSN UNAVAILABLE                                               
+    00 DF 67 05 97 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-05  19:48:45.83
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4417) 3450 GGSN UNAVAILABLE                                               
+    00 DF 67 05 98 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-05  19:49:04.39
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4418) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2C 65 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  03:45:44.49
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6251) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 44 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  05:14:28.75
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6258) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E 49 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  11:09:42.53
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6287) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 50 EA FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  06:15:17.01
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6264) 3450 GGSN UNAVAILABLE                                               
+    00 D5 F9 3E 31 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  03:34:35.01
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4793) 3450 GGSN UNAVAILABLE                                               
+    00 DF 67 27 4B FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  05:07:16.26
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4800) 3450 GGSN UNAVAILABLE                                               
+    00 67 F2 60 95 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  07:17:33.06
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4810) 3450 GGSN UNAVAILABLE                                               
+    00 D9 1F E7 CA FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  08:22:25.74
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4815) 3450 GGSN UNAVAILABLE                                               
+    00 CA 45 CE 84 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-09  08:22:27.30
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4816) 3450 GGSN UNAVAILABLE                                               
+    00 CA 45 CE 89 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  08:36:32.21
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4818) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E7 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  15:10:32.48
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4851) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EE 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-09  12:31:18.86
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4838) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 44 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-09  15:10:32.92
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4852) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EE 22 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  15:10:39.58
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4853) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EC 54 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-06-18  23:27:46.41
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (2344) 3717 SGW UNAVAILABLE                                                
+    221.177.41.104 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-09  16:16:45.26
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4859) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 D1 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-09  18:07:45.49
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (4868) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EC 55 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  18:07:46.10
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4869) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EC 52 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-09  19:20:39.12
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (4876) 3450 GGSN UNAVAILABLE                                               
+    00 DF 67 06 83 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-09  18:57:04.62
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (4873) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 EB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  00:17:18.25
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5223) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:43:16.62
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8406) 3450 GGSN UNAVAILABLE                                               
+    00 B4 D6 CE 14 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  00:17:35.25
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5228) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  00:17:41.34
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5229) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  00:17:52.62
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5230) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  00:18:51.45
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5239) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  00:19:12.69
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5242) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  00:34:36.87
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5370) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2B 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:42:52.11
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8393) 3450 GGSN UNAVAILABLE                                               
+    00 DC 9F C8 A8 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  00:34:48.53
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5371) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2B 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-21  18:56:49.34
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (2830) 3450 GGSN UNAVAILABLE                                               
+    00 70 D7 A3 47 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  00:35:24.05
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5378) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 93 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  00:35:31.44
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5381) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 93 24 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  00:35:51.18
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5382) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 93 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  00:36:16.60
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (5385) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 93 22 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  00:36:20.50
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5388) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 93 24 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  00:36:59.34
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (5394) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 93 22 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  11:09:16.67
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6286) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 50 EA FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  01:38:55.92
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (5895) 3450 GGSN UNAVAILABLE                                               
+    00 DF 67 10 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  11:16:30.64
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6290) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 00 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  11:15:41.09
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6289) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 00 22 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  11:16:51.82
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6291) 3450 GGSN UNAVAILABLE                                               
+    00 75 8E 00 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  11:27:15.38
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6292) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EC 52 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  12:42:04.77
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6298) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 D4 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  14:00:41.67
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6305) 3450 GGSN UNAVAILABLE                                               
+    00 29 DC 43 03 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  14:00:52.77
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6306) 3450 GGSN UNAVAILABLE                                               
+    00 29 DC 43 04 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  14:02:03.56
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6307) 3450 GGSN UNAVAILABLE                                               
+    00 29 DC 43 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  14:02:19.12
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6308) 3450 GGSN UNAVAILABLE                                               
+    00 29 DC 43 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:09.15
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6334) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EE 25 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:10.19
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6335) 3450 GGSN UNAVAILABLE                                               
+    00 CB 74 F9 93 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:12.24
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6336) 3450 GGSN UNAVAILABLE                                               
+    00 25 83 04 85 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:12.27
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6337) 3450 GGSN UNAVAILABLE                                               
+    00 7B 88 0B 0D FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:13.32
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6338) 3450 GGSN UNAVAILABLE                                               
+    00 CA 4B 8A BB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  19:43:13.38
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6339) 3450 GGSN UNAVAILABLE                                               
+    00 67 34 0C 1A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:16.29
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6340) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 EB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  19:43:16.47
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6341) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E4 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:17.39
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6342) 3450 GGSN UNAVAILABLE                                               
+    00 DF E0 75 B7 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:19.35
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6343) 3450 GGSN UNAVAILABLE                                               
+    00 D9 94 90 4A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-12  19:43:21.46
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (6344) 3450 GGSN UNAVAILABLE                                               
+    00 68 E1 D2 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  19:43:21.55
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6345) 3450 GGSN UNAVAILABLE                                               
+    00 CB 8E 7C 4F FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:25.44
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6346) 3450 GGSN UNAVAILABLE                                               
+    00 8B 07 84 F8 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-21  13:21:14.93
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (2804) 3450 GGSN UNAVAILABLE                                               
+    00 4A C6 47 B5 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-23  01:43:25.83
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (2964) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E AA FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-23  00:55:25.22
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (2959) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2A 63 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-23  01:42:44.90
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (2963) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E AB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-23  02:07:32.71
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (2968) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E B3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-23  02:07:06.98
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (2967) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E B2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-06-23  02:07:36.10
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (2969) 3717 SGW UNAVAILABLE                                                
+    221.177.46.154 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-23  02:08:05.59
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (2970) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E B3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-23  02:08:23.24
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (2971) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E B2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-23  02:08:25.09
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (2972) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E B2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-23  03:35:29.19
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (2979) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E BB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-06-23  03:35:31.03
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (2980) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E BB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-23  17:49:08.09
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (3044) 3450 GGSN UNAVAILABLE                                               
+    00 70 D7 A3 47 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-24  07:38:40.95
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (3104) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 99 42 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-24  10:02:52.99
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (3115) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EC 55 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-24  13:44:06.85
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (3131) 3450 GGSN UNAVAILABLE                                               
+    00 CB 8E 7C 4E FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-06-24  13:44:09.91
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (3132) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 98 42 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-06-24  14:36:00.12
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (3138) 3450 GGSN UNAVAILABLE                                               
+    00 DD 84 EE 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:25.47
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6347) 3450 GGSN UNAVAILABLE                                               
+    00 C9 A6 9D EE FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  19:43:28.65
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6348) 3450 GGSN UNAVAILABLE                                               
+    00 D3 EA E4 F7 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:30.56
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6349) 3450 GGSN UNAVAILABLE                                               
+    00 3D FC 2D 01 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:30.59
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6350) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 E3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  19:43:30.70
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6351) 3450 GGSN UNAVAILABLE                                               
+    00 72 00 60 5C FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-12  19:43:32.65
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6352) 3450 GGSN UNAVAILABLE                                               
+    00 67 FF AD 13 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-12  19:43:34.77
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6353) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 99 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-13  01:37:08.49
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6379) 3450 GGSN UNAVAILABLE                                               
+    00 6B 4D 45 D8 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-13  07:54:52.73
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6406) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 D3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-07-17  12:48:26.74
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (6985) 3717 SGW UNAVAILABLE                                                
+    223.103.47.141 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:42:55.11
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8394) 3450 GGSN UNAVAILABLE                                               
+    00 CB 74 F9 D7 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:42:55.17
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8395) 3450 GGSN UNAVAILABLE                                               
+    00 D3 4D E4 E3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-21  17:42:56.77
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (8396) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E2 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:42:57.22
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8397) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 99 02 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-21  17:43:18.04
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (8407) 3450 GGSN UNAVAILABLE                                               
+    00 95 FE 05 B3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:43:03.31
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8398) 3450 GGSN UNAVAILABLE                                               
+    00 52 71 75 F8 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:43:04.35
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8399) 3450 GGSN UNAVAILABLE                                               
+    00 CA 4B 8A 38 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:09.31
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8400) 3450 GGSN UNAVAILABLE                                               
+    00 B4 D6 CE 95 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:43:09.49
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8401) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 D1 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:10.35
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8402) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E9 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:10.38
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8403) 3450 GGSN UNAVAILABLE                                               
+    00 C1 6F A4 AB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:43:13.56
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8404) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 CE FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:14.46
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8405) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 20 E5 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:20.58
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8408) 3450 GGSN UNAVAILABLE                                               
+    00 A6 D8 8A 44 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:20.61
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8409) 3450 GGSN UNAVAILABLE                                               
+    00 70 C6 6A 75 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-21  17:43:21.10
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (8410) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 E3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-21  17:43:22.71
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8411) 3450 GGSN UNAVAILABLE                                               
+    00 6B 4D 4F 04 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:30.78
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8412) 3450 GGSN UNAVAILABLE                                               
+    00 D2 30 CF 75 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-0      SWITCH    2019-07-21  17:43:33.84
+*   ALARM  PAPU-0      1A001-00-3            GTP_GX                           
+    (8413) 3450 GGSN UNAVAILABLE                                               
+    00 9E E6 FB 82 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-21  17:43:34.35
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (8414) 3450 GGSN UNAVAILABLE                                               
+    00 95 87 99 42 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-22  00:22:21.95
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (8445) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 2E B3 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-07-17  16:17:13.28
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (7023) 3717 SGW UNAVAILABLE                                                
+    223.103.48.86 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-07-19  00:29:48.02
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (7189) 3717 SGW UNAVAILABLE                                                
+    221.177.40.105 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-07-16  04:00:46.02
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (6815) 3717 SGW UNAVAILABLE                                                
+    223.103.39.123 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             IPDU-0      SWITCH    2019-07-17  00:22:05.55
+*   ALARM  IPDU-0      1A001-00-10           0968H                            
+    (6920) 3717 SGW UNAVAILABLE                                                
+    221.177.40.103 FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-17  03:27:35.12
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6939) 3450 GGSN UNAVAILABLE                                               
+    00 25 6F 22 EB FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-1      SWITCH    2019-07-17  04:07:36.42
+*   ALARM  PAPU-1      1A001-00-3            GTP_GX                           
+    (6943) 3450 GGSN UNAVAILABLE                                               
+    00 DD B1 E2 23 FF FF FF FF FF FF FF FF FF FF FF FF 
+
+           HZMME45BNK             PAPU-4      SWITCH    2019-07-17  08:23:57.09
+*   ALARM  PAPU-4      1A001-00-4            GTP_GX                           
+    (6961) 3450 GGSN UNAVAILABLE                                               
+    00 55 73 F5 6A FF FF FF FF FF FF FF FF FF FF FF FF 
+
+END OF ALARMS CURRENTLY ON
+
+
+COMMAND EXECUTED
+
+
+ALARM HISTORY HANDLING COMMAND <AH_>  

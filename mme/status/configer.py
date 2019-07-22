@@ -13,6 +13,7 @@ HTML_REPORT_PATH = os.path.abspath(os.path.join(os.getcwd(), "../smartcare/templ
 
 checking_rules = {
     'cpuload': [25, 80, 90],
+    'alarmlevel':['*','**','***']
 }
 
 mme_list = [
