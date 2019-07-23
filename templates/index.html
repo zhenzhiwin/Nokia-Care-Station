@@ -50,7 +50,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
             <a href="#">
-{#                Nokia<span>Care</span>#}
+                {#                Nokia<span>Care</span>#}
             </a>
         </div><!--/.brand -->
         <div class="container-fluid">
@@ -59,12 +59,12 @@
                     <i class="lnr lnr-arrow-left-circle"></i>
                 </button>
             </div><!--/.navbar-btn -->
-{#            <form class="navbar-form navbar-left">#}
-{#                <div class="search-group">#}
-{#                    <button type="button"><i data-feather="search"></i></button>#}
-{#                    <input type="text" value="" placeholder="Search..">#}
-{#                </div><!--/.search-group -->#}
-{#            </form><!--/form -->#}
+            {#            <form class="navbar-form navbar-left">#}
+            {#                <div class="search-group">#}
+            {#                    <button type="button"><i data-feather="search"></i></button>#}
+            {#                    <input type="text" value="" placeholder="Search..">#}
+            {#                </div><!--/.search-group -->#}
+            {#            </form><!--/form -->#}
             <div class="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -179,7 +179,7 @@
                                     <h2>告警状态</h2>
                                 </div><!--/.icon-box-->
                                 <h3>监控中，目前</h3>
-                                <p style="color:red;">{{ alc }}条活动告警</p>
+                                <p style="color:red;">{{ al_stat.warning_level|length }}条活动告警，当前预警级别二星</p>
                             </div><!--/.profile-state-->
                         </div><!--/.col-->
                         <div class="col-sm-3">
@@ -222,15 +222,15 @@
                                         <thead>
                                         <tr>
                                             <th>网元名称</th>
-                                            <th>WO-EX状态</th>
-                                            <th>SP-EX状态</th>
-                                            <th>异常状态</th>
+                                            <th>WO-EX单元数量</th>
+                                            <th>SP-EX单元数量</th>
+                                            <th>异常单元数量</th>
                                             <th>负荷较高单元数量</th>
                                             <th>当前检查</th>
                                         </tr>
                                         </thead><!--/thead-->
+                                        <tbody>
                                         {% for row in col %}
-                                            <tbody>
                                             <tr>
                                                 {% for data in row %}
                                                     {% if forloop.last %}
@@ -247,15 +247,45 @@
                                                 {% endfor %}
                                                 {{ "-->" }}
                                             </tr>
-                                            </tbody><!--/tbody-->
-                                        {% endfor %}
+                                        {% endfor %}</tbody><!--/tbody-->
                                     </table><!--/.table-->
                                 </div><!--/.table-responsive-->
                             </div><!--/.item-->
                         </div><!--/.box-->
                     </div><!--/.col-->
                 </div><!--/.row-->
-
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="box">
+                            <div class="box-head">
+                                <h2>MME告警状态</h2>
+                            </div><!--/.box-head-->
+                            <div class="item">
+                                <div class="item-responsive ">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>网元名称</th>
+                                            <th>一星告警数量</th>
+                                            <th>二星告警数量</th>
+                                            <th>三星告警数量</th>
+                                        </tr>
+                                        </thead><!--/thead-->
+                                        <tbody>
+                                        {% for row in al_stat.row_presentation %}
+                                            <tr>
+                                                {% for data in row %}
+                                                    <td>{{ data }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table><!--/.table-->
+                                </div><!--/.table-responsive-->
+                            </div><!--/.item-->
+                        </div><!--/.box-->
+                    </div><!--/.col-->
+                </div><!--/.row-->
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="box">

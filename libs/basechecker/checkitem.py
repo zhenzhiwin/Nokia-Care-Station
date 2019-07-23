@@ -29,15 +29,16 @@ def extract_textblock(logfile, start_mark, end_mark=None):
         flag = False
         for line in fp.readlines():
             if line.startswith(start_mark):
-                #print("start mark found! {}".format(line))
+                # print("start mark found! {}".format(line))
                 flag = True
                 continue
             if line.startswith(end_mark) and flag:
-                #print("end mark found! {}".format(line))
+                # print("end mark found! {}".format(line))
                 break
             if flag:
                 buf.append(line)
     return buf
+
 
 # def exec_task():
 #     results = []
@@ -63,6 +64,7 @@ def exec_checkitem(item, logfile):
 
     return result
 
+
 class ResultInfo(object):
     """Class for storing the info of check result.
     
@@ -75,10 +77,11 @@ class ResultInfo(object):
     error:          如果检查出错，相关的错误信息将存放在此
 
     """
+
     def __init__(self, **kwargs):
-        self.hostname = kwargs.get('hostname','')
-        self.name = kwargs.get('name','')
-        self.description = kwargs.get('description','')
+        self.hostname = kwargs.get('hostname', '')
+        self.name = kwargs.get('name', '')
+        self.description = kwargs.get('description', '')
         self.status = 'UNKNOWN'
 
         self.info = ''
@@ -91,6 +94,7 @@ class ResultInfo(object):
 
     def __repr__(self):
         return "ResultInfo({hostname},{name})".format(**self.__dict__)
+
 
 class BaseCheckItem(object):
     """Base Class for StatusChecker
@@ -108,14 +112,12 @@ class BaseCheckItem(object):
         self.logfile = None
         self.start_mark = None
         self.end_mark = None
-        self.logblock =None
+        self.logblock = None
 
         self.results = None
 
         self.info = {}
         self.init_info()
-
-
 
     def init_info(self):
         doclines = self.__doc__.split()
@@ -124,7 +126,7 @@ class BaseCheckItem(object):
 
     def extract_log(self, logfile):
         buf = []
-        start_mark=self.log_delimit_mark.format(self.check_cmd)
+        start_mark = self.log_delimit_mark.format(self.check_cmd)
         end_mark = "COMMAND EXECUTED"
         self.logblock = extract_textblock(logfile, start_mark, end_mark)
 
@@ -136,8 +138,8 @@ class BaseCheckItem(object):
 
         if not template_dir:
             template_dir = self.base_path
-        self.fsm_file = os.path.join(template_dir,'fsm_templates',fsm_file)
-        #print('fsm_file:%s' % self.fsm_file)
+        self.fsm_file = os.path.join(template_dir, 'fsm_templates', fsm_file)
+        # print('fsm_file:%s' % self.fsm_file)
         self.fsm_parser = FsmParser(self.fsm_file)
 
     def __repr__(self):
@@ -148,10 +150,13 @@ class BasePresentation(object):
     """Base Class for Presentation
     all the presentation should be the subClass of this.
     """
+
     def __init__(self):
         self.abnormal_count = 0
-        #self.init_info()
-        self.info={}
+        self.data=[]
+        self.row_presentation = []
+        # self.init_info()
+        self.info = {}
 
     # def init_info(self):
     #     doclines = self.__doc__.split()

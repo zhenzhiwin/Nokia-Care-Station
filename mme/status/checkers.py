@@ -4,7 +4,7 @@ import json
 import time
 import logging
 from mme.status.configer import mme_list
-from libs.basechecker.checkitem import BaseCheckItem, ResultInfo,BasePresentation
+from libs.basechecker.checkitem import BaseCheckItem, ResultInfo, BasePresentation
 from libs.basechecker.checkitem import exec_checkitem
 from .report import report_api
 from .configer import BASE_PATH, LOGFILE_PATH
@@ -26,7 +26,7 @@ class FlexinsUnitStatus(BaseCheckItem):
         self.info['hostname'] = hostname
         results = ResultInfo(**self.info)
         unit_status = []
-        info=[]
+        info = []
         stats = {'WO-EX': 0, 'SP-EX': 0, 'Other': 0}
         for s in self.status_data:
             if s['unit'] and s['status'] not in ['WO-EX', 'SP-EX']:
@@ -39,8 +39,8 @@ class FlexinsUnitStatus(BaseCheckItem):
         results.status = all(unit_status) and "OK" or "NOK"
         results.stats = stats
         results.data = self.status_data
-        results.info=info
-        #print(results.info)
+        results.info = info
+        # print(results.info)
         return results
 
 
@@ -66,7 +66,7 @@ class FlexinsCpuloadStatus(BaseCheckItem):
         results.status = (len(overload_units) == 0) and "OK" or "NOK"
         results.stats = overload_units
         results.data = self.status_data
-        #print(results.stats)
+        # print(results.stats)
         return results
 
 
@@ -80,19 +80,20 @@ class FlexinsAlarmStatus(BaseCheckItem):
 
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
-        alarmlevel_high=[]
+        alarmlevel_high = []
         results = ResultInfo(**self.info)
         if self.status_data:
-        #     for s in self.status_data:
-        #         if int(len(s['level'])) > len(checking_rules['alarmlevel'][1]):
-        #             alarmlevel_high.append(s)
-        #
-        #     results.status = (len(alarmlevel_high) == 0) and "alarm_ok" or "alarm_nok"
-        #     results.stats = alarmlevel_high
+            #     for s in self.status_data:
+            #         if int(len(s['level'])) > len(checking_rules['alarmlevel'][1]):
+            #             alarmlevel_high.append(s)
+            #
+            #     results.status = (len(alarmlevel_high) == 0) and "alarm_ok" or "alarm_nok"
+            #     results.stats = alarmlevel_high
             results.data = self.status_data
         else:
             results.data = []
         return results
+
 
 class CheckTask(object):
     def __init__(self, hostname=None, name=None, checkitems=None, logfile=None):
@@ -133,18 +134,20 @@ def print_task_result(result, detail=False):
 
 def run_task(hostname=None, logfile=None):
     task = CheckTask(hostname=hostname)
-    checkitems = [FlexinsUnitStatus, FlexinsCpuloadStatus,FlexinsAlarmStatus]
+    checkitems = [FlexinsUnitStatus, FlexinsCpuloadStatus, FlexinsAlarmStatus]
     task.execute(checkitems)
     return task
+
 
 class FNS_unit_presentation(BasePresentation):
     """MME单元检查呈现类
     继承BasePresentation
     """
+
     def __init__(self):
         super().__init__()
-        self.row_presentation=[]
-        #self.abnormal_count=0
+        # self.abnormal_count=0
+
 
 class FNS_alarm_presentation(BasePresentation):
     """MME告警检查呈现类
@@ -152,12 +155,13 @@ class FNS_alarm_presentation(BasePresentation):
     """
     def __init__(self):
         super().__init__()
-        self.notice_level=[]
-        self.warning_level=[]
-        self.critical_level=[]
+        self.notice_level = []
+        self.warning_level = []
+        self.critical_level = []
+
 
 def presentation(*args):
-    i=0
+    i = 0
     unit_statics = []
     task_list = report_api()
 
@@ -185,13 +189,25 @@ def presentation(*args):
                 unit_statics = []
                 args[0].abnormal_count = args[0].abnormal_count + len(r.stats)
             if r.name == 'MME告警检查':
+                alarm_statics=[]
+                alarm_statics.append(r.hostname)
+                n_c=0
+                w_c=0
+                c_c=0
                 for a in r.data:
-                    if a['level']=='*':
+                    if a['level'] == '*':
                         args[1].notice_level.append(a)
-                    if a['level']=='**':
+                        n_c +=1
+                    if a['level'] == '**':
                         args[1].warning_level.append(a)
-                    if a['level']=='***':
+                        w_c+=1
+                    if a['level'] == '***':
                         args[1].critical_level.append(a)
+                        c_c+=1
+                alarm_statics.append(n_c)
+                alarm_statics.append(w_c)
+                alarm_statics.append(c_c)
+                args[1].row_presentation.append(alarm_statics)
     return args
 
 
