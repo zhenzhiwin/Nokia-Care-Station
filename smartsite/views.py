@@ -1,43 +1,12 @@
 from django.shortcuts import render
-import mme.status.report
-from mme.status.configer import mme_list
-
+from mme.status.checkers import FNS_unit_presentation,FNS_alarm_presentation,presentation
 
 def index(request):
-    unit_statics = []
-    alarm_statics=[]
-    col = []
-    ab_count = 0
-    alarm_count=0
-    i = 0
-    task_list = mme.status.report.report_api()
-    for task in task_list:
-        for r in task.results:
-            if r.name== 'MME单元状态检查':
-                unit_statics.append(mme_list[i])
-                unit_statics.append(r.stats['WO-EX'])
-                unit_statics.append(r.stats['SP-EX'])
-                unit_statics.append(r.stats['Other'])
-                if r.status == 'OK':
-                    unit_statics.append(True)
-                else:
-                    unit_statics.append(False)
-                ab_count = r.stats['Other'] + ab_count
-                i = i + 1
-            if r.name=='MME单元CPU负荷检查':
-                if r.status == 'OK':
-                    unit_statics[4] = unit_statics[4] and True
-                else:
-                    unit_statics[4] = unit_statics[4] and False
-                unit_statics.append(len(r.stats))
-                unit_statics[4], unit_statics[5] = unit_statics[5], unit_statics[4]
-                col.append(unit_statics)
-                unit_statics = []
-                ab_count = ab_count + len(r.stats)
-            if r.name=='MME告警检查':
-                alarm_count=alarm_count+len(r.stats)
+    f_u_p=FNS_unit_presentation()
+    f_a_p=FNS_alarm_presentation()
+    presentation(f_u_p,f_a_p)
 
-    return render(request, 'index.html', {'col': col, 'abc': ab_count,'alc':alarm_count})
+    return render(request, 'index.html', {'col': f_u_p.row_presentation, 'abc': f_u_p.abnormal_count,'alc':len(f_a_p.critical_level)})
 
 
 # def unit_statics(request):

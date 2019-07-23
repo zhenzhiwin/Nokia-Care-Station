@@ -23,7 +23,7 @@ def extract_textblock(logfile, start_mark, end_mark=None):
     """
     if not end_mark:
         end_mark = start_mark
-        
+
     buf = []
     with open(logfile) as fp:
         flag = False
@@ -37,7 +37,7 @@ def extract_textblock(logfile, start_mark, end_mark=None):
                 break
             if flag:
                 buf.append(line)
-    return buf    
+    return buf
 
 # def exec_task():
 #     results = []
@@ -77,13 +77,13 @@ class ResultInfo(object):
     """
     def __init__(self, **kwargs):
         self.hostname = kwargs.get('hostname','')
-        self.name = kwargs.get('name','')     
-        self.description = kwargs.get('description','')        
-        self.status = 'UNKNOWN'                     
-                       
-        self.info = ''                              
-        self.error = ''                             
-        
+        self.name = kwargs.get('name','')
+        self.description = kwargs.get('description','')
+        self.status = 'UNKNOWN'
+
+        self.info = ''
+        self.error = ''
+
     def to_json(self, indent=None):
         """translate the result data to json format.
         """
@@ -91,7 +91,7 @@ class ResultInfo(object):
 
     def __repr__(self):
         return "ResultInfo({hostname},{name})".format(**self.__dict__)
-        
+
 class BaseCheckItem(object):
     """Base Class for StatusChecker
     all the status checker should be the subClass of this.
@@ -99,9 +99,9 @@ class BaseCheckItem(object):
     check_cmd = ''
     base_path = ''
     fsm_template_name = ''
-    
+
     log_delimit_mark = "==={}"
-    
+
     def __init__(self):
         self.status_data = None
         self.parser = None
@@ -109,11 +109,13 @@ class BaseCheckItem(object):
         self.start_mark = None
         self.end_mark = None
         self.logblock =None
-        
+
         self.results = None
 
         self.info = {}
         self.init_info()
+
+
 
     def init_info(self):
         doclines = self.__doc__.split()
@@ -125,18 +127,36 @@ class BaseCheckItem(object):
         start_mark=self.log_delimit_mark.format(self.check_cmd)
         end_mark = "COMMAND EXECUTED"
         self.logblock = extract_textblock(logfile, start_mark, end_mark)
-                
+
         return self.logblock
-    
+
     def init_parser(self, fsm_file=None, template_dir=None):
         if not fsm_file:
             fsm_file = self.fsm_template_name
-        
+
         if not template_dir:
             template_dir = self.base_path
         self.fsm_file = os.path.join(template_dir,'fsm_templates',fsm_file)
         #print('fsm_file:%s' % self.fsm_file)
         self.fsm_parser = FsmParser(self.fsm_file)
-        
+
+    def __repr__(self):
+        return self.__class__.__name__
+
+
+class BasePresentation(object):
+    """Base Class for Presentation
+    all the presentation should be the subClass of this.
+    """
+    def __init__(self):
+        self.abnormal_count = 0
+        #self.init_info()
+        self.info={}
+
+    # def init_info(self):
+    #     doclines = self.__doc__.split()
+    #     self.info['name'] = doclines[0]
+    #     self.info['description'] = "".join(doclines[1:])
+
     def __repr__(self):
         return self.__class__.__name__

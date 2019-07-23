@@ -3,9 +3,10 @@ import os
 import json
 import time
 import logging
-from libs.basechecker.checkitem import BaseCheckItem, ResultInfo
+from mme.status.configer import mme_list
+from libs.basechecker.checkitem import BaseCheckItem, ResultInfo,BasePresentation
 from libs.basechecker.checkitem import exec_checkitem
-
+from .report import report_api
 from .configer import BASE_PATH, LOGFILE_PATH
 from .configer import checking_rules
 
@@ -82,15 +83,15 @@ class FlexinsAlarmStatus(BaseCheckItem):
         alarmlevel_high=[]
         results = ResultInfo(**self.info)
         if self.status_data:
-            for s in self.status_data:
-                if int(len(s['level'])) > len(checking_rules['alarmlevel'][1]):
-                    alarmlevel_high.append(s)
-
-            results.status = (len(alarmlevel_high) == 0) and "alarm_ok" or "alarm_nok"
-            results.stats = alarmlevel_high
+        #     for s in self.status_data:
+        #         if int(len(s['level'])) > len(checking_rules['alarmlevel'][1]):
+        #             alarmlevel_high.append(s)
+        #
+        #     results.status = (len(alarmlevel_high) == 0) and "alarm_ok" or "alarm_nok"
+        #     results.stats = alarmlevel_high
             results.data = self.status_data
         else:
-            results.stats=[]
+            results.data = []
         return results
 
 class CheckTask(object):
@@ -136,17 +137,62 @@ def run_task(hostname=None, logfile=None):
     task.execute(checkitems)
     return task
 
+class FNS_unit_presentation(BasePresentation):
+    """MME单元检查呈现类
+    继承BasePresentation
+    """
+    def __init__(self):
+        super().__init__()
+        self.row_presentation=[]
+        #self.abnormal_count=0
 
-def test_checkitem(logfile):
-    item = FlexinsUnitStatus()
-    result = exec_checkitem(item, logfile)
+class FNS_alarm_presentation(BasePresentation):
+    """MME告警检查呈现类
+    继承BasePresentation
+    """
+    def __init__(self):
+        super().__init__()
+        self.notice_level=[]
+        self.warning_level=[]
+        self.critical_level=[]
 
-    for d in item.status_data:
-        print(d['host'], d['unit'], d['status'])
-    print("len of data:%s" % len(item.status_data))
+def presentation(*args):
+    i=0
+    unit_statics = []
+    task_list = report_api()
 
-    print(result.to_json(2))
-    # print(result.description)
+    for task in task_list:
+        for r in task.results:
+            if r.name == 'MME单元状态检查':
+                unit_statics.append(mme_list[i])
+                unit_statics.append(r.stats['WO-EX'])
+                unit_statics.append(r.stats['SP-EX'])
+                unit_statics.append(r.stats['Other'])
+                if r.status == 'OK':
+                    unit_statics.append(True)
+                else:
+                    unit_statics.append(False)
+                args[0].abnormal_count = r.stats['Other'] + args[0].abnormal_count
+                i = i + 1
+            if r.name == 'MME单元CPU负荷检查':
+                if r.status == 'OK':
+                    unit_statics[4] = unit_statics[4] and True
+                else:
+                    unit_statics[4] = unit_statics[4] and False
+                unit_statics.append(len(r.stats))
+                unit_statics[4], unit_statics[5] = unit_statics[5], unit_statics[4]
+                args[0].row_presentation.append(unit_statics)
+                unit_statics = []
+                args[0].abnormal_count = args[0].abnormal_count + len(r.stats)
+            if r.name == 'MME告警检查':
+                for a in r.data:
+                    if a['level']=='*':
+                        args[1].notice_level.append(a)
+                    if a['level']=='**':
+                        args[1].warning_level.append(a)
+                    if a['level']=='***':
+                        args[1].critical_level.append(a)
+    return args
 
 
 if __name__ == "__main__":
