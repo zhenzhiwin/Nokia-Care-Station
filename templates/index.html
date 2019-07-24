@@ -287,14 +287,14 @@
                     </div><!--/.col-->
                 </div><!--/.row-->
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-12 col-sm-12">
                         <div class="box">
                             <div class="box-head">
                                 <h2>活动告警情况</h2>
                                 <div class="statistics-data">
                                     <div class="stat-income">
-                                        <p><span class="income-dot"></span>max</p>
-                                        <p><span class="income-dot outcome-dot"></span>avg</p>
+                                        <p><span class="income-dot"></span>三星告警</p>
+                                        <p><span class="income-dot outcome-dot"></span>二星告警</p>
                                     </div><!--/.stat-income-->
                                 </div><!--/.statistics-data-->
                             </div><!--/.box-head-->
@@ -303,27 +303,27 @@
                             </div><!--/.item-->
                         </div><!--/.box-->
                     </div><!--/.col-->
-                    <div class="col-sm-4">
-                        <div class="box">
-                            <div class="box-head">
-                                <h2>告警类型统计</h2>
-                            </div><!--/.box-head-->
-                            <div class="item">
-                                <div id="product_status" class="ct-chart"></div>
-                                <div class="statistics-data">
-                                    <div class="stat-income pl0">
-                                        <p><span class="income-dot ps-dot1"></span>一般告警</p>
-                                        <p class="ml10"><span class="income-dot ps-dot2"></span>重要告警</p>
-                                        <p class="ml10"><span class="income-dot ps-dot3"></span>严重告警</p>
-                                        <p><span class="income-dot ps-dot4"></span>已消除告警</p>
-                                    </div><!--/.stat-income-->
-                                </div><!--/.statistics-data-->
-                            </div><!--/.item-->
-                        </div><!--/.box-->
-                    </div><!--/.col-->
+
 
                 </div><!--/.row-->
-
+                <div class="col-sm-4">
+                    <div class="box">
+                        <div class="box-head">
+                            <h2>告警类型统计</h2>
+                        </div><!--/.box-head-->
+                        <div class="item">
+                            <div id="product_status" class="ct-chart"></div>
+                            <div class="statistics-data">
+                                <div class="stat-income pl0">
+                                    <p><span class="income-dot ps-dot1"></span>一般告警</p>
+                                    <p class="ml10"><span class="income-dot ps-dot2"></span>重要告警</p>
+                                    <p class="ml10"><span class="income-dot ps-dot3"></span>严重告警</p>
+                                    <p><span class="income-dot ps-dot4"></span>已消除告警</p>
+                                </div><!--/.stat-income-->
+                            </div><!--/.statistics-data-->
+                        </div><!--/.item-->
+                    </div><!--/.box-->
+                </div><!--/.col-->
                 <!--<div class="row">
                     <div class="col-sm-12">
                         <div class="box">
@@ -377,7 +377,8 @@
 <!--chartist.min.js-->
 <script src="/static/chartist/js/chartist.min.js"></script>
 <script src="/static/chartist/js/chartist-tooltip-plugin.js"></script>
-<script src="/static/chartist/js/chartist-custom.js"></script>
+<script id="alarm_prt" type="text/javascript" src="/static/chartist/js/chartist-custom.js"
+        chart_data={{ al_stat.chart_data }}></script>
 
 <!--bootstrap.min.js-->
 <script src="/static/js/bootstrap.min.js"></script>

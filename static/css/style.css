@@ -868,10 +868,10 @@ ul.notifications > li > .more:hover, ul.notifications > li > .more:focus {
 }
 .ct-chart-bar .ct-label.ct-horizontal.ct-end{line-height: 1.8}
 .ct-series-a .ct-bar{
-  stroke: #55a8fd;
+  stroke: #cadefb;
 }
 .ct-series-b .ct-bar{
-  stroke: #5dcfc7;
+  stroke: #55a8fd;
 }
 .ct-series-c .ct-bar{
   stroke: #af76f4;

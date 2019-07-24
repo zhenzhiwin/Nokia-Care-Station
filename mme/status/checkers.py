@@ -158,6 +158,7 @@ class FNS_alarm_presentation(BasePresentation):
         self.notice_level = []
         self.warning_level = []
         self.critical_level = []
+        self.chart_data=''
 
 
 def presentation(*args):
@@ -207,6 +208,7 @@ def presentation(*args):
                 alarm_statics.append(n_c)
                 alarm_statics.append(w_c)
                 alarm_statics.append(c_c)
+                args[1].chart_data+=str(n_c)+a['host']+str(w_c)+','+str(c_c)+','
                 args[1].row_presentation.append(alarm_statics)
     return args
 

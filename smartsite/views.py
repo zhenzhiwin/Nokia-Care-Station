@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'index.html',
                   {'col': f_u_p.row_presentation,
                    'abc': f_u_p.abnormal_count,
-                   'al_stat':f_a_p
+                   'al_stat':f_a_p,
                               })
 
 # def unit_statics(request):
