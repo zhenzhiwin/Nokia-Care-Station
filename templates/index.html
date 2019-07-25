@@ -255,10 +255,10 @@
                     </div><!--/.col-->
                 </div><!--/.row-->
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-6 col-sm-6">
                         <div class="box">
                             <div class="box-head">
-                                <h2>MME告警状态</h2>
+                                <h2>MME当前告警统计</h2>
                             </div><!--/.box-head-->
                             <div class="item">
                                 <div class="item-responsive ">
@@ -285,16 +285,46 @@
                             </div><!--/.item-->
                         </div><!--/.box-->
                     </div><!--/.col-->
+                                    <div class="col-md-6 col-sm-6">
+                        <div class="box">
+                            <div class="box-head">
+                                <h2>MME历史告警统计</h2>
+                            </div><!--/.box-head-->
+                            <div class="item">
+                                <div class="item-responsive ">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>网元名称</th>
+                                            <th>一星告警数量</th>
+                                            <th>二星告警数量</th>
+                                            <th>三星告警数量</th>
+                                        </tr>
+                                        </thead><!--/thead-->
+                                        <tbody>
+                                        {% for row in al_hist.row_presentation %}
+                                            <tr>
+                                                {% for data in row %}
+                                                    <td>{{ data }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table><!--/.table-->
+                                </div><!--/.table-responsive-->
+                            </div><!--/.item-->
+                        </div><!--/.box-->
+                    </div><!--/.col-->
                 </div><!--/.row-->
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="box">
                             <div class="box-head">
-                                <h2>活动告警情况</h2>
+                                <h2>告警趋势对比</h2>
                                 <div class="statistics-data">
                                     <div class="stat-income">
-                                        <p><span class="income-dot"></span>三星告警</p>
-                                        <p><span class="income-dot outcome-dot"></span>二星告警</p>
+                                        <p><span class="income-dot"></span>历史告警数</p>
+                                        <p><span class="income-dot outcome-dot"></span>当前告警数</p>
                                     </div><!--/.stat-income-->
                                 </div><!--/.statistics-data-->
                             </div><!--/.box-head-->

@@ -52,5 +52,4 @@ def report_api():
         if len(html)>0:
             saved_filename=save_report(task.hostname, html)
             #print("report was saved to %s" % saved_filename)
-
     return task_list

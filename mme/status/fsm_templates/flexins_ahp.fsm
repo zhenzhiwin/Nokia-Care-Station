@@ -1,6 +1,6 @@
-#TextFSM template for MME AHO
+#TextFSM template for MME AHP
 #
-Value host (\w+)
+Value host (HZMME\d+BNK)
 Value unit (\w+-\d+)
 Value equiptype (\w+)
 Value level (\*+)
@@ -10,8 +10,8 @@ Value alarmid (\d+)
 Value alarmtext ([\w\s]+)
 
 Start
-  ^ALARMS CURRENTLY ON
-  ^\s+${host}\s+${unit}\s+${equiptype}\s+${date}\s+${time}
+  ^ALARM HISTORY
+  ^\s+<HIST>\s+${host}\s+${unit}\s+${equiptype}\s+${date}\s+${time}
   ^${level}\s+\w+
   ^\s+\(\d+\)\s+${alarmid}\s+${alarmtext} -> Record
 

@@ -8,23 +8,24 @@ $(document).ready(function () {
         ================================
     */
     var alarm_data = document.getElementById('alarm_prt').getAttribute('chart_data');
-    var mme_list = alarm_data.match(/MME\d+/g)
-    var presentation = alarm_data.split(/HZMME\d+BNK|,/g)
-    var normal = []
-    var warning = []
-    var critical = []
-    for (i = 0; i < presentation.length; i += 3) {
-        normal.push(presentation[i])
-        warning.push(presentation[i + 1])
-        critical.push(presentation[i + 2])
-    }
+    var all_al= all_al=alarm_data.split("!")
+    var mme_list = all_al[0].match(/MME\d+/g)
+    var present_alarm = all_al[0].split(/HZMME\d+BNK/g)
+    var hist_alarm = all_al[1].split(/HZMME\d+BNK/g)
+    // var normal = []
+    // for (i = 0; i < presentation.length; i += 3) {
+    //     normal.push(presentation[i])
+    //     warning.push(presentation[i + 1])
+    //     critical.push(presentation[i + 2])
+    // }
     //alert(critical)
     var chart = new Chartist.Bar('#statistics_data', {
             labels: mme_list,
             series: [
                 //normal,
-                warning,
-                critical
+                hist_alarm.slice(1,hist_alarm.length),
+                present_alarm.slice(1,present_alarm.length)
+
             ]
         },
         {
@@ -40,7 +41,7 @@ $(document).ready(function () {
             },
             plugins: [
                 Chartist.plugins.tooltip({
-                    currency: '当前',
+                    currency: '告警数:',
                     class: 'line-graph-tooltip',
                     appendToBody: false,
                 })
