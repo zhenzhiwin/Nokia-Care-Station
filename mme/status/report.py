@@ -4,6 +4,7 @@ import time
 import json
 import logging
 import codecs
+from .checkers import run_task
 from jinja2 import Environment, FileSystemLoader
 from .configer import mme_list
 from .configer import BASE_PATH, HTML_REPORT_PATH
@@ -36,8 +37,6 @@ def reformat_data(data):
     return data
 
 def report_api():
-    from .checkers import run_task
-    from .configer import mme_list
 
     template_dir = os.path.join(BASE_PATH, 'html_templates')
     env = Environment(loader=FileSystemLoader(template_dir))
@@ -48,8 +47,9 @@ def report_api():
         task.results = reformat_data(task.results)
         task_list.append(task)
         u_con_list=range(0,11)
-        html = make_report(env, 'mme_report.html', task=task,hostlist=mme_list,u_con_list=u_con_list)
-        if len(html)>0:
+        unit_html = make_report(env, 'mme_report.html', task=task,hostlist=mme_list,u_con_list=u_con_list)
+        alarm_html = make_report(env, 'alarms_report.html', task=task, hostlist=mme_list, u_con_list=u_con_list)
+        if len(unit_html)>0:
             saved_filename=save_report(task.hostname, html)
             #print("report was saved to %s" % saved_filename)
     return task_list

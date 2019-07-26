@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from mme.status.configer import mme_list
 from mme.status.checkers import FNS_unit_presentation, FNS_alarm_presentation, presentation
 
 
@@ -14,7 +13,9 @@ def index(request):
                    'al_stat':f_a_p,
                    'al_hist':f_a_h
                               })
+def unit_statics(request):
+    url=str(request)[str(request).find('mme'):-2]
+    return render(request,url)
 
-# def unit_statics(request):
-#     task_list = mme.status.report.report_api()
-#     render(request, 'unitstat.html',{'task_list':task_list})
+def alarm_statics(request):
+     return render(request,'alarms.html')

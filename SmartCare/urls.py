@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from smartsite import views
-from django.urls import path
+from django.urls import path, re_path
 
 urlpatterns = [
-    path('',views.index),
+    path('', views.index),
+    path('index.html', views.index),
     path('admin/', admin.site.urls),
-    #path('unitstat.html',views.unit_statics)
+    path('alarms.html', views.alarm_statics),
+    re_path(r'mme_report_HZMME\d+BNK.html', views.unit_statics)
 ]

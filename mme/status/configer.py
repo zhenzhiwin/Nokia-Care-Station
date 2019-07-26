@@ -9,7 +9,7 @@ LOGFILE_PATH = os.path.abspath(os.path.join(os.getcwd(), "../smartcare/log"))  #
 
 # 静态html报告保存路径
 # HTML_REPORT_PATH = "/opt/smartcare/reports"
-HTML_REPORT_PATH = os.path.abspath(os.path.join(os.getcwd(), "../smartcare/templates"))
+HTML_REPORT_PATH = os.path.abspath(os.path.join(os.getcwd(), "../smartcare/templates/"))
 
 checking_rules = {
     'cpuload': [25, 80, 90],
