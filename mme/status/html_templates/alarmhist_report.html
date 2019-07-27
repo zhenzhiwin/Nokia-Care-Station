@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>告警历史详情</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/static/css/bootstrap1.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="/static/js/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="#">MME历史告警信息</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"><span> &nbsp;&nbsp;&nbsp;&nbsp;请选择MME</span></a>
+                <ul class="dropdown-menu">
+                    {% for host in hostlist %}
+                        <li><a href="alarmhist_report_{{ host }}.html"><span class="dropdown">{{ host }}</span></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div classs="navbar-brand">
+        <a href="alarms_report_HZMME45BNK.html">当前告警详情</a>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Alarms</a>
+            </li>
+            <li class="breadcrumb-item active">Statistics</li>
+        </ol>
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> 历史告警详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>告警发生单元</th>
+                            <th>告警星级</th>
+                            <th>告警发生日期</th>
+                            <th>告警发生时间</th>
+                            <th>告警ID</th>
+                            <th>告警描述</th>
+                        </tr>
+                        <tr>
+                            <th>快速搜索</th>
+                            <th><input name="key" type="text" onkeydown="search_unit(this)"/></th>
+                            <th><input name="key" type="text" onkeydown="search_level(this)"/></th>
+                            <th><input name="key" type="text" onkeydown="search_date(this)"/></th>
+                            <th><input name="key" type="text" onkeydown="search_time(this)"/></th>
+                            <th><input name="key" type="text" onkeydown="search_id(this)"/></th>
+                            <th><input name="key" type="text" onkeydown="search_info(this)"/></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in task.results.3.data %}
+                            <tr>
+                                <td>{{ u.host }}</td>
+                                <td>{{ u.unit }}</td>
+                                <td>{{ u.level }}</td>
+                                <td>{{ u.date }}</td>
+                                <td>{{ u.time }}</td>
+                                <td>{{ u.alarmid }}</td>
+                                <td>{{ u.alarmtext }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {#            <div class="card-footer small text-muted">Updated  at 11:59 PM</div>#}
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright &copy; 2019.Nokia All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/js/jquery.min.js"></script>
+
+    <!--chartist.min.js-->
+    <!--bootstrap.min.js-->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!--fontawesome-all.min.js-->
+    <script src="/static/js/fontawesome-all.min.js"></script>
+
+    <!--Custom JS-->
+    <script type="text/javascript" src="/static/js/alarmsearch.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/jquery/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/static/js/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="/static/js/datatables/jquery.dataTables.js"></script>
+    <script src="/static/js/datatables/dataTables.bootstrap4.js"></script>
+</div>
+</body>
+
+</html>
