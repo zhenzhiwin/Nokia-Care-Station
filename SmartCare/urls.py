@@ -22,5 +22,7 @@ urlpatterns = [
     path('index.html', views.index),
     path('admin/', admin.site.urls),
     path('alarms.html', views.alarm_statics),
-    re_path(r'mme_report_HZMME\d+BNK.html', views.unit_statics)
+    re_path(r'mme_report_HZMME\d+BNK.html', views.unit_statics),
+    re_path(r'alarms_report_HZMME\d+BNK.html', views.alarm_statics),
+    re_path(r'alarmhist_report_HZMME\d+BNK.html', views.alarmhist_stat)
 ]

@@ -2,7 +2,7 @@
 #
 Value host (HZMME\d+BNK)
 Value unit (\w+-\d+)
-Value equiptype (\w+)
+#Value equiptype (\w+)
 Value level (\*+)
 Value date (\d+-\d+-\d+)
 Value time (\d+:\d+:\d+\.\d+)
@@ -11,7 +11,7 @@ Value alarmtext ([\w\s]+)
 
 Start
   ^ALARM HISTORY
-  ^\s+<HIST>\s+${host}\s+${unit}\s+${equiptype}\s+${date}\s+${time}
+  ^\s+<HIST>\s+${host}\s+${unit}\s+\w+\s+${date}\s+${time}
   ^${level}\s+\w+
   ^\s+\(\d+\)\s+${alarmid}\s+${alarmtext} -> Record
 

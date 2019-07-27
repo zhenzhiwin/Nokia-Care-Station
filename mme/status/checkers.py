@@ -230,6 +230,7 @@ def presentation(*args):
                 args[1].chart_data += a['host'] + str(w_c+c_c)
                 args[1].row_presentation.append(alarm_statics)
 
+
             if r.name == 'MME历史告警':
                 alarm_history = []
                 alarm_history.append(r.hostname)

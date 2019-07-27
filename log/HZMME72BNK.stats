@@ -700,10 +700,6 @@ ALARMS CURRENTLY ON
     (0572) 2185 ROUTING OF OSI OUTGOING CALL FAILED                            
     OMC000000D1??? 0003 
 
-           HZMME72BNK             OMU-0       O/M       2019-07-05  00:28:51.17
-**  ALARM  OMU-0       1A001-00-1            URMANA                           
-    (0001) 2427 MMI SYSTEM FILE ERROR                                          
-    08 FD 00000002 
 
            HZMME72BNK             PAPU-8      SWITCH    2019-07-16  23:53:54.60
 *   ALARM  PAPU-8      1A001-00-14           GTP_GX                           
