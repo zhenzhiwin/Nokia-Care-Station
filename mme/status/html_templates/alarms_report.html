@@ -80,15 +80,17 @@
                         </thead>
                         <tbody>
                         {% for u in task.results.2.data %}
-                            <tr>
-                                <td>{{ u.host }}</td>
-                                <td>{{ u.unit }}</td>
-                                <td>{{ u.level }}</td>
-                                <td>{{ u.date }}</td>
-                                <td>{{ u.time }}</td>
-                                <td>{{ u.alarmid }}</td>
-                                <td>{{ u.alarmtext }}</td>
-                            </tr>
+                            {% if u.level ==  '*' or u.level ==  '**' or u.level ==  '***' %}
+                                <tr>
+                                    <td>{{ u.host }}</td>
+                                    <td>{{ u.unit }}</td>
+                                    <td>{{ u.level }}</td>
+                                    <td>{{ u.date }}</td>
+                                    <td>{{ u.time }}</td>
+                                    <td>{{ u.alarmid }}</td>
+                                    <td>{{ u.alarmtext }}</td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                         </tbody>
                     </table>
