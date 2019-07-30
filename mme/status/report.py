@@ -60,5 +60,4 @@ def report_api():
             save_report(task.hostname, alarm_html, 'alarms_report_')
         if len(alarmhist_html) > 0:
             save_report(task.hostname, alarmhist_html, 'alarmhist_report_')
-
     return task_list

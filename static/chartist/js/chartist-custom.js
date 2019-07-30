@@ -8,7 +8,6 @@ $(document).ready(function () {
         ================================
     */
     var alarm_data = document.getElementById('alarm_prt').getAttribute('chart_data');
-
     var all_al= all_al=alarm_data.split("!")
     var mme_list = all_al[0].match(/MME\d+/g)
     var present_alarm = all_al[0].split(/HZMME\d+BNK/g)
@@ -19,7 +18,7 @@ $(document).ready(function () {
     //     warning.push(presentation[i + 1])
     //     critical.push(presentation[i + 2])
     // }
-    //alert(critical)
+    alert(alarm_data)
     var chart = new Chartist.Bar('#statistics_data', {
             labels: mme_list,
             series: [

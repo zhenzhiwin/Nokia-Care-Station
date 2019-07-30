@@ -250,8 +250,9 @@ def presentation(*args):
                 alarm_history.append(n_c)
                 alarm_history.append(w_c)
                 alarm_history.append(c_c)
-                args[2].chart_data += a['host'] + str(w_c+c_c)
+                args[2].chart_data += r.hostname + str(w_c+c_c)
                 args[2].row_presentation.append(alarm_history)
+
     args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
     return args
 

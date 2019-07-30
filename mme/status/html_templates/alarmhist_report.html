@@ -67,6 +67,7 @@
                             <th>告警发生时间</th>
                             <th>告警ID</th>
                             <th>告警描述</th>
+                            <th>附加信息</th>
                         </tr>
                         <tr>
                             <th>快速搜索</th>
@@ -76,20 +77,27 @@
                             <th><input name="key" type="text" onkeydown="search_time(this)"/></th>
                             <th><input name="key" type="text" onkeydown="search_id(this)"/></th>
                             <th><input name="key" type="text" onkeydown="search_info(this)"/></th>
+                            <th>不可达告警已转换为IP</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for u in task.results.3.data %}
                             {% if u.level ==  '*' or u.level ==  '**' or u.level ==  '***' %}
-                            <tr>
-                                <td>{{ u.host }}</td>
-                                <td>{{ u.unit }}</td>
-                                <td>{{ u.level }}</td>
-                                <td>{{ u.date }}</td>
-                                <td>{{ u.time }}</td>
-                                <td>{{ u.alarmid }}</td>
-                                <td>{{ u.alarmtext }}</td>
-                            </tr>
+                                <tr>
+                                    <td>{{ u.host }}</td>
+                                    <td>{{ u.unit }}</td>
+                                    <td>{{ u.level }}</td>
+                                    <td>{{ u.date }}</td>
+                                    <td>{{ u.time }}</td>
+                                    <td>{{ u.alarmid }}</td>
+                                    <td>{{ u.alarmtext }}</td>
+                                    {% if u.alarmid == '3450' %}
+                                        <td>
+                                            {{(u.hexinfo.3|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int*16+u.hexinfo.4|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int)|string~'.'~(u.hexinfo.6|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int*16+u.hexinfo.7|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int)|string~'.'~(u.hexinfo.9|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int*16+u.hexinfo.10|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int)|string~'.'~(u.hexinfo.12|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int*16+u.hexinfo.13|replace('A','10')|replace('B','11')|replace('C','12')|replace('D','13')|replace('E','14')|replace('F','15')|int)|string}}</td>
+                                    {% else %}
+                                        <td>{{ u.hexinfo }}</td>
+                                    {% endif %}
+                                </tr>
                             {% endif %}
                         {% endfor %}
                         </tbody>
