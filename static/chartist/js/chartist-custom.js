@@ -18,7 +18,6 @@ $(document).ready(function () {
     //     warning.push(presentation[i + 1])
     //     critical.push(presentation[i + 2])
     // }
-    alert(alarm_data)
     var chart = new Chartist.Bar('#statistics_data', {
             labels: mme_list,
             series: [
