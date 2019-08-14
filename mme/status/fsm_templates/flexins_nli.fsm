@@ -1,0 +1,20 @@
+#TextFSM template for parsing the output of command: `ENL   OR   NLI`
+# Example:
+#
+# M3UA                            ASSOCIATION  LINK
+# LINK      LINK SET              SET          STATE
+# ----      -------------------   ----------   -----
+#    0      16 SGW46                 0         AV-EX
+#    1      19 SGW47                 1         AV-EX
+#
+Value M3UALINK (\d+)
+Value LINK (\d+)
+Value SET (\w+GW\d+)
+Value ASSOCIATIONSET (\S+)
+Value LINKSTATE (\S+)
+
+Start
+  ^\s+M3UA
+  ^\s+${M3UALINK}\s+${LINK}\s+${SET}\s+${ASSOCIATIONSET}\s+${LINKSTATE} -> Record
+  
+#End of template

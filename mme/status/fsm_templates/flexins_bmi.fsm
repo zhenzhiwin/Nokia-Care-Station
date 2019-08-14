@@ -1,0 +1,21 @@
+#TextFSM template for parsing the output of command: `BMI`
+# Example:
+#
+#OFFLOADING PARAMETERS
+#================================================
+#OFFLOADING STATUS..................: READY
+#CURRENT MME REGISTERED SUBSCRIBERS.: 690859
+#OFFLOAD START TIME.................: 00:22 hh:mm
+#OFFLOAD END TIME...................: 03:44 hh:mm
+#
+#COMMAND EXECUTED
+#
+Value OFFLOADING_STATUS (\S+)
+Value SUBSCRIBERS (\d+)
+
+Start
+  ^OFFLOADING\s+PARAMETERS
+  ^OFFLOADING\s+STATUS..................:\s+${OFFLOADING_STATUS}
+  ^CURRENT MME REGISTERED SUBSCRIBERS.:\s+${SUBSCRIBERS} -> Record
+  
+#End of template
