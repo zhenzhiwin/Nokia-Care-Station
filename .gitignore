@@ -1,0 +1,6 @@
+*.pyc
+docs_local/*
+__pycache__
+reports
+log
+*.data

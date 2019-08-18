@@ -1,0 +1,33 @@
+#TextFSM template for parsing the output of command: `USI`
+# Example:
+#
+#PROCESSOR TIME USAGE
+#
+#UNIT:                      OMU-0     
+#
+#    VLRs IN MME
+#LIST OF AVAILABLE IP ADDRESSES AND STATUSES:
+#
+#INDEX: 1
+#   ADMIN STATE: 1 UNLOCKED
+#   OPER STATUS: 1 OPERATIONAL
+#   IP ADDRESS : 10.212.204.217
+#      235  POSTPAID PACKETS WAITING FOR TRANSMISSION
+#       72  PREPAID PACKETS WAITING FOR TRANSMISSION
+#
+Value index (\d+)
+Value adminstate (\d+\s+\S+)
+Value operstatus (\d+\s+\S+)
+Value ipaddress (\S+)
+Value postpaid (\d+)
+Value prepaid (\d+)
+
+Start
+  ^INDEX:\s+${index}
+  ^\s+ADMIN\s+STATE:\s+${adminstate}
+  ^\s+OPER\s+STATUS:\s+${operstatus}
+  ^\s+IP\s+ADDRESS\s+:\s+${ipaddress}
+  ^\s+${postpaid}\s+POSTPAID
+  ^\s+${prepaid}\s+PREPAID -> Record
+
+#End of template

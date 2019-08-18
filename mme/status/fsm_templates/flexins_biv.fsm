@@ -1,0 +1,28 @@
+#TextFSM template for parsing the output of command: `USI`
+# Example:
+#
+#PROCESSOR TIME USAGE
+#
+#UNIT:                      OMU-0     
+#
+#    VLRs IN MME
+#
+#    VLR ID    VLR NAME     LINK STATUS   MODE         OFFLOADING STATUS
+#    -------   ----------   -----------   ------------ --------------------
+#    2         NBOGS21      UP            WORKING      -
+#    3         NBOGS7       UP            WORKING      -
+#    9         NBOGS18      UP            WORKING      -
+#    10        NBOGS19      UP            WORKING      -
+#    18        NBOGS17      UP            WORKING      -
+#
+Value vlrid (\d+)
+Value vlrname (\w+GS\d+)
+Value linkstatus (\S+)
+Value mode (\S+)
+Value status (\S+)
+
+Start
+  ^\s+VLRs
+  ^\s+${vlrid}\s+${vlrname}\s+${linkstatus}\s+${mode}\s+${status} -> Record
+  
+#End of template
