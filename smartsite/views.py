@@ -7,6 +7,7 @@ def index(request):
     f_a_p = FNS_alarm_presentation()
     f_a_h = FNS_alarm_presentation()
     presentation(f_u_p, f_a_p, f_a_h)
+
     return render(request, 'index.html',
                   {'col': f_u_p.row_presentation,
                    'abc': f_u_p.abnormal_count,

@@ -6,11 +6,14 @@ import logging
 
 from .configreader import ConfigObject
 
+
 def read_task_conf(confile):
     return ConfigObject(confile)
 
+
 def get_logfile(hostname, logfile_path, logfile_pattern="%s.stats"):
-    return os.path.join(logfile_path, logfile_pattern % hostname) 
+    return os.path.join(logfile_path, logfile_pattern % hostname)
+
 
 def get_checkitems(module, checkitem_namelist):
     checkitems = []
@@ -18,7 +21,7 @@ def get_checkitems(module, checkitem_namelist):
         checkitem = getattr(module, name, None)
         if checkitem:
             checkitems.append(checkitem)
-            #print("Checkitem: {}".format(checkitem))
+            # print("Checkitem: {}".format(checkitem))
 
     return checkitems
 
@@ -29,7 +32,8 @@ class EZLogger(object):
 
     logger = EzLogger(loglevel=1, logger="fox",logfile='log.txt')
 
-    '''     
+    '''
+
     def __init__(self, level, logname, logfile=None, format=None):
         '''
            指定保存日志的文件路径，日志级别，以及调用文件
@@ -41,19 +45,17 @@ class EZLogger(object):
         # 创建一个logger
         self.logger = logging.getLogger(logname)
         self.logger.setLevel(self.level)
-        
+
         # 定义handler的输出格式
         formatter = logging.Formatter(self.log_format)
-        
-        
-        
+
         # 创建一个handler，用于输出到控制台
         ch = logging.StreamHandler()
         ch.setLevel(logging.DEBUG)
         ch.setFormatter(formatter)
         # 给logger添加handler
         self.logger.addHandler(ch)
-        
+
         # 创建一个handler，用于写入日志文件
         if logfile:
             set_logfile(logfile)
@@ -72,6 +74,6 @@ class EZLogger(object):
 
     def error(self, *args, **kwargs):
         self.logger.error(*args, **kwargs)
-        
+
     def debug(self, *args, **kwargs):
-        self.logger.debug(*args, **kwargs)        
+        self.logger.debug(*args, **kwargs)

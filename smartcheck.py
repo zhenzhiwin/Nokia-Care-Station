@@ -14,18 +14,19 @@ CLI Usage:
 """
 import pickle
 
-from libs.task import TaskControler, CheckTask
-from libs.collector import Collector
-from libs.utils import get_logfile, get_checkitems, read_task_conf, EZLogger
+from smartcheck.task import TaskControler, CheckTask
+from smartcheck.utils import get_logfile, get_checkitems, read_task_conf, EZLogger
 from mme.status import checkers
 
 logger = EZLogger(level='DEBUG', logname="smartcheck")
 
 TASK_LIST_DATAFILE = ["tasklist.data"]
 
+
 def _print_check_status(task):
     print(f"Executing:{task}")
     print(f"Results: {task.results}")
+
 
 def run_parser(task_list):
     logger.info("Start parsing the log...")
@@ -38,12 +39,14 @@ def run_parser(task_list):
 
     return task_list
 
+
 def run_collector(task_list):
     logger.info("Start collecting log from NE...")
-    for task in task_list:      
+    for task in task_list:
         task.collect_log()
 
     return task_list
+
 
 def run_reporter(tasklist=None):
     """run reportor to output the report and data.
@@ -61,12 +64,13 @@ def run_reporter(tasklist=None):
         content = task.report()
         print("".join(content))
 
+
 def init_task_list(confile):
     conf = read_task_conf(confile)
     conf.filename = confile
-    #!!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
+    # !!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
     checkitems = get_checkitems(checkers, conf.checkitem_namelist)
-    TASK_LIST_DATAFILE[0] = confile.replace("conf","data")
+    TASK_LIST_DATAFILE[0] = confile.replace("conf", "data")
 
     task_list = []
     ## 初始化每个网元的检查任务TaskControler
@@ -75,9 +79,10 @@ def init_task_list(confile):
         # 指定对应的log文件
         task.logfile = get_logfile(host, conf.logfile_path)
         task.checkitem_list = checkitems
-        task_list.append(task)    
+        task_list.append(task)
 
     return task_list
+
 
 def check_wrong_cmd(cmdlist, available_cmds):
     for cmd in cmdlist:
@@ -85,13 +90,14 @@ def check_wrong_cmd(cmdlist, available_cmds):
             raise ValueError("Wrong Command: '%s'" % cmd)
     return None
 
+
 def controler(task_list, command_list):
     """根据命令行参数，执行相应的操作
     """
-    opt_list = { "collect" : run_collector,
-                 "parse"   : run_parser,
-                 "report"  : run_reporter,
-                 "all"     : None,
+    opt_list = {"collect": run_collector,
+                "parse": run_parser,
+                "report": run_reporter,
+                "all": None,
                 }
 
     try:
@@ -101,16 +107,18 @@ def controler(task_list, command_list):
         exit(1)
 
     if command_list[0] == "all":
-        command_list = ['collect','parse','report']
+        command_list = ['collect', 'parse', 'report']
 
     for cmd in command_list:
         opt_list[cmd](task_list)
-    
-    return 
+
+    return
+
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv)<3:
+
+    if len(sys.argv) < 3:
         print(__doc__)
         exit(1)
 
@@ -120,4 +128,3 @@ if __name__ == "__main__":
     command_list = commandstr.split(',')
 
     controler(task_list, command_list)
-

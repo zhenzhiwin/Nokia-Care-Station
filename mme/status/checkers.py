@@ -1,14 +1,12 @@
 #! coding: utf8
-import os
-import json
-import time
-import logging
-from libs.basechecker.checkitem import BaseCheckItem, BasePresentation
-from libs.basechecker.checkitem import exec_checkitem
-from libs.basechecker.resultinfo import ResultInfo
-from .report import report_api
-from .configer import BASE_PATH, LOGFILE_PATH
-from .configer import checking_rules
+import os, pickle
+from smartcheck.basechecker.checkitem import BaseCheckItem, BasePresentation
+from smartcheck.basechecker.resultinfo import ResultInfo
+from smartcheck.utils import read_task_conf, EZLogger
+
+TASK_LIST_DATAFILE = [os.path.join(os.path.abspath("."), "mme_task.data")]
+logger = EZLogger(level='DEBUG', logname="smartcheck")
+conf = read_task_conf(os.path.abspath(os.path.join(os.getcwd(), "./mme_task.conf")))
 
 
 class FlexinsUnitStatus(BaseCheckItem):
@@ -17,7 +15,7 @@ class FlexinsUnitStatus(BaseCheckItem):
     """
 
     check_cmd = "ZUSI"
-    base_path = BASE_PATH
+    base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_usi.fsm"
 
     def check_status(self, logbuf=None):
@@ -60,7 +58,7 @@ class FlexinsCpuloadStatus(BaseCheckItem):
         results = ResultInfo(**self.info)
         overload_units = []
         for s in self.status_data:
-            if int(s['cpuload']) > checking_rules['cpuload'][0]:
+            if int(s['cpuload']) > conf.checking_rules['cpuload'][0]:
                 # results.status = 'NOK'
                 overload_units.append(s)
 
@@ -113,8 +111,11 @@ class FlexinsAlarmHistory(BaseCheckItem):
             results.data = []
         return results
 
+
 '''自己添加'''
 '''ZBIV:INT;'''
+
+
 class FlexinsSgsStatus(BaseCheckItem):
     """MME SGS链路 状态信息
     输出MME SGS 链路情况，链路状态。
@@ -132,7 +133,11 @@ class FlexinsSgsStatus(BaseCheckItem):
             results.data = []
 
         return results
+
+
 '''ZB6I::RT=SUM'''
+
+
 class FlexinsS1Connect(BaseCheckItem):
     """MME S1链路 连接ENB数和断站数
     输出MME S1 连接数。
@@ -140,6 +145,7 @@ class FlexinsS1Connect(BaseCheckItem):
     check_cmd = "ZB6I::RT=SUM"
     base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_b6i.fsm"
+
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         results = ResultInfo(**self.info)
@@ -150,7 +156,10 @@ class FlexinsS1Connect(BaseCheckItem):
 
         return results
 
+
 '''ZBMI'''
+
+
 class Flexins4guser(BaseCheckItem):
     """MME 4g user链路 状态信息
     输出MME 4g user 链路情况，链路状态。
@@ -158,6 +167,7 @@ class Flexins4guser(BaseCheckItem):
     check_cmd = "ZBMI"
     base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_bmi.fsm"
+
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         results = ResultInfo(**self.info)
@@ -165,9 +175,13 @@ class Flexins4guser(BaseCheckItem):
             results.data = self.status_data
         else:
             results.data = []
-        #print(results.data)
+        # print(results.data)
         return results
+
+
 '''ZGHI'''
+
+
 class Flexinsgacdr(BaseCheckItem):
     """MME 与CG国漫话单链路 状态信息
     输出MME 与CG国漫话单 链路情况，链路状态。
@@ -175,6 +189,7 @@ class Flexinsgacdr(BaseCheckItem):
     check_cmd = "ZGHI"
     base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_ghi.fsm"
+
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         results = ResultInfo(**self.info)
@@ -182,8 +197,9 @@ class Flexinsgacdr(BaseCheckItem):
             results.data = self.status_data
         else:
             results.data = []
-        #print(results.data)
+        # print(results.data)
         return results
+
 
 class Flexinssgwlink(BaseCheckItem):
     """MME 与SGW 链路 状态信息
@@ -192,6 +208,7 @@ class Flexinssgwlink(BaseCheckItem):
     check_cmd = "ZNLI"
     base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_nli.fsm"
+
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         results = ResultInfo(**self.info)
@@ -199,9 +216,13 @@ class Flexinssgwlink(BaseCheckItem):
             results.data = self.status_data
         else:
             results.data = []
-        #print(results.data)
+        # print(results.data)
         return results
+
+
 '''ZW7I'''
+
+
 class Flexinsstatuscode(BaseCheckItem):
     """MME 直接查询code对应的 信息
     输出MME 直接查询code对应的 信息
@@ -209,6 +230,7 @@ class Flexinsstatuscode(BaseCheckItem):
     check_cmd = "ZW7I:UCAP"
     base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_w7i.fsm"
+
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         results = ResultInfo(**self.info)
@@ -216,11 +238,11 @@ class Flexinsstatuscode(BaseCheckItem):
             results.data = self.status_data
         else:
             results.data = []
-        #print(results.data)
+        # print(results.data)
         return results
 
-'''自己添加'''
 
+'''自己添加'''
 
 
 class FNS_unit_presentation(BasePresentation):
@@ -245,15 +267,21 @@ class FNS_alarm_presentation(BasePresentation):
         self.critical_level = []
         self.chart_data = ''
 
+
 def presentation(*args):
     i = 0
     unit_statics = []
-    task_list = report_api()
+    try:
+        with open(TASK_LIST_DATAFILE[0], 'rb') as fp:
+            task_list = pickle.load(fp)
+    except FileNotFoundError as err:
+        logger.error(err)
+        return
 
     for task in task_list:
         for r in task.results:
             if r.name == 'MME单元状态检查':
-                unit_statics.append(mme_list[i])
+                unit_statics.append(conf.ne_list[i])
                 unit_statics.append(r.stats['WO-EX'])
                 unit_statics.append(r.stats['SP-EX'])
                 unit_statics.append(r.stats['Other'])
@@ -292,9 +320,8 @@ def presentation(*args):
                 alarm_statics.append(n_c)
                 alarm_statics.append(w_c)
                 alarm_statics.append(c_c)
-                args[1].chart_data += a['host'] + str(w_c+c_c)
+                args[1].chart_data += a['host'] + str(w_c + c_c)
                 args[1].row_presentation.append(alarm_statics)
-
 
             if r.name == 'MME历史告警':
                 alarm_history = []
@@ -315,9 +342,8 @@ def presentation(*args):
                 alarm_history.append(n_c)
                 alarm_history.append(w_c)
                 alarm_history.append(c_c)
-                args[2].chart_data += a['host'] + str(w_c+c_c)
+                args[2].chart_data += r.hostname + str(w_c + c_c)
                 args[2].row_presentation.append(alarm_history)
     args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
+
     return args
-
-

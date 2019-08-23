@@ -3,7 +3,8 @@
 import os
 import logging
 
-#from netmiko import ConnectHandler
+
+# from netmiko import ConnectHandler
 
 class ConnectionHandler():
     def send_command(self, cmd):
@@ -11,12 +12,15 @@ class ConnectionHandler():
 
         return "\nfinished the command: %s\n" % cmd
 
+
 def init_connector(netype, host):
     return ConnectionHandler()
+
 
 class Collector(object):
     """
     """
+
     def __init__(self, netype, host):
         self.netype = netype
         self.host = host
@@ -34,8 +38,7 @@ class Collector(object):
             output = self.conn.send_command(cmd)
             output_buf.append("\n=== %s ===" % cmd.strip())
             output_buf.append(output)
-        
+
         self.logbuf = output_buf
         print("".join(output_buf))
         return output_buf
-        

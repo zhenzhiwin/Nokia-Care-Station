@@ -24,7 +24,8 @@ class ResultInfo(object):
         self.name = kwargs.get('name', '')
         self.description = kwargs.get('description', '')
         self.status = 'UNKNOWN'
-
+        self.stats=None
+        self.data=None
         self.info = ''
         self.error = ''
 

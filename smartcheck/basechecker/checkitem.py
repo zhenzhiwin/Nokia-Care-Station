@@ -6,9 +6,7 @@ BaseCheckItem   检查项的基类。所有具体的检查项都继承于这个�
 
 """
 import os
-import time
-import logging
-from libs.basechecker.logparser import FsmParser
+from smartcheck.basechecker.logparser import FsmParser
 
 
 def extract_textblock(logfile, start_mark, end_mark=None):
@@ -96,8 +94,8 @@ class BaseCheckItem(object):
         # print('fsm_file:%s' % self.fsm_file)
         self.fsm_parser = FsmParser(self.fsm_file)
 
-    def check_status(self):
-        raise NotImplementError
+    # def check_status(self):
+    #     raise NotImplementError
 
     def __repr__(self):
         return self.__class__.__name__
