@@ -16,7 +16,6 @@ import sys
 import pickle
 
 from libs.task import TaskControler, CheckTask
-from libs.collector import Collector
 from libs.utils import get_logfile, get_checkitems, read_task_conf, EZLogger
 from mme.status import checkers
 

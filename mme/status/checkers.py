@@ -3,13 +3,11 @@ import os
 import json
 import time
 import logging
-from libs.basechecker.checkitem import BaseCheckItem, BasePresentation
-from libs.basechecker.checkitem import exec_checkitem
-from libs.basechecker.resultinfo import ResultInfo
-from .report import report_api
-from .configer import BASE_PATH, LOGFILE_PATH
-from .configer import checking_rules
 
+from libs.basechecker.checkitem import BaseCheckItem, exec_checkitem
+from libs.basechecker.resultinfo import ResultInfo
+
+BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 
 class FlexinsUnitStatus(BaseCheckItem):
     """MME单元状态检查
@@ -54,13 +52,18 @@ class FlexinsCpuloadStatus(BaseCheckItem):
     base_path = os.path.split(os.path.abspath(__file__))[0]
     fsm_template_name = "flexins_doi.fsm"
 
+    # 检查的规则和阀值（另外定义在单独的一个文件更合适）
+    checking_rules = {
+        'cpuload': [25, 80, 90],
+        }
+
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         hostname = self.status_data[0]['host']
         results = ResultInfo(**self.info)
         overload_units = []
         for s in self.status_data:
-            if int(s['cpuload']) > checking_rules['cpuload'][0]:
+            if int(s['cpuload']) > self.checking_rules['cpuload'][0]:
                 # results.status = 'NOK'
                 overload_units.append(s)
 
@@ -84,12 +87,6 @@ class FlexinsAlarmStatus(BaseCheckItem):
         alarmlevel_high = []
         results = ResultInfo(**self.info)
         if self.status_data:
-            #     for s in self.status_data:
-            #         if int(len(s['level'])) > len(checking_rules['alarmlevel'][1]):
-            #             alarmlevel_high.append(s)
-            #
-            #     results.status = (len(alarmlevel_high) == 0) and "alarm_ok" or "alarm_nok"
-            #     results.stats = alarmlevel_high
             results.data = self.status_data
         else:
             results.data = []
@@ -218,106 +215,4 @@ class Flexinsstatuscode(BaseCheckItem):
             results.data = []
         #print(results.data)
         return results
-
-'''自己添加'''
-
-
-
-class FNS_unit_presentation(BasePresentation):
-    """MME单元检查呈现类
-    继承BasePresentation
-    """
-
-    def __init__(self):
-        super().__init__()
-        # self.abnormal_count=0
-
-
-class FNS_alarm_presentation(BasePresentation):
-    """MME告警检查呈现类
-    继承BasePresentation
-    """
-
-    def __init__(self):
-        super().__init__()
-        self.notice_level = []
-        self.warning_level = []
-        self.critical_level = []
-        self.chart_data = ''
-
-def presentation(*args):
-    i = 0
-    unit_statics = []
-    task_list = report_api()
-
-    for task in task_list:
-        for r in task.results:
-            if r.name == 'MME单元状态检查':
-                unit_statics.append(mme_list[i])
-                unit_statics.append(r.stats['WO-EX'])
-                unit_statics.append(r.stats['SP-EX'])
-                unit_statics.append(r.stats['Other'])
-                if r.status == 'OK':
-                    unit_statics.append(True)
-                else:
-                    unit_statics.append(False)
-                args[0].abnormal_count = r.stats['Other'] + args[0].abnormal_count
-                i = i + 1
-            if r.name == 'MME单元CPU负荷检查':
-                if r.status == 'OK':
-                    unit_statics[4] = unit_statics[4] and True
-                else:
-                    unit_statics[4] = unit_statics[4] and False
-                unit_statics.append(len(r.stats))
-                unit_statics[4], unit_statics[5] = unit_statics[5], unit_statics[4]
-                args[0].row_presentation.append(unit_statics)
-                unit_statics = []
-                args[0].abnormal_count = args[0].abnormal_count + len(r.stats)
-            if r.name == 'MME告警检查':
-                alarm_statics = []
-                alarm_statics.append(r.hostname)
-                n_c = 0
-                w_c = 0
-                c_c = 0
-                for a in r.data:
-                    if a['level'] == '*':
-                        args[1].notice_level.append(a)
-                        n_c += 1
-                    if a['level'] == '**':
-                        args[1].warning_level.append(a)
-                        w_c += 1
-                    if a['level'] == '***':
-                        args[1].critical_level.append(a)
-                        c_c += 1
-                alarm_statics.append(n_c)
-                alarm_statics.append(w_c)
-                alarm_statics.append(c_c)
-                args[1].chart_data += a['host'] + str(w_c+c_c)
-                args[1].row_presentation.append(alarm_statics)
-
-
-            if r.name == 'MME历史告警':
-                alarm_history = []
-                alarm_history.append(r.hostname)
-                n_c = 0
-                w_c = 0
-                c_c = 0
-                for a in r.data:
-                    if a['level'] == '*':
-                        args[2].notice_level.append(a)
-                        n_c += 1
-                    if a['level'] == '**':
-                        args[2].warning_level.append(a)
-                        w_c += 1
-                    if a['level'] == '***':
-                        args[2].critical_level.append(a)
-                        c_c += 1
-                alarm_history.append(n_c)
-                alarm_history.append(w_c)
-                alarm_history.append(c_c)
-                args[2].chart_data += a['host'] + str(w_c+c_c)
-                args[2].row_presentation.append(alarm_history)
-    args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
-    return args
-
 
