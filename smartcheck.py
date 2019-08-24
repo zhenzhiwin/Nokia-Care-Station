@@ -12,6 +12,7 @@ CLI Usage:
    smartcheck <check_task_config> <collect|parse|report>
 
 """
+import sys
 import pickle
 
 from libs.task import TaskControler, CheckTask
@@ -19,7 +20,7 @@ from libs.collector import Collector
 from libs.utils import get_logfile, get_checkitems, read_task_conf, EZLogger
 from mme.status import checkers
 
-logger = EZLogger(level='DEBUG', logname="smartcheck")
+logger = EZLogger(level='INFO')
 
 TASK_LIST_DATAFILE = ["tasklist.data"]
 
@@ -27,31 +28,33 @@ def _print_check_status(task):
     print(f"Executing:{task}")
     print(f"Results: {task.results}")
 
-def run_parser(task_list):
+def run_parser(taskconf):
     logger.info("Start parsing the log...")
-    for task in task_list:
+    for task in taskconf.task_list:
         task.parse_log()
         _print_check_status(task)
 
-    with open(TASK_LIST_DATAFILE[0], 'wb+') as fp:
-        fp.write(pickle.dumps(task_list))
+    with open(taskconf.task_list_datafile, 'wb+') as fp:
+        fp.write(pickle.dumps(taskconf.task_list))
 
-    return task_list
+    logger.debug("save the ResultInfo to '%s'" % taskconf.task_list_datafile)
 
-def run_collector(task_list):
+    return conf.task_list
+
+def run_collector(taskconf):
     logger.info("Start collecting log from NE...")
-    for task in task_list:      
+    for task in taskconf.task_list:      
         task.collect_log()
 
-    return task_list
+    return conf.task_list
 
-def run_reporter(tasklist=None):
+def run_reporter(taskconf=None):
     """run reportor to output the report and data.
     """
     logger.info("Start generating report")
 
     try:
-        with open(TASK_LIST_DATAFILE[0], 'rb') as fp:
+        with open(taskconf.task_list_datafile, 'rb') as fp:
             tasklist = pickle.load(fp)
     except FileNotFoundError as err:
         logger.error(err)
@@ -62,11 +65,16 @@ def run_reporter(tasklist=None):
         print("".join(content))
 
 def init_task_list(confile):
+    """
+    """
     conf = read_task_conf(confile)
     conf.filename = confile
     #!!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
     checkitems = get_checkitems(checkers, conf.checkitem_namelist)
-    TASK_LIST_DATAFILE[0] = confile.replace("conf","data")
+    
+    if not hasattr(conf, 'task_list_datafile'):
+        conf.set('task_list_datafile', confile.replace("conf","data"))
+
 
     task_list = []
     ## 初始化每个网元的检查任务TaskControler
@@ -77,7 +85,9 @@ def init_task_list(confile):
         task.checkitem_list = checkitems
         task_list.append(task)    
 
-    return task_list
+    conf.set('task_list', task_list)
+
+    return conf
 
 def check_wrong_cmd(cmdlist, available_cmds):
     for cmd in cmdlist:
@@ -85,7 +95,7 @@ def check_wrong_cmd(cmdlist, available_cmds):
             raise ValueError("Wrong Command: '%s'" % cmd)
     return None
 
-def controler(task_list, command_list):
+def controler(taskconf, command_list):
     """根据命令行参数，执行相应的操作
     """
     opt_list = { "collect" : run_collector,
@@ -104,7 +114,7 @@ def controler(task_list, command_list):
         command_list = ['collect','parse','report']
 
     for cmd in command_list:
-        opt_list[cmd](task_list)
+        opt_list[cmd](taskconf)
     
     return 
 
@@ -115,9 +125,12 @@ if __name__ == "__main__":
         exit(1)
 
     confile, commandstr = sys.argv[1:]
-    task_list = init_task_list(confile)
+    conf = init_task_list(confile)
+
+    if hasattr(conf, 'log_level'):
+        logger.set_level(conf.log_level)
 
     command_list = commandstr.split(',')
 
-    controler(task_list, command_list)
+    controler(conf, command_list)
 
