@@ -35,7 +35,7 @@ class EZLogger(object):
            指定保存日志的文件路径，日志级别，以及调用文件
            将日志存入到指定的文件中
         '''
-        self.log_format = format or '%(asctime)s[%(levelname)s][%(name)s],%(message)s'
+        self.log_format = format or '%(asctime)s[%(levelname)s][%(name)s:%(lineno)s],%(message)s'
         self.level = level or logging.DEBUG
         self.datefmt = "%Y-%m-%d %H:%M:%S"
         # 创建一个logger

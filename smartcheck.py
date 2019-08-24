@@ -30,16 +30,18 @@ def _print_check_status(task):
 
 def run_parser(taskconf):
     logger.info("Start parsing the log...")
+
     for task in taskconf.task_list:
         task.parse_log()
         _print_check_status(task)
 
-    with open(taskconf.task_list_datafile, 'wb+') as fp:
+    _parser = taskconf.ParserConfig
+    with open(_parser.task_list_datafile, 'wb+') as fp:
         fp.write(pickle.dumps(taskconf.task_list))
 
-    logger.debug("save the ResultInfo to '%s'" % taskconf.task_list_datafile)
+    logger.debug("save the ResultInfo to '%s'" % _parser.task_list_datafile)
 
-    return conf.task_list
+    return taskconf.task_list
 
 def run_collector(taskconf):
     logger.info("Start collecting log from NE...")
@@ -48,40 +50,42 @@ def run_collector(taskconf):
 
     return conf.task_list
 
-def run_reporter(taskconf=None):
+def run_reporter(taskconf):
     """run reportor to output the report and data.
     """
     logger.info("Start generating report")
 
+    _parser = taskconf.ParserConfig
     try:
-        with open(taskconf.task_list_datafile, 'rb') as fp:
+        with open(_parser.task_list_datafile, 'rb') as fp:
             tasklist = pickle.load(fp)
     except FileNotFoundError as err:
         logger.error(err)
         return
 
     for task in tasklist:
-        content = task.report()
-        print("".join(content))
-
+        task.make_report(taskconf.ReporterConfig)
+        
 def init_task_list(confile):
     """
     """
     conf = read_task_conf(confile)
     conf.filename = confile
     #!!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
-    checkitems = get_checkitems(checkers, conf.checkitem_namelist)
+
+    parser = conf.ParserConfig
+    checkitems = get_checkitems(checkers, parser.checkitem_namelist)
     
-    if not hasattr(conf, 'task_list_datafile'):
-        conf.set('task_list_datafile', confile.replace("conf","data"))
+    if not hasattr(parser, 'task_list_datafile'):
+        parser.task_list_datafile = confile.replace("conf","data")
 
 
     task_list = []
     ## 初始化每个网元的检查任务TaskControler
-    for host in conf.ne_list:
-        task = CheckTask(name=conf.task_name, hostname=host, ne_type=conf.ne_type)
+    for host in conf.NeInfo.ne_list:
+        task = CheckTask(name=conf.task_name, hostname=host, ne_type=conf.NeInfo.ne_type)
         # 指定对应的log文件
-        task.logfile = get_logfile(host, conf.logfile_path)
+        task.logfile = get_logfile(host, conf.CollectorConfig.logfile_path)
         task.checkitem_list = checkitems
         task_list.append(task)    
 

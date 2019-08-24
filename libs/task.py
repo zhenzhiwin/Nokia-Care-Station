@@ -9,11 +9,13 @@ from .utils import read_task_conf, get_checkitems
 from .configreader import ConfigObject
 from .basechecker.resultinfo import ResultInfo
 from .basechecker.checkitem import exec_checkitem
-from .reporter import Reporter
+from .reporter import reporter_factory
 from .collector import Collector
 
+logger = logging.getLogger('task')
+
 class TaskControler(object):
-    """
+    """not implement
     """
     def __init__(self, confile, checker_module):
         conf = read_task_conf(confile)
@@ -93,11 +95,16 @@ class CheckTask(object):
 
         return self
 
-    def report(self, template=None):
+    def make_report(self, conf):
         """
         """
-        rpt = Reporter()
-        return rpt.make(self)
+        try:
+            rpt = reporter_factory(conf)
+            rpt.make(self)
+        except ValueError as err:
+            logger.error(err)
+
+        return None
 
     def info(self):
         return self.__dict__
