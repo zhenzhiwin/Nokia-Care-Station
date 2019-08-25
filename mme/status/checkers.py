@@ -148,7 +148,7 @@ class FlexinsS1Connect(BaseCheckItem):
         return results
 
 '''ZBMI'''
-class Flexins4guser(BaseCheckItem):
+class FlexinsUser4g(BaseCheckItem):
     """MME 4g user链路 状态信息
     输出MME 4g user 链路情况，链路状态。
     """

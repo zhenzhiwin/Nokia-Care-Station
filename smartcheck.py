@@ -22,7 +22,6 @@ from mme.status import checkers
 
 logger = EZLogger(level='INFO')
 
-TASK_LIST_DATAFILE = ["tasklist.data"]
 
 def _print_check_status(task):
     print(f"Executing:{task}")
