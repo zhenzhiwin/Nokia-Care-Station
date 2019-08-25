@@ -16,7 +16,8 @@ import sys
 import pickle
 
 from libs.task import TaskControler, CheckTask
-from libs.utils import get_logfile, get_checkitems, read_task_conf, EZLogger
+from libs.utils import get_logfile, get_checkitems, get_pickle_data
+from libs.utils import read_task_conf, EZLogger
 from mme.status import checkers
 
 logger = EZLogger(level='INFO')
@@ -55,12 +56,9 @@ def run_reporter(taskconf):
     logger.info("Start generating report")
 
     _parser = taskconf.ParserConfig
-    try:
-        with open(_parser.task_list_datafile, 'rb') as fp:
-            tasklist = pickle.load(fp)
-    except FileNotFoundError as err:
-        logger.error(err)
-        return
+
+    tasklist = get_pickle_data(_parser.task_list_datafile)
+
 
     for task in tasklist:
         task.make_report(taskconf.ReporterConfig)

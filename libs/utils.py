@@ -3,6 +3,7 @@
 """
 import os
 import logging
+import pickle
 
 from .configreader import ConfigObject
 
@@ -22,6 +23,18 @@ def get_checkitems(module, checkitem_namelist):
 
     return checkitems
 
+def get_pickle_data(datafile):
+    """read and return the tasklist info saved in pickle file.
+    return None if anything wrong.
+    """
+    try:
+        with open(datafile, 'rb') as fp:
+            tasklist = pickle.load(fp)
+    except FileNotFoundError as err:
+        logger.error(err)
+        return None
+
+    return tasklist
 
 class EZLogger(object):
     '''
