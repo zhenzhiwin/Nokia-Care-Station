@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from mme.status.views import FNS_unit_presentation, FNS_alarm_presentation, presentation
-from libs.utils import read_task_conf
+from smartcheck.utils import read_task_conf
 
 task_conf = read_task_conf('mme_task.conf')
 

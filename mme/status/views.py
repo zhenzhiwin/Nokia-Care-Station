@@ -2,8 +2,8 @@
 
 import os
 
-from libs.reportviews import BasePresentation
-from libs.utils import get_pickle_data
+from smartcheck.reportviews import BasePresentation
+from smartcheck.utils import get_pickle_data
 
 class FNS_unit_presentation(BasePresentation):
     """MME单元检查呈现类

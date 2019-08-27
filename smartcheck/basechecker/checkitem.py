@@ -10,7 +10,7 @@ import time
 import logging
 
 #from loguru import logger
-from libs.basechecker.logparser import FsmParser
+from .logparser import FsmParser
 
 logger = logging.getLogger('checkitem')
 

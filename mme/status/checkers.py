@@ -47,7 +47,7 @@ class FlexinsUnitStatus(BaseCheckItem):
 
 class FlexinsCpuloadStatus(BaseCheckItem):
     """MME单元CPU负荷检查
-    检查mme所有单元的CPU负荷，输出单元的负荷信息。如果有单元负荷大于25%，则输出Failed。
+    检查mme所有单元的CPU负荷，输出单元的负荷信息。如果有单元负荷大于checking_rules的规定，则输出Failed。
     data={'cpuload': {'mmdu-0': 10,'mmdu-1': 2}}
     """
     check_cmd = "ZDOI"
@@ -56,7 +56,7 @@ class FlexinsCpuloadStatus(BaseCheckItem):
 
     # 检查的规则和阀值（另外定义在单独的一个文件更合适）
     checking_rules = {
-        'cpuload': [25, 80, 90],
+        'cpuload': [60, 80, 90],
         }
 
     def check_status(self, logbuf):
