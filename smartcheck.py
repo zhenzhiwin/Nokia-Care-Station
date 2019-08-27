@@ -12,15 +12,16 @@ CLI Usage:
    smartcheck <check_task_config> <collect|parse|report>
 
 """
+import sys
 import pickle
 
 from smartcheck.task import TaskControler, CheckTask
-from smartcheck.utils import get_logfile, get_checkitems, read_task_conf, EZLogger
+from smartcheck.utils import get_logfile, get_checkitems, get_pickle_data
+from smartcheck.utils import read_task_conf, EZLogger
 from mme.status import checkers
 
-logger = EZLogger(level='DEBUG', logname="smartcheck")
+logger = EZLogger(level='INFO')
 
-TASK_LIST_DATAFILE = ["tasklist.data"]
 
 
 def _print_check_status(task):
@@ -28,60 +29,66 @@ def _print_check_status(task):
     print(f"Results: {task.results}")
 
 
-def run_parser(task_list):
+def run_parser(taskconf):
     logger.info("Start parsing the log...")
-    for task in task_list:
+
+    for task in taskconf.task_list:
         task.parse_log()
         _print_check_status(task)
 
-    with open(TASK_LIST_DATAFILE[0], 'wb+') as fp:
-        fp.write(pickle.dumps(task_list))
+    _parser = taskconf.ParserConfig
+    with open(_parser.task_list_datafile, 'wb+') as fp:
+        fp.write(pickle.dumps(taskconf.task_list))
 
-    return task_list
+    logger.debug("save the ResultInfo to '%s'" % _parser.task_list_datafile)
 
+    return taskconf.task_list
 
-def run_collector(task_list):
+def run_collector(taskconf):
     logger.info("Start collecting log from NE...")
-    for task in task_list:
+    for task in taskconf.task_list:      
         task.collect_log()
 
-    return task_list
+    return conf.task_list
 
-
-def run_reporter(tasklist=None):
+def run_reporter(taskconf):
     """run reportor to output the report and data.
     """
     logger.info("Start generating report")
 
-    try:
-        with open(TASK_LIST_DATAFILE[0], 'rb') as fp:
-            tasklist = pickle.load(fp)
-    except FileNotFoundError as err:
-        logger.error(err)
-        return
+    _parser = taskconf.ParserConfig
+
+    tasklist = get_pickle_data(_parser.task_list_datafile)
 
     for task in tasklist:
-        content = task.report()
-        print("".join(content))
-
-
+        task.make_report(taskconf.ReporterConfig)
+        
+        
 def init_task_list(confile):
+    """
+    """
     conf = read_task_conf(confile)
     conf.filename = confile
-    # !!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
-    checkitems = get_checkitems(checkers, conf.checkitem_namelist)
-    TASK_LIST_DATAFILE[0] = confile.replace("conf", "data")
+
+    #!!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
+    parser = conf.ParserConfig
+    checkitems = get_checkitems(checkers, parser.checkitem_namelist)
+    
+    if not hasattr(parser, 'task_list_datafile'):
+        parser.task_list_datafile = confile.replace("conf","data")
 
     task_list = []
     ## 初始化每个网元的检查任务TaskControler
-    for host in conf.ne_list:
-        task = CheckTask(name=conf.task_name, hostname=host, ne_type=conf.ne_type)
+    for host in conf.NeInfo.ne_list:
+        task = CheckTask(name=conf.task_name, hostname=host, ne_type=conf.NeInfo.ne_type)
         # 指定对应的log文件
-        task.logfile = get_logfile(host, conf.logfile_path)
+        task.logfile = get_logfile(host, conf.CollectorConfig.logfile_path)
         task.checkitem_list = checkitems
         task_list.append(task)
 
-    return task_list
+    conf.set('task_list', task_list)
+
+    return conf
 
 
 def check_wrong_cmd(cmdlist, available_cmds):
@@ -91,7 +98,7 @@ def check_wrong_cmd(cmdlist, available_cmds):
     return None
 
 
-def controler(task_list, command_list):
+def controler(taskconf, command_list):
     """根据命令行参数，执行相应的操作
     """
     opt_list = {"collect": run_collector,
@@ -110,9 +117,9 @@ def controler(task_list, command_list):
         command_list = ['collect', 'parse', 'report']
 
     for cmd in command_list:
-        opt_list[cmd](task_list)
-
-    return
+        opt_list[cmd](taskconf)
+    
+    return 
 
 
 if __name__ == "__main__":
@@ -123,8 +130,12 @@ if __name__ == "__main__":
         exit(1)
 
     confile, commandstr = sys.argv[1:]
-    task_list = init_task_list(confile)
+    conf = init_task_list(confile)
+
+    if hasattr(conf, 'log_level'):
+        logger.set_level(conf.log_level)
 
     command_list = commandstr.split(',')
 
-    controler(task_list, command_list)
+    controler(conf, command_list)
+

@@ -16,6 +16,7 @@ class ResultInfo(object):
     description:    检查结果的详细描述。如：检查mme所有单元的状态，统计出WO-EX和SP-EX的单元数量，以及异常单元的数量
     info:           有关检查结果的附加说明。
     error:          如果检查出错，相关的错误信息将存放在此
+    data:           保存log分析所提取的全部数据。
 
     """
 
@@ -28,6 +29,7 @@ class ResultInfo(object):
         self.data=None
         self.info = ''
         self.error = ''
+        self.data = None
 
     def to_json(self, indent=None):
         """translate the result data to json format.

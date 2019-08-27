@@ -6,8 +6,13 @@ BaseCheckItem   检查项的基类。所有具体的检查项都继承于这个�
 
 """
 import os
-from smartcheck.basechecker.logparser import FsmParser
+import time
+import logging
 
+#from loguru import logger
+from libs.basechecker.logparser import FsmParser
+
+logger = logging.getLogger('checkitem')
 
 def extract_textblock(logfile, start_mark, end_mark=None):
     """extract the text block from the logfile.
@@ -21,18 +26,24 @@ def extract_textblock(logfile, start_mark, end_mark=None):
         end_mark = start_mark
 
     buf = []
-    with open(logfile) as fp:
-        flag = False
-        for line in fp.readlines():
-            if line.startswith(start_mark):
-                # print("start mark found! {}".format(line))
-                flag = True
-                continue
-            if line.startswith(end_mark) and flag:
-                # print("end mark found! {}".format(line))
-                break
-            if flag:
-                buf.append(line)
+    try:
+        with open(logfile) as fp:
+            flag = False
+            for line in fp.readlines():
+                if line.startswith(start_mark):
+                    # print("start mark found! {}".format(line))
+                    flag = True
+                    continue
+                if line.startswith(end_mark) and flag:
+                    # print("end mark found! {}".format(line))
+                    break
+                if flag:
+                    buf.append(line)
+
+    except FileNotFoundError as err:
+        logger.error("FileNotFoundError: '%s', please check the task config file." % logfile)
+        raise FileNotFoundError
+    
     return buf
 
 
@@ -96,27 +107,6 @@ class BaseCheckItem(object):
 
     # def check_status(self):
     #     raise NotImplementError
-
-    def __repr__(self):
-        return self.__class__.__name__
-
-
-class BasePresentation(object):
-    """Base Class for Presentation
-    all the presentation should be the subClass of this.
-    """
-
-    def __init__(self):
-        self.abnormal_count = 0
-        self.data=[]
-        self.row_presentation = []
-        # self.init_info()
-        self.info = {}
-
-    # def init_info(self):
-    #     doclines = self.__doc__.split()
-    #     self.info['name'] = doclines[0]
-    #     self.info['description'] = "".join(doclines[1:])
 
     def __repr__(self):
         return self.__class__.__name__
