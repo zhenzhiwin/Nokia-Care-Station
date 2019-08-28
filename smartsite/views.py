@@ -11,6 +11,7 @@ def index(request):
 
     presentation(f_u_p, f_a_p, f_a_h, conf=task_conf)
 
+
     return render(request, 'index.html',
                   {'col': f_u_p.row_presentation,
                    'abc': f_u_p.abnormal_count,

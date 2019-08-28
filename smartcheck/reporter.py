@@ -64,7 +64,7 @@ class HtmlReporter(BaseReporter):
 
     def save_report(self, hostname, html, html_name):
         filename = html_name + hostname + '.html'
-        output_file = os.path.join(os.path.abspath('./templates'), filename)
+        output_file = os.path.join(conf.ReporterConfig.report_path, filename)
         with open(output_file, 'w+', encoding='utf8') as fp:
             fp.write(html)
 

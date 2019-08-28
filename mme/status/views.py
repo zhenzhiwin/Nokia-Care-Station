@@ -1,9 +1,7 @@
 #! coding: utf-8
-
-import os
-
 from smartcheck.reportviews import BasePresentation
 from smartcheck.utils import get_pickle_data
+from smtchk import init_task_list,controler
 
 
 class FNS_unit_presentation(BasePresentation):
@@ -102,4 +100,7 @@ def presentation(*args, **kwargs):
                 args[2].chart_data += r.hostname + str(w_c + c_c)
                 args[2].row_presentation.append(alarm_history)
     args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
+
+    # conf = init_task_list('mme_task.conf')
+    # controler(conf, ['parse','report'])
     return args
