@@ -1,18 +1,16 @@
 #! coding: utf-8
 
-import os
-import json
 import time
 import logging
 
 from .utils import read_task_conf, get_checkitems, get_logfile
 from .configreader import ConfigObject
-from .basechecker.resultinfo import ResultInfo
 from .basechecker.checkitem import exec_checkitem
 from .reporter import reporter_factory
 from .collector import Collector
 
 logger = logging.getLogger('task')
+
 
 class TaskControler(object):
     """not implement
@@ -101,8 +99,9 @@ class CheckTask(object):
         """
         """
         try:
-            rpt = reporter_factory(conf)
-            rpt.make(self)
+            rpt_list = reporter_factory(conf)
+            for rpt in rpt_list:
+                rpt.make(self)
         except ValueError as err:
             logger.error(err)
 

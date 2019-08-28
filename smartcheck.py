@@ -12,7 +12,6 @@ CLI Usage:
    smartcheck <check_task_config> <collect|parse|report>
 
 """
-import sys
 import pickle
 
 from smartcheck.task import TaskControler, CheckTask
@@ -21,7 +20,6 @@ from smartcheck.utils import read_task_conf, EZLogger
 from mme.status import checkers
 
 logger = EZLogger(level='INFO')
-
 
 
 def _print_check_status(task):
@@ -44,12 +42,14 @@ def run_parser(taskconf):
 
     return taskconf.task_list
 
+
 def run_collector(taskconf):
     logger.info("Start collecting log from NE...")
-    for task in taskconf.task_list:      
+    for task in taskconf.task_list:
         task.collect_log()
 
     return conf.task_list
+
 
 def run_reporter(taskconf):
     """run reportor to output the report and data.
@@ -62,20 +62,20 @@ def run_reporter(taskconf):
 
     for task in tasklist:
         task.make_report(taskconf.ReporterConfig)
-        
-        
+
+
 def init_task_list(confile):
     """
     """
     conf = read_task_conf(confile)
     conf.filename = confile
 
-    #!!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
+    # !!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
     parser = conf.ParserConfig
     checkitems = get_checkitems(checkers, parser.checkitem_namelist)
-    
+
     if not hasattr(parser, 'task_list_datafile'):
-        parser.task_list_datafile = confile.replace("conf","data")
+        parser.task_list_datafile = confile.replace("conf", "data")
 
     task_list = []
     ## 初始化每个网元的检查任务TaskControler
@@ -118,8 +118,8 @@ def controler(taskconf, command_list):
 
     for cmd in command_list:
         opt_list[cmd](taskconf)
-    
-    return 
+
+    return
 
 
 if __name__ == "__main__":
@@ -138,4 +138,3 @@ if __name__ == "__main__":
     command_list = commandstr.split(',')
 
     controler(conf, command_list)
-

@@ -26,6 +26,7 @@ def get_checkitems(module, checkitem_namelist):
 
     return checkitems
 
+
 def get_pickle_data(datafile):
     """read and return the tasklist info saved in pickle file.
     return None if anything wrong.
@@ -34,10 +35,11 @@ def get_pickle_data(datafile):
         with open(datafile, 'rb') as fp:
             tasklist = pickle.load(fp)
     except FileNotFoundError as err:
-        logger.error(err)
+        # logger.error(err)
         return None
 
     return tasklist
+
 
 class EZLogger(object):
     '''
@@ -45,7 +47,8 @@ class EZLogger(object):
 
     logger = EzLogger(loglevel=1, logger="fox",logfile='log.txt')
 
-    '''     
+    '''
+
     def __init__(self, level, logname=None, logfile=None, format=None):
         '''
            指定保存日志的文件路径，日志级别，以及调用文件
@@ -59,19 +62,18 @@ class EZLogger(object):
         self.logger.setLevel(self.level)
 
         # 定义handler的输出格式
-        #formatter = logging.Formatter(self.log_format)
-        
+        # formatter = logging.Formatter(self.log_format)
+
         # 创建一个handler，用于输出到控制台
         console = logging.StreamHandler()
         console.setLevel(logging.DEBUG)
         console.setFormatter(logging.Formatter(self.log_format, datefmt=self.datefmt))
         # 给logger添加handler
         self.logger.addHandler(console)
-        
 
         # 创建一个handler，用于写入日志文件
-        if logfile:
-            set_logfile(logfile)
+        # if logfile:
+        #     set_logfile(logfile)
 
     def set_level(self, loglevel, handler=None):
         if not handler:
@@ -82,7 +84,7 @@ class EZLogger(object):
     def set_format(self, logformat, datefmt=None):
         if not datefmt:
             datefmt = self.datefmt
-            
+
         console_handler = self.logger.handlers[0]
         console_handler.setFormat(logging.Formatter(logformat, datefmt=datefmt))
 

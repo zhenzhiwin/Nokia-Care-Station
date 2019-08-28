@@ -5,6 +5,7 @@ import os
 from smartcheck.reportviews import BasePresentation
 from smartcheck.utils import get_pickle_data
 
+
 class FNS_unit_presentation(BasePresentation):
     """MME单元检查呈现类
     继承BasePresentation
@@ -26,6 +27,7 @@ class FNS_alarm_presentation(BasePresentation):
         self.warning_level = []
         self.critical_level = []
         self.chart_data = ''
+
 
 def presentation(*args, **kwargs):
     i = 0
@@ -75,9 +77,8 @@ def presentation(*args, **kwargs):
                 alarm_statics.append(n_c)
                 alarm_statics.append(w_c)
                 alarm_statics.append(c_c)
-                args[1].chart_data += a['host'] + str(w_c+c_c)
+                args[1].chart_data += a['host'] + str(w_c + c_c)
                 args[1].row_presentation.append(alarm_statics)
-
 
             if r.name == 'MME历史告警':
                 alarm_history = []
@@ -98,9 +99,7 @@ def presentation(*args, **kwargs):
                 alarm_history.append(n_c)
                 alarm_history.append(w_c)
                 alarm_history.append(c_c)
-                args[2].chart_data += a['host'] + str(w_c+c_c)
+                args[2].chart_data += r.hostname + str(w_c + c_c)
                 args[2].row_presentation.append(alarm_history)
     args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
     return args
-
-

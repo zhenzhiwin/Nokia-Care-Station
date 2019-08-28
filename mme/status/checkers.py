@@ -1,15 +1,12 @@
 #! coding: utf8
 
 import os
-import json
-import time
-import logging
 
 from smartcheck.basechecker.checkitem import BaseCheckItem, exec_checkitem
 from smartcheck.basechecker.resultinfo import ResultInfo
 
-
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
+
 
 class FlexinsUnitStatus(BaseCheckItem):
     """MME单元状态检查
@@ -57,7 +54,7 @@ class FlexinsCpuloadStatus(BaseCheckItem):
     # 检查的规则和阀值（另外定义在单独的一个文件更合适）
     checking_rules = {
         'cpuload': [60, 80, 90],
-        }
+    }
 
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
@@ -159,6 +156,8 @@ class FlexinsS1Connect(BaseCheckItem):
 
 
 '''ZBMI'''
+
+
 class FlexinsUser4g(BaseCheckItem):
     """MME 4g user链路 状态信息
     输出MME 4g user 链路情况，链路状态。
@@ -239,4 +238,3 @@ class Flexinsstatuscode(BaseCheckItem):
             results.data = []
         # print(results.data)
         return results
-

@@ -7,7 +7,7 @@ class BasePresentation(object):
 
     def __init__(self):
         self.abnormal_count = 0
-        self.data=[]
+        self.data = []
         self.row_presentation = []
         # self.init_info()
         self.info = {}
