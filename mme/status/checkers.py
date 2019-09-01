@@ -7,6 +7,24 @@ from smartcheck.basechecker.resultinfo import ResultInfo
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 
+class TaskInfo(BaseCheckItem):
+    """TASKINFO
+    there basic info of the task.
+    """
+    check_cmd = "TASKINFO"
+    base_path = os.path.split(os.path.abspath(__file__))[0]
+    fsm_template_name = "taskinfo.fsm"
+
+    def check_status(self, logbuf=None):
+        data = self.fsm_parser.parse(logbuf=logbuf)
+        print(data)
+        if data:
+            self.info['status'] = "PASSED"
+
+        results = ResultInfo(**self.info)
+        results.data = data
+
+        return results
 
 class FlexinsUnitStatus(BaseCheckItem):
     """MME单元状态检查

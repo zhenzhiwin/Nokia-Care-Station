@@ -65,20 +65,22 @@ def run_reporter(taskconf):
 
 
 def init_task_list(confile):
-    """
+    """初始化检查项列表
     """
     conf = read_task_conf(confile)
     conf.filename = confile
 
-    # !!! 下面语句从checkers读入相关的检查项，不妥。需要优化，根据配置文件导入
     parser = conf.ParserConfig
+    # !!! 下面语句从导入的`checkers`模块中读入相关的检查项，不妥。需要优化，建议根据配置文件导入？
     checkitems = get_checkitems(checkers, parser.checkitem_namelist)
 
+    #如果分析配置里没有指定datafile，则将task配置文件的.conf改为data作为datafile文件名
     if not hasattr(parser, 'task_list_datafile'):
         parser.task_list_datafile = confile.replace("conf", "data")
 
+    #为每个网元生成一个CheckTask检查任务，放在task_list中
     task_list = []
-    ## 初始化每个网元的检查任务TaskControler
+    ## 初始化每个网元的检查项TaskControler
     for host in conf.NeInfo.ne_list:
         task = CheckTask(name=conf.task_name, hostname=host, ne_type=conf.NeInfo.ne_type)
         # 指定对应的log文件

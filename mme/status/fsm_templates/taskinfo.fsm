@@ -1,0 +1,8 @@
+#TextFSM template for TASKINFO
+#
+Value timestamp (.*)
+
+Start
+  ^timestamp:\s+${timestamp} -> Record
+
+#End of template

@@ -24,12 +24,12 @@ class ResultInfo(object):
         self.hostname = kwargs.get('hostname', '')
         self.name = kwargs.get('name', '')
         self.description = kwargs.get('description', '')
-        self.status = 'UNKNOWN'
-        self.stats=None
-        self.data=None
+        self.status = kwargs.get('status','UNKNOWN')
+        self.stats=kwargs.get('stats')
+        self.data=kwargs.get('data')
         self.info = ''
         self.error = ''
-        self.data = None
+        
 
     def to_json(self, indent=None):
         """translate the result data to json format.

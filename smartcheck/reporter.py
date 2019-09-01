@@ -24,6 +24,14 @@ class BaseReporter(object):
         if config:
             self.output_path = config.report_path
 
+    def get_taskinfo_obj(self, task):
+        """get the task basic info of the task.
+        """
+        for result in task.results:
+            if result.name == "TASKINFO":
+                return result.data
+        return None
+
     def make(self, task, tempalte=None):
         raise NotImplemented
 
@@ -31,6 +39,11 @@ class BaseReporter(object):
 class TextReporter(BaseReporter):
     def make(self, task):
         content = []
+        info_task = self.get_taskinfo_obj(task)
+        if not info_task:
+            info_task = [{'timestamp': 'unknown'}]
+
+        content.append("Timestamp: %(timestamp)s" % info_task[0])
         content.append("\n===== Result for host: %s =====" % task.hostname)
         for result in task.results:
             content.append("\n-- CheckItem: %s" % result.name)
