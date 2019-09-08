@@ -98,31 +98,31 @@ footer {
  ********************/
 @font-face{
   font-family: "CircularStd", sans-serif;
-  src:url(../../Assets/fonts/CircularStd-Bold.otf);
+  src:url(../fonts/CircularStd-Bold.otf);
   font-weight: 600;
   font-style: normal;
 }
 @font-face{
   font-family: "CircularStd", sans-serif;
-  src:url(../../Assets/fonts/CircularStd-BoldItalic.otf);
+  src:url(../fonts/CircularStd-BoldItalic.otf);
   font-weight: 600;
   font-style:italic;
 }
 @font-face{
   font-family: "CircularStd-Book", sans-serif;
-  src:url(../../Assets/fonts/CircularStd-Book.otf);
+  src:url(../fonts/CircularStd-Book.otf);
   font-weight:normal;
   font-style:normal;
 }
 @font-face{
   font-family: "CircularStd-Book", sans-serif;
-  src:url(../../Assets/fonts/CircularStd-BookItalic.otf);
+  src:url(../fonts/CircularStd-BookItalic.otf);
   font-weight:normal;
   font-style: italic;
 }
 @font-face{
   font-family: "StandardCT", sans-serif;
-  src:url(../../Assets/fonts/StandardCT-BoldCond.otf);
+  src:url(../fonts/StandardCT-BoldCond.otf);
   font-weight:600;
 }
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
@@ -777,7 +777,7 @@ ul.notifications > li > .more:hover, ul.notifications > li > .more:focus {
   text-align: center;
   color: #13d41c;
   background: rgba(49,233,153,.1);
-  padding: 6px 14px;
+  padding: 6px 10px;
 }
 .cancel {background: rgba(255,90,144,.1);
 	color: RED;}

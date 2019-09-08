@@ -35,9 +35,12 @@ def run_parser(taskconf):
         _print_check_status(task)
 
     _parser = taskconf.ParserConfig
-    with open(_parser.task_list_datafile, 'wb+') as fp:
+    with open(_parser.task_list_datafile+'/lastest.pointer','w+') as p:
+        p.write(_parser.task_list_datafile+'/data.'+taskconf.task_list[0].results[7].data[0]['timestamp'].replace(':',''))
+    with open(_parser.task_list_datafile+'/data.list','a+') as l:
+        l.write('\n'+ 'Record For '+taskconf.task_list[0].results[7].data[0]['timestamp'].replace(':',''))
+    with open(_parser.task_list_datafile+'/data.'+taskconf.task_list[0].results[7].data[0]['timestamp'].replace(':',''), 'wb+') as fp:
         fp.write(pickle.dumps(taskconf.task_list))
-
     logger.debug("save the ResultInfo to '%s'" % _parser.task_list_datafile)
 
     return taskconf.task_list
@@ -57,8 +60,8 @@ def run_reporter(taskconf):
     logger.info("Start generating report")
 
     _parser = taskconf.ParserConfig
-
-    tasklist = get_pickle_data(_parser.task_list_datafile)
+    with open(_parser.task_list_datafile+'/lastest.pointer','r') as datafile:
+        tasklist = get_pickle_data(datafile.read())
 
     for task in tasklist:
         task.make_report(taskconf.ReporterConfig)

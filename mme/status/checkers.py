@@ -17,7 +17,7 @@ class TaskInfo(BaseCheckItem):
 
     def check_status(self, logbuf=None):
         data = self.fsm_parser.parse(logbuf=logbuf)
-        print(data)
+        #print(data)
         if data:
             self.info['status'] = "PASSED"
 

@@ -48,7 +48,6 @@ class TextReporter(BaseReporter):
         for result in task.results:
             content.append("\n-- CheckItem: %s" % result.name)
             content.append("\n-- ResultInfo: {}".format(result.to_json(indent=2)))
-
         report_filename = os.path.join(self.output_path, 'text_report_%s.md' % task.hostname)
         with open(report_filename, 'w+') as fp:
             fp.writelines(content)
@@ -77,10 +76,9 @@ class HtmlReporter(BaseReporter):
 
     def save_report(self, hostname, html, html_name):
         filename = html_name + hostname + '.html'
-        output_file = os.path.join(conf.ReporterConfig.report_path, filename)
+        output_file = os.path.join(conf.ReporterConfig.html_path, filename)
         with open(output_file, 'w+', encoding='utf8') as fp:
             fp.write(html)
-
         return output_file
 
     def make_report(self, env, template_name, **kwargs):

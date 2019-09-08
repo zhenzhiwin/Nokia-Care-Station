@@ -6,7 +6,6 @@ BaseCheckItem   检查项的基类。所有具体的检查项都继承于这个�
 
 """
 import os
-import time
 import logging
 
 #from loguru import logger

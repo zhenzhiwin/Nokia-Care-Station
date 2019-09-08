@@ -11,16 +11,31 @@
     <!-- Bootstrap core CSS-->
     <link href="/static/css/bootstrap1.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin CSS-->
     <link href="/static/js/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="/static/css/style.css">
-
+    <link rel="stylesheet" href="/static/css/datepicker.css">
+    <style type="text/css">body {
+        zoom: 0.8;
+    }</style>
+    <style>
+        .mycontainer input {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+        }
+    </style>
 
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.min.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="#">MME历史告警信息</a>
@@ -53,7 +68,7 @@
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> 历史告警详情
+                <i class="fa fa-table"></i> 历史告警
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -63,7 +78,6 @@
                             <th>MME</th>
                             <th>告警发生单元</th>
                             <th>告警星级</th>
-                            <th>告警发生日期</th>
                             <th>告警发生时间</th>
                             <th>告警ID</th>
                             <th>告警描述</th>
@@ -73,8 +87,18 @@
                             <th>快速搜索</th>
                             <th><input name="key" type="text" onkeydown="search_unit(this)"/></th>
                             <th><input name="key" type="text" onkeydown="search_level(this)"/></th>
-                            <th><input name="key" type="text" onkeydown="search_date(this)"/></th>
-                            <th><input name="key" type="text" onkeydown="search_time(this)"/></th>
+                            <th>
+                                <div class="c-datepicker-date-editor J-datepicker-range-between30 mt10">
+                                    <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
+                                    <input placeholder="开始时间" name="starttime" id="starttime"
+                                           class="c-datepicker-data-input">
+                                    <span class="c-datepicker-range-separator">-</span>
+                                    <input placeholder="结束时间" name="endtime" id="endtime"
+                                           class="c-datepicker-data-input">
+                                    <button class="c-datepicker-data-button" onclick="search_time()" type="button">筛选
+                                    </button>
+                                </div>
+                            </th>
                             <th><input name="key" type="text" onkeydown="search_id(this)"/></th>
                             <th><input name="key" type="text" onkeydown="search_info(this)"/></th>
                             <th>不可达告警已转换为IP</th>
@@ -87,8 +111,7 @@
                                     <td>{{ u.host }}</td>
                                     <td>{{ u.unit }}</td>
                                     <td>{{ u.level }}</td>
-                                    <td>{{ u.date }}</td>
-                                    <td>{{ u.time }}</td>
+                                    <td>{{ u.datetime }}</td>
                                     <td>{{ u.alarmid }}</td>
                                     <td>{{ u.alarmtext }}</td>
                                     {% if u.alarmid == '3450' %}
@@ -142,6 +165,20 @@
     <!-- Page level plugin JavaScript-->
     <script src="/static/js/datatables/jquery.dataTables.js"></script>
     <script src="/static/js/datatables/dataTables.bootstrap4.js"></script>
+    <!-- <i class="c-datepicker-input__icon c-datepicker-range__close-icon"></i> -->
+    <script src="/static/js/date/plugins/moment.min.js"></script>
+    <!-- <script src="/static/js/date/datapicker-separate/api.js"></script>
+    <script src="/static/js/date/datapicker-separate/year.js"></script>
+    <script src="/static/js/date/datapicker-separate/month.js"></script>
+    <script src="/static/js/date/datapicker-separate/day.js"></script>
+    <script src="/static/js/date/datapicker-separate/time.js"></script>
+    <script src="/static/js/date/datapicker-separate/time-only-time.js"></script>
+    <script src="/static/js/date/datapicker-separate/datepicker.js"></script>
+    <script src="/static/js/date/datapicker-separate/datepicker-only-time.js"></script> -->
+    <script src="/static/js/date/datepicker.all.js"></script>
+    <!-- <script src="js/datepicker.all.min.js"></script> -->
+    <script src="/static/js/date/datepicker.en.js"></script>
+    <script type="text/javascript" src="/static/js/alarm_date.js"></script>
 </div>
 </body>
 
