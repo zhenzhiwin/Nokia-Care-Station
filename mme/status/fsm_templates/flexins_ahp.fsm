@@ -7,7 +7,7 @@ Value level (\*+)
 Value datetime (\d+-\d+-\d+\s+\d+:\d+:\d+)
 Value alarmid (\d+)
 Value alarmtext ([\w\s]+)
-Value hexinfo ([\d\w\s]+)
+Value hexinfo (.*)
 
 Start
   ^ALARM HISTORY

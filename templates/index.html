@@ -28,6 +28,9 @@
 
     <!--style.css-->
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/alarm_tab.css">
+
+    {#    <link rel="stylesheet" href="/static/css/alarm_tab.css.css">#}
 
     <style type="text/css">body {
         zoom: 0.9;
@@ -70,6 +73,7 @@
 </head>
 
 <body>
+
 <!-- wrapper -->
 <div id="wrapper">
 
@@ -253,11 +257,52 @@
                             </div><!--/.profile-state-->
                         </div><!--/.col-->
                     </div><!--/.row-->
-
                 </div><!--/.profile-content-->
-
+                <div id="alarm" class="row">
+                    <div class="box-head">
+                        <h2>MME告警汇总</h2>
+                    </div><!--/.box-head-->
+                    <div class="col-sm-10 col-md-12">
+                        <div class="tab" role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                {% for ne in al_stat.ne_list %}
+                                    {% if forloop.first %}
+                                        <li role="presentation" class="active"><a href="#{{ ne }}"
+                                                                                  aria-controls="home"
+                                                                                  role="tab" data-toggle="tab"><i
+                                                class="fa fa-globe"></i><span>{{ ne }}</span></a></li>
+                                    {% else %}
+                                        <li role="presentation"><a href="#{{ ne }}" aria-controls="profile" role="tab"
+                                                                   data-toggle="tab"><i
+                                                class="fa fa-globe"></i><span>{{ ne }}</span></a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content tabs">
+                                {% for smr in al_stat.summary %}
+                                    {% for ne,summary in smr.items %}
+                                        {% if forloop.parentloop.first %}
+                                            <div role="tabpanel" class="tab-pane fade in active" id="{{ ne }}">
+                                                <h3>{{ ne }}</h3>
+                                                {% for s in summary %} <p>{{ s }}</p>{% endfor %}
+                                            </div>
+                                        {% else %}
+                                            <div role="tabpanel" class="tab-pane fade" id="{{ ne }}">
+                                                <h3>{{ ne }}</h3>
+                                                {% for s in summary %}<p>{{ s }}</p>{% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-10">
                         <div class="box">
                             <div class="box-head">
                                 <h2>MME单元状态</h2>
@@ -308,7 +353,7 @@
                         </div><!--/.box-->
                     </div><!--/.col-->
                 </div><!--/.row-->
-                <div id="alarm" class="row">
+                <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="box">
                             <div class="box-head">

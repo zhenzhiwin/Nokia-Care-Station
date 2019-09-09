@@ -62,10 +62,8 @@ class HtmlReporter(BaseReporter):
         env = Environment(loader=FileSystemLoader(os.path.abspath('./mme/status/html_templates')))
         unit_html = self.make_report(env, 'mme_report.html', task=task, hostlist=conf.NeInfo.ne_list,
                                      u_con_list=range(0, 11))
-        alarm_html = self.make_report(env, 'alarms_report.html', task=task, hostlist=conf.NeInfo.ne_list,
-                                      u_con_list=range(0, 11))
-        alarmhist_html = self.make_report(env, 'alarmhist_report.html', task=task, hostlist=conf.NeInfo.ne_list,
-                                          u_con_list=range(0, 11))
+        alarm_html = self.make_report(env, 'alarms_report.html', task=task, hostlist=conf.NeInfo.ne_list)
+        alarmhist_html = self.make_report(env, 'alarmhist_report.html', task=task, hostlist=conf.NeInfo.ne_list)
         if len(unit_html) > 0:
             self.save_report(task.hostname, unit_html, 'mme_report_')
             # print("report was saved to %s" % saved_filename)
@@ -84,7 +82,6 @@ class HtmlReporter(BaseReporter):
     def make_report(self, env, template_name, **kwargs):
         tmpl = env.get_template(template_name)
         html = tmpl.render(**kwargs)
-
         return html
 
     def reformat_data(self, data):
