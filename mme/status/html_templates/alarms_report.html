@@ -16,6 +16,8 @@
     <link href="/static/js/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="/static/css/style.css">
+    <link  rel="stylesheet" href="/static/css/navistyle.css">
+
     <link rel="stylesheet" href="/static/css/datepicker.css">
     <style type="text/css">body {
         zoom: 0.8;
@@ -41,10 +43,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="#">MME当前告警统计</a>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="menu">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"><span> &nbsp;&nbsp;&nbsp;&nbsp;请选择MME</span></a>
-                <ul class="dropdown-menu">
+                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"><span>请选择MME</span></a>
+                <ul>
                     {% for host in hostlist %}
                         <li><a href="alarms_report_{{ host }}.html"><span class="dropdown">{{ host }}</span></a>
                         </li>
