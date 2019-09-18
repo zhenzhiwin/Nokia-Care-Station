@@ -226,6 +226,7 @@ def history_presentation(*args, **kwargs):
     # print(task_list[0].results[7].data[0]['timestamp'])
     for task in tasklist:
         if_stats = []
+        gr_flag_per_mme=True
         for r in task.results:
             if r.name == 'MME单元状态检查':
                 unit_statics.append(conf.NeInfo.ne_list[i])
@@ -296,28 +297,28 @@ def history_presentation(*args, **kwargs):
                 for stats in r.data:
                     if stats['linkstatus'] != 'UP' or stats['mode'] != 'WORKING':
                         status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
+                        args[5].abnormal_count = args[5].abnormal_count + 1
                 if_stats.append(status_per_mme)
             if r.name == 'MMESLS状态检查':
                 status_per_mme = True
                 for stats in r.data:
                     if stats['STATE'] != 'UP' or stats['S_STATE'] != 'UP':
                         status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
+                        args[5].abnormal_count = args[5].abnormal_count + 1
                 if_stats.append(status_per_mme)
             if r.name == 'MMESZ状态检查':
                 status_per_mme = True
                 for stats in r.data:
                     if stats['STATUS'] != 'CONNECTED':
                         status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
+                        args[5].abnormal_count = args[5].abnormal_count + 1
                 if_stats.append(status_per_mme)
             if r.name == 'MMES6A/SLG状态检查':
                 status_per_mme = True
                 for stats in r.data:
                     if stats['CONN_STATUS'] != 'CONNECTED':
                         status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
+                        args[5].abnormal_count = args[5].abnormal_count + 1
                 if_stats.append(status_per_mme)
             if r.name == 'MMEGA状态信息':
                 status_per_mme = True
@@ -325,15 +326,19 @@ def history_presentation(*args, **kwargs):
                     if (stats['adminstate'] != '1 UNLOCKED' or stats['operstatus'] != '1 OPERATIONAL') and stats[
                         'adminstate'] != '':
                         status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
+                        args[5].abnormal_count = args[5].abnormal_count + 1
                 if_stats.append(status_per_mme)
             if r.name == 'MMEGr状态信息':
-                status_per_mme = True
                 for stats in r.data:
                     if stats['LINKSTATE'] != 'AV-EX':
-                        status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
-                if_stats.append(status_per_mme)
+                        gr_flag_per_mme = False
+                        args[5].abnormal_count = args[5].abnormal_count + 1
+            if r.name == 'MMEGrsub状态信息':
+                for stats in r.data:
+                    if stats['STATE'] != 'AV' or stats['STATE_LSTP'] != 'AV-EX':
+                        gr_flag_per_mme = False
+                        args[5].abnormal_count = args[5].abnormal_count + 1
+                if_stats.append(gr_flag_per_mme)
         if_stats.insert(0, task.hostname)
-        args[4].row_presentation.append(if_stats)
+        args[5].row_presentation.append(if_stats)
     args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
