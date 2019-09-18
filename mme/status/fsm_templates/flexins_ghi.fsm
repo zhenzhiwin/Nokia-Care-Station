@@ -15,14 +15,16 @@
 #      235  POSTPAID PACKETS WAITING FOR TRANSMISSION
 #       72  PREPAID PACKETS WAITING FOR TRANSMISSION
 #
-Value index (\d+)
-Value adminstate (\d+\s+\S+)
-Value operstatus (\d+\s+\S+)
-Value ipaddress (\S+)
-Value postpaid (\d+)
-Value prepaid (\d+)
+Value Required,Filldown hostname (HZMM\S+)
+Value Required index (\d+)
+Value Required adminstate (\d+\s+\S+)
+Value Required operstatus (\d+\s+\S+)
+Value Required ipaddress (\S+)
+Value Required postpaid (\d+)
+Value Required prepaid (\d+)
 
 Start
+  ^${hostname}
   ^INDEX:\s+${index}
   ^\s+ADMIN\s+STATE:\s+${adminstate}
   ^\s+OPER\s+STATUS:\s+${operstatus}

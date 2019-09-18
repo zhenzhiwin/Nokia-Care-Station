@@ -1,0 +1,24 @@
+#TextFSM template for parsing the output of command: `ZBIU:INTBS`
+# Example:
+#
+#===ZBIU:INTBS::;===
+#HZMME45BNK
+#LOADING PROGRAM VERSION 8.6-0
+#
+#    BACKUP SERVER IN MME
+#
+#        PASSWORD          IP ADDR        PORT        STATUS
+#    ----------------  --------------- ----------  ------------
+#           -          10.212.205.206     9700      CONNECTED
+#
+Value Required,Filldown hostname (HZMM\S+)
+Value Required PASSWORD (\S+)
+Value Required IP_ADDR (\S+)
+Value Required PORT (97\d+)
+Value Required STATUS (\S+)
+
+Start
+  ^${hostname}
+  ^\s+${PASSWORD}\s+${IP_ADDR}\s+${PORT}\s+${STATUS} -> Record
+
+#End of template

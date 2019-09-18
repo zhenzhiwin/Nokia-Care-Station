@@ -166,19 +166,18 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="if_report_HZMME45BNK.html">
                             <i data-feather="file-text"></i> <span>接口状态</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i data-feather="grid"></i> <span>具体场景预警</span>
                         </a>
                     </li>
                     <li>
                         <a href="home.html" onclick="waitforsmartcheck()">
                             <i data-feather="grid"></i> <span>刷新数据</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i data-feather="grid"></i> <span>具体场景预警</span>
                         </a>
                     </li>
                     <li>
@@ -210,7 +209,7 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="profile-state">
-                                <div id="unis_static" class="icon-box">
+                                <div class="icon-box">
 								<span class="icon-bg icon-bg-1">
 									<img src="/static/images/info.png" alt="user-icon">
 								</span>
@@ -235,6 +234,18 @@
                         <div class="col-sm-3">
                             <div class="profile-state">
                                 <div class="icon-box">
+								<span class="icon-bg icon-bg-4">
+									<img src="/static/images/info.png" alt="deliver-icon">
+								</span>
+                                    <h2>各业务接口状态</h2>
+                                </div><!--/.icon-box-->
+                                <h3>各接口状态正常</h3>
+                                <p style="color:red;">目前有{{ if_p.abnormal_count }}个接口状态异常</p>
+                            </div><!--/.profile-state-->
+                        </div><!--/.col-->
+                        <div class="col-sm-3">
+                            <div class="profile-state">
+                                <div class="icon-box">
 								<span class="icon-bg icon-bg-3">
 									<img src="/static/images/info.png" alt="money-icon">
 								</span>
@@ -242,18 +253,6 @@
                                 </div><!--/.icon-box-->
                                 <h3>业务状态正常</h3>
                                 <p>暂无异常业务</p>
-                            </div><!--/.profile-state-->
-                        </div><!--/.col-->
-                        <div class="col-sm-3">
-                            <div class="profile-state">
-                                <div class="icon-box">
-								<span class="icon-bg icon-bg-4">
-									<img src="/static/images/info.png" alt="deliver-icon">
-								</span>
-                                    <h2>各业务接口状态</h2>
-                                </div><!--/.icon-box-->
-                                <h3>各接口状态正常</h3>
-                                <p>目前有0个接口状态异常</p>
                             </div><!--/.profile-state-->
                         </div><!--/.col-->
                     </div><!--/.row-->
@@ -301,8 +300,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-10">
+                <div class="row" id="unis_static">
+                    <div class="col-md-6 col-sm-4">
                         <div class="box">
                             <div class="box-head">
                                 <h2>MME单元状态</h2>
@@ -313,10 +312,10 @@
                                         <thead>
                                         <tr>
                                             <th>网元名称</th>
-                                            <th>WO-EX单元数量</th>
-                                            <th>SP-EX单元数量</th>
-                                            <th>异常单元数量</th>
-                                            <th>负荷较高单元数量</th>
+                                            <th>WO-EX单元</th>
+                                            <th>SP-EX单元</th>
+                                            <th>异常单元</th>
+                                            <th>负荷较高单元</th>
                                             <th>当前检查</th>
                                         </tr>
                                         </thead><!--/thead-->
@@ -324,7 +323,6 @@
                                         {% for row in col %}
                                             <tr>
                                                 {% for data in row %}
-
                                                     {% if forloop.last %}
                                                         {% if row.5 %}
                                                             <td>
@@ -347,6 +345,50 @@
                                                 {{ "-->" }}
                                             </tr>
                                         {% endfor %}</tbody><!--/tbody-->
+                                    </table><!--/.table-->
+                                </div><!--/.table-responsive-->
+                            </div><!--/.item-->
+                        </div><!--/.box-->
+                    </div><!--/.col-->
+                    <div class="col-md-6 col-sm-4">
+                        <div class="box">
+                            <div class="box-head">
+                                <h2>MME接口状态</h2>
+                            </div><!--/.box-head-->
+                            <div class="item">
+                                <div class="item-responsive ">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>网元名称</th>
+                                            <th>SGS接口</th>
+                                            <th>S6A接口</th>
+                                            <th>GA接口</th>
+                                            <th>GR接口</th>
+                                            <th>SZ接口</th>
+                                            <th>SLS接口</th>
+                                        </tr>
+                                        </thead><!--/thead-->
+                                        <tbody>
+                                        {% for if in if_p.row_presentation %}
+                                            <tr>
+                                                {% for ifs in if %}
+                                                    {% if forloop.first %}
+                                                        <td><a href="if_report_{{ ifs }}.html"
+                                                               target="_blank"><span>{{ ifs }}</span></a></td>
+                                                    {% else %}
+                                                        {% if ifs %}
+                                                            <td>
+                                                                <span class="item-status delivered">OK</span>
+                                                            </td>
+                                                        {% else %}
+                                                            <td><span class="item-status cancel">NOK</span></td>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody><!--/tbody-->
                                     </table><!--/.table-->
                                 </div><!--/.table-responsive-->
                             </div><!--/.item-->
@@ -449,24 +491,24 @@
 
 
                 </div><!--/.row-->
-{#                <div class="col-sm-4">#}
-{#                    <div class="box">#}
-{#                        <div class="box-head">#}
-{#                            <h2>告警类型统计</h2>#}
-{#                        </div><!--/.box-head-->#}
-{#                        <div class="item">#}
-{#                            <div id="product_status" class="ct-chart"></div>#}
-{#                            <div class="statistics-data">#}
-{#                                <div class="stat-income pl0">#}
-{#                                    <p><span class="income-dot ps-dot1"></span>一般告警</p>#}
-{#                                    <p class="ml10"><span class="income-dot ps-dot2"></span>重要告警</p>#}
-{#                                    <p class="ml10"><span class="income-dot ps-dot3"></span>严重告警</p>#}
-{#                                    <p><span class="income-dot ps-dot4"></span>已消除告警</p>#}
-{#                                </div><!--/.stat-income-->#}
-{#                            </div><!--/.statistics-data-->#}
-{#                        </div><!--/.item-->#}
-{#                    </div><!--/.box-->#}
-{#                </div><!--/.col-->#}
+                {#                <div class="col-sm-4">#}
+                {#                    <div class="box">#}
+                {#                        <div class="box-head">#}
+                {#                            <h2>告警类型统计</h2>#}
+                {#                        </div><!--/.box-head-->#}
+                {#                        <div class="item">#}
+                {#                            <div id="product_status" class="ct-chart"></div>#}
+                {#                            <div class="statistics-data">#}
+                {#                                <div class="stat-income pl0">#}
+                {#                                    <p><span class="income-dot ps-dot1"></span>一般告警</p>#}
+                {#                                    <p class="ml10"><span class="income-dot ps-dot2"></span>重要告警</p>#}
+                {#                                    <p class="ml10"><span class="income-dot ps-dot3"></span>严重告警</p>#}
+                {#                                    <p><span class="income-dot ps-dot4"></span>已消除告警</p>#}
+                {#                                </div><!--/.stat-income-->#}
+                {#                            </div><!--/.statistics-data-->#}
+                {#                        </div><!--/.item-->#}
+                {#                    </div><!--/.box-->#}
+                {#                </div><!--/.col-->#}
                 <!--<div class="row">
                     <div class="col-sm-12">
                         <div class="box">

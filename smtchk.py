@@ -35,11 +35,16 @@ def run_parser(taskconf):
         _print_check_status(task)
 
     _parser = taskconf.ParserConfig
+    timestamp=''
+    for rs in taskconf.task_list[0].results:
+        if rs.name=='TASKINFO':
+            timestamp=rs.data[0]['timestamp'].replace(':','')
+            break
     with open(_parser.task_list_datafile+'/lastest.pointer','w+') as p:
-        p.write(_parser.task_list_datafile+'/data.'+taskconf.task_list[0].results[7].data[0]['timestamp'].replace(':',''))
+        p.write(_parser.task_list_datafile+'/data.'+timestamp)
     with open(_parser.task_list_datafile+'/data.list','a+') as l:
-        l.write('\n'+ 'Record For '+taskconf.task_list[0].results[7].data[0]['timestamp'].replace(':',''))
-    with open(_parser.task_list_datafile+'/data.'+taskconf.task_list[0].results[7].data[0]['timestamp'].replace(':',''), 'wb+') as fp:
+        l.write('\n'+ 'Record For '+timestamp)
+    with open(_parser.task_list_datafile+'/data.'+timestamp, 'wb+') as fp:
         fp.write(pickle.dumps(taskconf.task_list))
     logger.debug("save the ResultInfo to '%s'" % _parser.task_list_datafile)
 

@@ -1,4 +1,4 @@
-#TextFSM template for parsing the output of command: `USI`
+#TextFSM template for parsing the output of command: `BIV:INT`
 # Example:
 #
 #PROCESSOR TIME USAGE
@@ -15,13 +15,15 @@
 #    10        NBOGS19      UP            WORKING      -
 #    18        NBOGS17      UP            WORKING      -
 #
-Value vlrid (\d+)
-Value vlrname (\w+GS\d+)
-Value linkstatus (\S+)
-Value mode (\S+)
-Value status (\S+)
+Value Required,Filldown hostname (HZMM\S+)
+Value Required vlrid (\d+)
+Value Required vlrname (\w+GS\d+)
+Value Required linkstatus (\S+)
+Value Required mode (\S+)
+Value Required status (\S+)
 
 Start
+  ^${hostname}
   ^\s+VLRs
   ^\s+${vlrid}\s+${vlrname}\s+${linkstatus}\s+${mode}\s+${status} -> Record
   

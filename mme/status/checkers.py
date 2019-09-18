@@ -7,6 +7,7 @@ from smartcheck.basechecker.resultinfo import ResultInfo
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 
+
 class TaskInfo(BaseCheckItem):
     """TASKINFO
     there basic info of the task.
@@ -17,7 +18,7 @@ class TaskInfo(BaseCheckItem):
 
     def check_status(self, logbuf=None):
         data = self.fsm_parser.parse(logbuf=logbuf)
-        #print(data)
+        # print(data)
         if data:
             self.info['status'] = "PASSED"
 
@@ -25,6 +26,7 @@ class TaskInfo(BaseCheckItem):
         results.data = data
 
         return results
+
 
 class FlexinsUnitStatus(BaseCheckItem):
     """MME单元状态检查
@@ -133,7 +135,7 @@ class FlexinsAlarmHistory(BaseCheckItem):
 
 
 class FlexinsSgsStatus(BaseCheckItem):
-    """MME SGS链路 状态信息
+    """MMESGS状态检查
     输出MME SGS 链路情况，链路状态。
     """
     check_cmd = "ZBIV:INT"
@@ -151,16 +153,13 @@ class FlexinsSgsStatus(BaseCheckItem):
         return results
 
 
-'''ZB6I::RT=SUM'''
-
-
-class FlexinsS1Connect(BaseCheckItem):
-    """MME S1链路 连接ENB数和断站数
-    输出MME S1 连接数。
+class FlexinsSlsStatus(BaseCheckItem):
+    """MMESLS状态检查
+    输出MME SLS 链路情况，链路状态。
     """
-    check_cmd = "ZB6I::RT=SUM"
+    check_cmd = "ZBIS:INT"
     base_path = os.path.split(os.path.abspath(__file__))[0]
-    fsm_template_name = "flexins_b6i.fsm"
+    fsm_template_name = "flexins_bis.fsm"
 
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
@@ -173,16 +172,13 @@ class FlexinsS1Connect(BaseCheckItem):
         return results
 
 
-'''ZBMI'''
-
-
-class FlexinsUser4g(BaseCheckItem):
-    """MME 4g user链路 状态信息
-    输出MME 4g user 链路情况，链路状态。
+class FlexinsSzStatus(BaseCheckItem):
+    """MMESZ状态检查
+    输出MME SZ 链路情况，链路状态。
     """
-    check_cmd = "ZBMI"
+    check_cmd = "ZBIU:INTBS"
     base_path = os.path.split(os.path.abspath(__file__))[0]
-    fsm_template_name = "flexins_bmi.fsm"
+    fsm_template_name = "flexins_biu.fsm"
 
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
@@ -191,15 +187,78 @@ class FlexinsUser4g(BaseCheckItem):
             results.data = self.status_data
         else:
             results.data = []
-        # print(results.data)
+
         return results
+
+
+class FlexinsS6aStatus(BaseCheckItem):
+    """MMES6A/SLG状态检查
+    输出MME S6A/SLG 链路情况，链路状态。
+    """
+    check_cmd = "ZOHI"
+    base_path = os.path.split(os.path.abspath(__file__))[0]
+    fsm_template_name = "flexins_ohi.fsm"
+
+    def check_status(self, logbuf):
+        self.status_data = self.fsm_parser.parse(logbuf=logbuf)
+        results = ResultInfo(**self.info)
+        if self.status_data:
+            results.data = self.status_data
+        else:
+            results.data = []
+
+        return results
+
+
+# '''ZB6I::RT=SUM'''
+#
+#
+# class FlexinsS1Connect(BaseCheckItem):
+#     """MME S1链路 连接ENB数和断站数
+#     输出MME S1 连接数。
+#     """
+#     check_cmd = "ZB6I::RT=SUM"
+#     base_path = os.path.split(os.path.abspath(__file__))[0]
+#     fsm_template_name = "flexins_b6i.fsm"
+#
+#     def check_status(self, logbuf):
+#         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
+#         results = ResultInfo(**self.info)
+#         if self.status_data:
+#             results.data = self.status_data
+#         else:
+#             results.data = []
+#
+#         return results
+
+
+# '''ZBMI'''
+
+
+# class FlexinsUser4g(BaseCheckItem):
+#     """MME 4g user链路 状态信息
+#     输出MME 4g user 链路情况，链路状态。
+#     """
+#     check_cmd = "ZBMI"
+#     base_path = os.path.split(os.path.abspath(__file__))[0]
+#     fsm_template_name = "flexins_bmi.fsm"
+#
+#     def check_status(self, logbuf):
+#         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
+#         results = ResultInfo(**self.info)
+#         if self.status_data:
+#             results.data = self.status_data
+#         else:
+#             results.data = []
+#         # print(results.data)
+#         return results
 
 
 '''ZGHI'''
 
 
 class Flexinsgacdr(BaseCheckItem):
-    """MME 与CG国漫话单链路 状态信息
+    """MMEGA状态信息
     输出MME 与CG国漫话单 链路情况，链路状态。
     """
     check_cmd = "ZGHI"
@@ -217,9 +276,9 @@ class Flexinsgacdr(BaseCheckItem):
         return results
 
 
-class Flexinssgwlink(BaseCheckItem):
-    """MME 与SGW 链路 状态信息
-    输出MME 与SGW 链路状态。
+class FlexinsGrlink(BaseCheckItem):
+    """MMEGr状态信息
+    输出MMEGr链路状态。
     """
     check_cmd = "ZNLI"
     base_path = os.path.split(os.path.abspath(__file__))[0]
@@ -235,17 +294,13 @@ class Flexinssgwlink(BaseCheckItem):
         # print(results.data)
         return results
 
-
-'''ZW7I'''
-
-
-class Flexinsstatuscode(BaseCheckItem):
-    """MME 直接查询code对应的 信息
-    输出MME 直接查询code对应的 信息
+class FlexinsGrsublink(BaseCheckItem):
+    """MMEGrsub状态信息
+    输出MMEGr子系统链路状态。
     """
-    check_cmd = "ZW7I:UCAP"
+    check_cmd = "ZNHI"
     base_path = os.path.split(os.path.abspath(__file__))[0]
-    fsm_template_name = "flexins_w7i.fsm"
+    fsm_template_name = "flexins_nhi.fsm"
 
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
@@ -256,3 +311,23 @@ class Flexinsstatuscode(BaseCheckItem):
             results.data = []
         # print(results.data)
         return results
+# '''ZW7I'''
+#
+#
+# class Flexinsstatuscode(BaseCheckItem):
+#     """MME 直接查询code对应的 信息
+#     输出MME 直接查询code对应的 信息
+#     """
+#     check_cmd = "ZW7I:UCAP"
+#     base_path = os.path.split(os.path.abspath(__file__))[0]
+#     fsm_template_name = "flexins_w7i.fsm"
+#
+#     def check_status(self, logbuf):
+#         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
+#         results = ResultInfo(**self.info)
+#         if self.status_data:
+#             results.data = self.status_data
+#         else:
+#             results.data = []
+#         # print(results.data)
+#         return results

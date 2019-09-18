@@ -26,5 +26,6 @@ urlpatterns = [
     re_path(r'mme_report_HZMME\d+BNK.html', views.unit_statics),
     re_path(r'alarms_report_HZMME\d+BNK.html', views.alarm_statics),
     re_path(r'alarmhist_report_HZMME\d+BNK.html', views.alarmhist_stat),
+    re_path(r'if_report_HZMME\d+BNK.html', views.if_stat),
     re_path(r'datafile_.+.html', views.datafile_selection)
 ]

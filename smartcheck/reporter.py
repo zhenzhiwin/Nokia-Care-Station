@@ -64,6 +64,7 @@ class HtmlReporter(BaseReporter):
                                      u_con_list=range(0, 11))
         alarm_html = self.make_report(env, 'alarms_report.html', task=task, hostlist=conf.NeInfo.ne_list)
         alarmhist_html = self.make_report(env, 'alarmhist_report.html', task=task, hostlist=conf.NeInfo.ne_list)
+        if_html = self.make_report(env, 'if_report.html', task=task, hostlist=conf.NeInfo.ne_list)
         if len(unit_html) > 0:
             self.save_report(task.hostname, unit_html, 'mme_report_')
             # print("report was saved to %s" % saved_filename)
@@ -71,6 +72,8 @@ class HtmlReporter(BaseReporter):
             self.save_report(task.hostname, alarm_html, 'alarms_report_')
         if len(alarmhist_html) > 0:
             self.save_report(task.hostname, alarmhist_html, 'alarmhist_report_')
+        if len(if_html) > 0:
+            self.save_report(task.hostname, if_html, 'if_report_')
 
     def save_report(self, hostname, html, html_name):
         filename = html_name + hostname + '.html'

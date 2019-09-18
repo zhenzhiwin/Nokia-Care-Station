@@ -7,13 +7,15 @@
 #    0      16 SGW46                 0         AV-EX
 #    1      19 SGW47                 1         AV-EX
 #
-Value M3UALINK (\d+)
-Value LINK (\d+)
-Value SET (\w+GW\d+)
-Value ASSOCIATIONSET (\S+)
-Value LINKSTATE (\S+)
+Value Required,Filldown hostname (HZMM\S+)
+Value Required M3UALINK (\d+)
+Value Required LINK (\d+)
+Value Required SET (\w+\d+)
+Value Required ASSOCIATIONSET (\S+)
+Value Required LINKSTATE (\S+)
 
 Start
+  ^${hostname}
   ^\s+M3UA
   ^\s+${M3UALINK}\s+${LINK}\s+${SET}\s+${ASSOCIATIONSET}\s+${LINKSTATE} -> Record
   

@@ -1,0 +1,24 @@
+#TextFSM template for parsing the output of command: `BIS:INT`
+# Example:
+#===ZBIS:INT::;===
+#HZMME45BNK
+#LOADING PROGRAM VERSION 8.6-0
+#
+#    E-SMLC NAME  PRIMARY ADDR     STATE    SECONDARY ADDR   STATE
+#    -----------  ---------------  -------  ---------------  -------
+#    SLS01        10.77.15.1       UP       10.77.15.129     UP
+#    SLS02        10.77.15.2       UP       10.77.15.130     UP
+#
+Value Required,Filldown hostname (HZMM\S+)
+Value Required ESMLC_NAME (SL\S+)
+Value Required PRIMARY_ADDR (\S+)
+Value Required STATE (\S+)
+Value Required SECONDARY_ADDR (\S+)
+Value Required S_STATE (\S+)
+
+Start
+  ^${hostname}
+  ^\s+${ESMLC_NAME}\s+${PRIMARY_ADDR}\s+${STATE}\s+${SECONDARY_ADDR}\s+${S_STATE} -> Record
+
+#End of template
+#  ^TOTAL NUMBER OF DISCONNECTED ENBS:\s+${DISCONNECTEDENBS}  -> Record

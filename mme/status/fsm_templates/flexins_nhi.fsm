@@ -1,0 +1,46 @@
+#TextFSM template for parsing the output of command: `ZNHI`
+# Example:
+#
+#< ZNHI;
+#LOADING PROGRAM VERSION 7.5-0
+#Flexi NS  HZMME108BNK               2019-09-18  11:06:53
+#SUBSYSTEM STATES
+#NETWORK: NA0   POINT H/D: 0DFF10/013-255-016    SP NAME: LSTP5
+#============   =============================    =========================
+#DESTINATION:                ROUTING:                 SP
+#NO H/D  SS NAME  STATE  RM  NET  SP CODE H/D         NAME              STATE
+#------  -------  -----  --  ---  ------------------  ----------------  -------
+#01/001  SCMG      AV    -   NA0  0DFF10/013-255-016  LSTP5             AV-EX
+#06/006  MAPH      AV    -   NA0  0DFF10/013-255-016  LSTP5             AV-EX
+#NETWORK: NA0   POINT H/D: 0DFF11/013-255-017    SP NAME: LSTP6
+#============   =============================    =========================
+#DESTINATION:                ROUTING:                 SP
+#NO H/D  SS NAME  STATE  RM  NET  SP CODE H/D         NAME              STATE
+#------  -------  -----  --  ---  ------------------  ----------------  -------
+#01/001  SCMG      AV    -   NA0  0DFF11/013-255-017  LSTP6             AV-EX
+#06/006  MAPH      AV    -   NA0  0DFF11/013-255-017  LSTP6             AV-EX
+#NETWORK: NA0   POINT H/D: 0DFFA1/013-255-161    SP NAME: HG108
+#============   =============================    =========================
+#DESTINATION:                ROUTING:                 SP
+#NO H/D  SS NAME  STATE  RM  NET  SP CODE H/D         NAME              STATE
+#------  -------  -----  --  ---  ------------------  ----------------  -------
+#01/001  SCMG      AV    -   NA0  0DFFA1/013-255-161  HG108             AV-EX
+#07/007  MAPV      AV    -   NA0  0DFFA1/013-255-161  HG108             AV-EX
+#08/008  MAPM      AV    -   NA0  0DFFA1/013-255-161  HG108             AV-EX
+#95/149  MAPS      AV    -   NA0  0DFFA1/013-255-161  HG108             AV-EX
+#
+Value Required,Filldown hostname (HZMME\S+)
+Value Required no_hd (\d+/\d+)
+Value Required SS_NAME (\S+)
+Value Required STATE (\S+)
+Value Required RM (\S+)
+Value Required NET (\S+)
+Value Required SP_CODE_HD (\S+/\d+-\d+-\d+)
+Value Required NAME (\S+)
+Value Required STATE_LSTP (\S+)
+
+Start
+  ^Flexi\s+NS\s+${hostname}
+  ^${no_hd}\s+${SS_NAME}\s+${STATE}\s+${RM}\s+${NET}\s+${SP_CODE_HD}\s+${NAME}\s+${STATE_LSTP} -> Record
+  
+#End of template

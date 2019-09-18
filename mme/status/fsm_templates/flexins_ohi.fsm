@@ -1,0 +1,27 @@
+#TextFSM template for parsing the output of command: `OHI`
+# Example:
+#===ZOHI;===
+#HZMME45BNK
+#LOADING PROGRAM VERSION 4.18-0
+#
+#Flexi NS  HZMME45BNK                2019-09-16  17:21:00
+#
+#  APP ID       CONN INDEX  CONN STATUS   DESTINATION NAME
+#  ------------ ----------- ------------- ----------------
+#  S6A/SLG      1           CONNECTED     HZDRA01BHW.hz.zj.node.epc.mnc000.mcc460.3gppnetwork.org
+#  S6A/SLG      2           CONNECTED     HZDRA01BHW.hz.zj.node.epc.mnc000.mcc460.3gppnetwork.org
+#  S6A/SLG      1           CONNECTED     HZDRA02BHW.hz.zj.node.epc.mnc000.mcc460.3gppnetwork.org
+#  S6A/SLG      2           CONNECTED     HZDRA02BHW.hz.zj.node.epc.mnc000.mcc460.3gppnetwork.org#
+#COMMAND EXECUTED
+#
+Value Required,Filldown hostname (HZMME\S+)
+Value Required APPID (S6\S+)
+Value Required CONN_INDEX (\S+)
+Value Required CONN_STATUS (\S+)
+Value Required DESTINATION_NAME (\S+)
+
+Start
+  ^Flexi\s+NS\s+${hostname}
+  ^\s+${APPID}\s+${CONN_INDEX}\s+${CONN_STATUS}\s+${DESTINATION_NAME} -> Record
+
+#End of template

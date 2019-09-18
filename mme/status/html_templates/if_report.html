@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>接口状态详情</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/static/css/bootstrap1.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="/static/js/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/navistyle.css">
+    <style type="text/css">body {
+        zoom: 0.8;
+    }</style>
+    <style>
+        .mycontainer input {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+        }
+    </style>
+
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.min.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="#">MME当前告警统计</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="menu">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"><span>请选择MME</span></a>
+                <ul>
+                    {% for host in hostlist %}
+                        <li><a href="if_report_{{ host }}.html"><span class="dropdown">{{ host }}</span></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Interfaces</a>
+            </li>
+            <li class="breadcrumb-item active">Statistics</li>
+        </ol>
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i>SGS接口详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>VLRID</th>
+                            <th>VLR NANME</th>
+                            <th>LINK STATUS</th>
+                            <th>MODE</th>
+                            <th>OFFLODING STATUS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sgs in task.results.4.data %}
+                            <tr>
+                                <td>{{ sgs.hostname }}</td>
+                                <td>{{ sgs.vlrid }}</td>
+                                <td>{{ sgs.vlrname }}</td>
+                                <td>{{ sgs.linkstatus }}</td>
+                                <td>{{ sgs.mode }}</td>
+                                <td>{{ sgs.status }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-header">
+                <i class="fa fa-table"></i>S6A/SLG接口详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>APPID</th>
+                            <th>INDEX</th>
+                            <th>LINK STATUS</th>
+                            <th>DESTINATION NAME</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for s6a in task.results.8.data %}
+                            <tr>
+                                <td>{{ s6a.hostname }}</td>
+                                <td>{{ s6a.APPID }}</td>
+                                <td>{{ s6a.CONN_INDEX }}</td>
+                                <td>{{ s6a.CONN_STATUS }}</td>
+                                <td>{{ s6a.DESTINATION_NAME }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-header">
+                <i class="fa fa-table"></i>Ga接口详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>INDEX</th>
+                            <th>ADMIN STATE</th>
+                            <th>OPER STATUS</th>
+                            <th>IP ADDRESS</th>
+                            <th>POSTPAID QUEUE</th>
+                            <th>PREPAID QUEUE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ga in task.results.9.data %}
+                            <tr>
+                                <td>{{ ga.hostname }}</td>
+                                <td>{{ ga.index }}</td>
+                                <td>{{ ga.adminstate }}</td>
+                                <td>{{ ga.operstatus }}</td>
+                                <td>{{ ga.ipaddress }}</td>
+                                <td>{{ ga.postpaid }}</td>
+                                <td>{{ ga.prepaid }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-header">
+                <i class="fa fa-table"></i>Gr接口详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>M3UALINK</th>
+                            <th>LINK</th>
+                            <th>SET</th>
+                            <th>ASSOCIATION SET</th>
+                            <th>LINK STATE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for gr in task.results.10.data %}
+                            <tr>
+                                <td>{{ gr.hostname }}</td>
+                                <td>{{ gr.M3UALINK }}</td>
+                                <td>{{ gr.LINK }}</td>
+                                <td>{{ gr.SET }}</td>
+                                <td>{{ gr.ASSOCIATIONSET }}</td>
+                                <td>{{ gr.LINKSTATE }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>SS NAME</th>
+                            <th>STATE</th>
+                            <th>NET</th>
+                            <th>SP CODE H/D</th>
+                            <th>SP NAME</th>
+                            <th>STATE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for grs in task.results.11.data %}
+                            <tr>
+                                <td>{{ grs.hostname }}</td>
+                                <td>{{ grs.SS_NAME }}</td>
+                                <td>{{ grs.STATE }}</td>
+                                <td>{{ grs.NET }}</td>
+                                <td>{{ grs.SP_CODE_HD }}</td>
+                                <td>{{ grs.NAME }}</td>
+                                <td>{{ grs.STATE_LSTP }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-header">
+                <i class="fa fa-table"></i>SLS接口详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>E-SMLC NAME</th>
+                            <th>PRIMARY ADDR</th>
+                            <th>STATE</th>
+                            <th>SECONDARY ADDR</th>
+                            <th>STATE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sls in task.results.6.data %}
+                            <tr>
+                                <td>{{ sls.hostname }}</td>
+                                <td>{{ sls.ESMLC_NAME }}</td>
+                                <td>{{ sls.PRIMARY_ADDR }}</td>
+                                <td>{{ sls.STATE }}</td>
+                                <td>{{ sls.SECONDARY_ADDR }}</td>
+                                <td>{{ sls.S_STATE }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-header">
+                <i class="fa fa-table"></i>SZ接口详情
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>MME</th>
+                            <th>IP ADDR</th>
+                            <th>PORT</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sz in task.results.7.data %}
+                            <tr>
+                                <td>{{ sz.hostname }}</td>
+                                <td>{{ sz.IP_ADDR }}</td>
+                                <td>{{ sz.PORT }}</td>
+                                <td>{{ sz.STATUS }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid-->
+<!-- /.content-wrapper-->
+<div>
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright &copy; 2019.Nokia All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/js/jquery.min.js"></script>
+
+    <!--chartist.min.js-->
+    <!--bootstrap.min.js-->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!--fontawesome-all.min.js-->
+    <script src="/static/js/fontawesome-all.min.js"></script>
+
+    <!--Custom JS-->
+    <script type="text/javascript" src="/static/js/alarmsearch.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/jquery/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/static/js/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="/static/js/datatables/jquery.dataTables.js"></script>
+    <script src="/static/js/datatables/dataTables.bootstrap4.js"></script>
+</div>
+</body>
+
+</html>
