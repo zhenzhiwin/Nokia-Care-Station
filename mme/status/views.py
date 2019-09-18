@@ -186,12 +186,12 @@ def presentation(*args, **kwargs):
                 for stats in r.data:
                     if stats['LINKSTATE'] != 'AV-EX':
                         gr_flag_per_mme = False
-                        args[5].abnormal_count = args[5].abnormal_count + 1
+                        args[4].abnormal_count = args[4].abnormal_count + 1
             if r.name == 'MMEGrsub状态信息':
                 for stats in r.data:
                     if stats['STATE'] != 'AV' or stats['STATE_LSTP'] != 'AV-EX':
                         gr_flag_per_mme = False
-                        args[5].abnormal_count = args[5].abnormal_count + 1
+                        args[4].abnormal_count = args[4].abnormal_count + 1
                 if_stats.append(gr_flag_per_mme)
         if_stats.insert(0, task.hostname)
         args[4].row_presentation.append(if_stats)
