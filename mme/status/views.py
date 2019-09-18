@@ -249,26 +249,38 @@ def history_presentation(*args, **kwargs):
                 args[0].abnormal_count = args[0].abnormal_count + len(r.stats)
             if r.name == 'MME告警检查':
                 alarm_statics = []
+                alist = []
+                adict = {}
+                summary = []
                 alarm_statics.append(r.hostname)
                 n_c = 0
                 w_c = 0
                 c_c = 0
                 for a in r.data:
-                    if a['level'] == '*':
-                        args[1].notice_level.append(a)
-                        n_c += 1
-                    if a['level'] == '**':
-                        args[1].warning_level.append(a)
-                        w_c += 1
-                    if a['level'] == '***':
-                        args[1].critical_level.append(a)
-                        c_c += 1
+                    if a['alarmid']:
+                        info = a['alarmid'].strip() + '----' + a['alarmtext'].strip()
+                        alist.append(info)
+                        if a['level'] == '*':
+                            args[1].notice_level.append(a)
+                            n_c += 1
+                        if a['level'] == '**':
+                            args[1].warning_level.append(a)
+                            w_c += 1
+                        if a['level'] == '***':
+                            args[1].critical_level.append(a)
+                            c_c += 1
+                aset = set(alist)
+                for info in aset:
+                    adict.update({info: alist.count(info)})
+                for ak, av in adict.items():
+                    summary.append(ak + ',当前数量:' + str(av) + '条')
                 alarm_statics.append(n_c)
                 alarm_statics.append(w_c)
                 alarm_statics.append(c_c)
                 args[1].chart_data += a['host'] + str(w_c + c_c)
                 args[1].row_presentation.append(alarm_statics)
-
+                args[1].summary.append({r.hostname: summary})
+                args[1].ne_list.append(r.hostname)
             if r.name == 'MME历史告警':
                 alarm_history = []
                 alarm_history.append(r.hostname)
