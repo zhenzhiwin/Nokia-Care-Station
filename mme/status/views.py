@@ -66,6 +66,7 @@ def presentation(*args, **kwargs):
             break
     for task in task_list:
         if_stats = []
+        gr_flag_per_mme = True
         for r in task.results:
             if r.name == 'MME单元状态检查':
                 unit_statics.append(conf.NeInfo.ne_list[i])
@@ -182,19 +183,16 @@ def presentation(*args, **kwargs):
                         args[4].abnormal_count = args[4].abnormal_count + 1
                 if_stats.append(status_per_mme)
             if r.name == 'MMEGr状态信息':
-                status_per_mme = True
                 for stats in r.data:
                     if stats['LINKSTATE'] != 'AV-EX':
-                        status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
-                if_stats.append(status_per_mme)
+                        gr_flag_per_mme = False
+                        args[5].abnormal_count = args[5].abnormal_count + 1
             if r.name == 'MMEGrsub状态信息':
-                status_per_mme = True
                 for stats in r.data:
                     if stats['STATE'] != 'AV' or stats['STATE_LSTP'] != 'AV-EX':
-                        status_per_mme = False
-                        args[4].abnormal_count = args[4].abnormal_count + 1
-                if_stats.append(status_per_mme)
+                        gr_flag_per_mme = False
+                        args[5].abnormal_count = args[5].abnormal_count + 1
+                if_stats.append(gr_flag_per_mme)
         if_stats.insert(0, task.hostname)
         args[4].row_presentation.append(if_stats)
     args[1].chart_data = args[1].chart_data + '!' + args[2].chart_data
@@ -226,7 +224,7 @@ def history_presentation(*args, **kwargs):
     # print(task_list[0].results[7].data[0]['timestamp'])
     for task in tasklist:
         if_stats = []
-        gr_flag_per_mme=True
+        gr_flag_per_mme = True
         for r in task.results:
             if r.name == 'MME单元状态检查':
                 unit_statics.append(conf.NeInfo.ne_list[i])
