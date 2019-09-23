@@ -17,7 +17,7 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/datepicker.css">
-    <link  rel="stylesheet" href="/static/css/navistyle.css">
+    <link rel="stylesheet" href="/static/css/navistyle.css">
     <style type="text/css">body {
         zoom: 0.8;
     }</style>
@@ -51,10 +51,13 @@
                     {% endfor %}
                 </ul>
             </li>
+            <li class="dropdown">
+                <a id="test" onclick="saveCode('dataTable')" href="#">告警导出到本地</a>
+            </li>
+            <li class="dropdown">
+                <a href="alarmhist_report_HZMME45BNK.html">历史告警详情</a>
+            </li>
         </ul>
-    </div>
-    <div classs="navbar-brand">
-        <a href="alarms_report_HZMME45BNK.html">当前告警详情</a>
     </div>
 </nav>
 <div class="content-wrapper">
@@ -109,7 +112,7 @@
                         {% for u in task.results.3.data %}
                             {% if u.level ==  '*' or u.level ==  '**' or u.level ==  '***' %}
                                 <tr>
-                                    <td>{{ u.host }}</td>
+                                    <td id="hostname">{{ u.host }}</td>
                                     <td>{{ u.unit }}</td>
                                     <td>{{ u.level }}</td>
                                     <td>{{ u.datetime }}</td>
@@ -180,6 +183,7 @@
     <!-- <script src="js/datepicker.all.min.js"></script> -->
     <script src="/static/js/date/datepicker.en.js"></script>
     <script type="text/javascript" src="/static/js/alarm_date.js"></script>
+    <script type="text/javascript" src="/static/js/datatables/alarmToExcel.js"></script>
 </div>
 </body>
 
