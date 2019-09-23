@@ -177,8 +177,14 @@ def presentation(*args, **kwargs):
             if r.name == 'MMEGA状态信息':
                 status_per_mme = True
                 for stats in r.data:
-                    if (stats['adminstate'] != '1 UNLOCKED' or stats['operstatus'] != '1 OPERATIONAL') and stats[
-                        'adminstate'] != '':
+                    if stats['adminstate'] != '1 UNLOCKED' or stats['operstatus'].strip() != '1 OPERATIONAL':
+                        status_per_mme = False
+                        args[4].abnormal_count = args[4].abnormal_count + 1
+                if_stats.append(status_per_mme)
+            if r.name == 'MMESV状态检查':
+                status_per_mme = True
+                for stats in r.data:
+                    if stats['mode'] not in ['NORMAL', 'DEFAULT']:
                         status_per_mme = False
                         args[4].abnormal_count = args[4].abnormal_count + 1
                 if_stats.append(status_per_mme)
@@ -333,8 +339,14 @@ def history_presentation(*args, **kwargs):
             if r.name == 'MMEGA状态信息':
                 status_per_mme = True
                 for stats in r.data:
-                    if (stats['adminstate'] != '1 UNLOCKED' or stats['operstatus'] != '1 OPERATIONAL') and stats[
-                        'adminstate'] != '':
+                    if stats['adminstate'] != '1 UNLOCKED' or stats['operstatus'].strip() != '1 OPERATIONAL':
+                        status_per_mme = False
+                        args[5].abnormal_count = args[5].abnormal_count + 1
+                if_stats.append(status_per_mme)
+            if r.name == 'MMESV状态检查':
+                status_per_mme = True
+                for stats in r.data:
+                    if stats['mode'] not in ['NORMAL', 'DEFAULT']:
                         status_per_mme = False
                         args[5].abnormal_count = args[5].abnormal_count + 1
                 if_stats.append(status_per_mme)

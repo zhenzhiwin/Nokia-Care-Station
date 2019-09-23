@@ -172,6 +172,24 @@ class FlexinsSlsStatus(BaseCheckItem):
         return results
 
 
+class FlexinsSvStatus(BaseCheckItem):
+    """MMESV状态检查
+    输出MME SV 链路情况，链路状态。
+    """
+    check_cmd = "ZBIR:INT"
+    base_path = os.path.split(os.path.abspath(__file__))[0]
+    fsm_template_name = "flexins_bir.fsm"
+
+    def check_status(self, logbuf):
+        self.status_data = self.fsm_parser.parse(logbuf=logbuf)
+        results = ResultInfo(**self.info)
+        if self.status_data:
+            results.data = self.status_data
+        else:
+            results.data = []
+        return results
+
+
 class FlexinsSzStatus(BaseCheckItem):
     """MMESZ状态检查
     输出MME SZ 链路情况，链路状态。
@@ -293,6 +311,7 @@ class FlexinsGrlink(BaseCheckItem):
             results.data = []
         # print(results.data)
         return results
+
 
 class FlexinsGrsublink(BaseCheckItem):
     """MMEGrsub状态信息

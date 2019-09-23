@@ -18,7 +18,7 @@
 Value Required,Filldown hostname (HZMM\S+)
 Value Required index (\d+)
 Value Required adminstate (\d+\s+\S+)
-Value Required operstatus (\d+\s+\S+)
+Value Required operstatus (.*)
 Value Required ipaddress (\S+)
 Value Required postpaid (\d+)
 Value Required prepaid (\d+)
@@ -27,7 +27,7 @@ Start
   ^${hostname}
   ^INDEX:\s+${index}
   ^\s+ADMIN\s+STATE:\s+${adminstate}
-  ^\s+OPER\s+STATUS:\s+${operstatus}
+  ^\s+OPER\s+STATUS:\s+${operstatus}\s+
   ^\s+IP\s+ADDRESS\s+:\s+${ipaddress}
   ^\s+${postpaid}\s+POSTPAID
   ^\s+${prepaid}\s+PREPAID -> Record

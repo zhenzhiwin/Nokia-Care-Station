@@ -270,11 +270,11 @@
                                         <li role="presentation" class="active"><a href="#{{ ne }}"
                                                                                   aria-controls="home"
                                                                                   role="tab" data-toggle="tab"><i
-                                                class="fa fa-globe"></i><span>{{ ne }}</span></a></li>
+                                        >{{ ne|slice:"5:-3" }}</i><span>{{ ne }}</span></a></li>
                                     {% else %}
                                         <li role="presentation"><a href="#{{ ne }}" aria-controls="profile" role="tab"
                                                                    data-toggle="tab"><i
-                                                class="fa fa-globe"></i><span>{{ ne }}</span></a>
+                                        >{{ ne|slice:"5:-3" }}</i><span>{{ ne }}</span></a>
                                         </li>
                                     {% endif %}
                                 {% endfor %}
@@ -367,6 +367,7 @@
                                             <th>S6A接口</th>
                                             <th>GA接口</th>
                                             <th>GR接口</th>
+                                            <th>SV接口</th>
                                         </tr>
                                         </thead><!--/thead-->
                                         <tbody>

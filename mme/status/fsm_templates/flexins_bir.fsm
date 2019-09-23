@@ -1,0 +1,24 @@
+#TextFSM template for parsing the output of command: `BIR:INT`
+# Example:
+#BIR:INT;
+#
+#MSC SERVERS IN MME
+#
+#    MSS INDEX    MSS NAME    MODE
+#    ---------------------------------------
+#    1            HZGS10      NORMAL
+#    2            HZGS22      DEFAULT
+#
+#COMMAND EXECUTED
+#
+Value Required,Filldown hostname (HZMME\S+)
+Value Required mssid (\d+)
+Value Required mssname (\w+GS\d+)
+Value Required mode (\S+)
+
+Start
+  ^${hostname}
+  ^MSC\s+SERVERS\s+IN\s+MME
+  ^\s+${mssid}\s+${mssname}\s+${mode} -> Record
+  
+#End of template
