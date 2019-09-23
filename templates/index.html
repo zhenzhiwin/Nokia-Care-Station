@@ -216,7 +216,11 @@
                                     <h2>单元系统状态</h2>
                                 </div><!--/.icon-box-->
                                 <h3>监控中，目前</h3>
-                                <p style="color:red;">{{ abc }}个单元异常</p>
+                                {% if abc == 0 %}
+                                    <p>{{ abc }}个单元异常</p>
+                                {% else %}
+                                    <p style="color:red;">{{ abc }}个单元异常</p>
+                                {% endif %}
                             </div><!--/.profile-state-->
                         </div><!--/.col-->
                         <div class="col-sm-3">
@@ -239,8 +243,12 @@
 								</span>
                                     <h2>各业务接口状态</h2>
                                 </div><!--/.icon-box-->
-                                <h3>各接口状态正常</h3>
-                                <p style="color:red;">当前接口有{{ if_p.abnormal_count }}个状态异常</p>
+                                <h3>监控中，当前接口有</h3>
+                                {% if if_p.abnormal_count == 0 %}
+                                    <p>{{ if_p.abnormal_count }}个异常状态</p>
+                                {% else %}
+                                    <p style="color:red;">{{ if_p.abnormal_count }}个异常状态</p>
+                                {% endif %}
                             </div><!--/.profile-state-->
                         </div><!--/.col-->
                         <div class="col-sm-3">
