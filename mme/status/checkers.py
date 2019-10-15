@@ -1,9 +1,10 @@
 #! coding: utf8
 
-import os
+import os, IPy
 
 from smartcheck.basechecker.checkitem import BaseCheckItem, exec_checkitem
 from smartcheck.basechecker.resultinfo import ResultInfo
+from smartcheck.utils import read_task_conf
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -102,11 +103,22 @@ class FlexinsAlarmStatus(BaseCheckItem):
     fsm_template_name = "flexins_aho.fsm"
 
     def check_status(self, logbuf):
+        conf = read_task_conf("mme_task.conf")  # 从这里读取不是很妥，还需考虑配置文件的提取
+        ip_filter_list = conf.OptimizedFilter.MME_unavailable_alarm_filer_list
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
-        alarmlevel_high = []
         results = ResultInfo(**self.info)
+        results.data = []
         if self.status_data:
-            results.data = self.status_data
+            for r in self.status_data:
+                if r['alarmid'] == '3450':
+                    ip = '%d.%d.%d.%d' % (
+                    int(r['hexinfo'][3:5], 16), int(r['hexinfo'][6:8], 16), int(r['hexinfo'][9:11], 16),
+                    int(r['hexinfo'][12:14], 16),)
+                    for filter in ip_filter_list:
+                        if ip in IPy.IP(filter):
+                            results.data.append(r)
+                else:
+                    results.data.append(r)
         else:
             results.data = []
         return results
@@ -123,8 +135,21 @@ class FlexinsAlarmHistory(BaseCheckItem):
     def check_status(self, logbuf):
         self.status_data = self.fsm_parser.parse(logbuf=logbuf)
         results = ResultInfo(**self.info)
+        conf = read_task_conf("mme_task.conf")  # 从这里读取不是很妥，还需考虑配置文件的提取
+        ip_filter_list = conf.OptimizedFilter.MME_unavailable_alarm_filer_list
+        results.data = []
+
         if self.status_data:
-            results.data = self.status_data
+            for r in self.status_data:
+                if r['alarmid'] == '3450':
+                    ip = '%d.%d.%d.%d' % (
+                    int(r['hexinfo'][3:5], 16), int(r['hexinfo'][6:8], 16), int(r['hexinfo'][9:11], 16),
+                    int(r['hexinfo'][12:14], 16),)
+                    for filter in ip_filter_list:
+                        if ip in IPy.IP(filter):
+                            results.data.append(r)
+                else:
+                    results.data.append(r)
         else:
             results.data = []
         return results
