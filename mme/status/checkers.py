@@ -117,6 +117,11 @@ class FlexinsAlarmStatus(BaseCheckItem):
                     for filter in ip_filter_list:
                         if ip in IPy.IP(filter):
                             results.data.append(r)
+                elif r['alarmid'] == '3717':
+                    ip=r['hexinfo'][:r['hexinfo'].find('FF')-1]
+                    for filter in ip_filter_list:
+                        if ip in IPy.IP(filter):
+                            results.data.append(r)
                 else:
                     results.data.append(r)
         else:
@@ -145,6 +150,11 @@ class FlexinsAlarmHistory(BaseCheckItem):
                     ip = '%d.%d.%d.%d' % (
                     int(r['hexinfo'][3:5], 16), int(r['hexinfo'][6:8], 16), int(r['hexinfo'][9:11], 16),
                     int(r['hexinfo'][12:14], 16),)
+                    for filter in ip_filter_list:
+                        if ip in IPy.IP(filter):
+                            results.data.append(r)
+                elif r['alarmid'] == '3717':
+                    ip=r['hexinfo'][:r['hexinfo'].find('FF')-1]
                     for filter in ip_filter_list:
                         if ip in IPy.IP(filter):
                             results.data.append(r)
