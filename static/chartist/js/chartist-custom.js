@@ -8,10 +8,10 @@ $(document).ready(function () {
         ================================
     */
     var alarm_data = document.getElementById('alarm_prt').getAttribute('chart_data');
-    var all_al= all_al=alarm_data.split("!")
-    var mme_list = all_al[0].match(/MME\d+/g)
-    var present_alarm = all_al[0].split(/HZMME\d+BNK/g)
-    var hist_alarm = all_al[1].split(/HZMME\d+BNK/g)
+    // var all_al=alarm_data.split("!")
+    var mme_list = alarm_data.match(/MME\d+/g)
+    var present_alarm = alarm_data.split(/HZMME\d+BNK/g)
+    // var hist_alarm = all_al[1].split(/HZMME\d+BNK/g)
     // var normal = []
     // for (i = 0; i < presentation.length; i += 3) {
     //     normal.push(presentation[i])
@@ -22,8 +22,8 @@ $(document).ready(function () {
             labels: mme_list,
             series: [
                 //normal,
-                hist_alarm.slice(1,hist_alarm.length),
-                present_alarm.slice(1,present_alarm.length)
+                // hist_alarm.slice(1,hist_alarm.length),
+                present_alarm.slice(1, present_alarm.length)
 
             ]
         },
@@ -35,12 +35,12 @@ $(document).ready(function () {
             fullWidth: true,
             axisY: {
                 labelInterpolationFnc: function (value) {
-                    return value ;
+                    return value;
                 }
             },
             plugins: [
                 Chartist.plugins.tooltip({
-                    currency: '告警数:',
+                    currency: '重要告警数:',
                     class: 'line-graph-tooltip',
                     appendToBody: false,
                 })
