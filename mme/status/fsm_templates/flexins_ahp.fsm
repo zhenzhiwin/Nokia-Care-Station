@@ -1,6 +1,6 @@
 #TextFSM template for MME AHP
 #
-Value host (HZMME\d+BNK)
+Value Required host (HZMME\d+BNK)
 Value unit (\w+-\d+)
 #Value equiptype (\w+)
 Value level (\*+)

@@ -1,6 +1,6 @@
 #TextFSM template for MME AHO
 #
-Value host (\w+)
+Value Required host (\w+)
 Value unit (\w+-\d+)
 #Value equiptype (\w+)
 Value level (\*+)
